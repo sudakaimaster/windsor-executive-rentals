@@ -133,9 +133,13 @@ h1 .highlight {
 }
 .result-label { font-size: .8rem; font-weight: 600; color: var(--purple-light); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px }
 .result-sprite {
-  width: 160px; height: 160px; margin: 0 auto 8px;
-  display: grid; place-items: center; font-size: 100px;
+  width: 200px; height: 200px; margin: 0 auto 8px;
+  display: grid; place-items: center;
   animation: bounce 2s infinite ease-in-out;
+}
+.result-sprite img {
+  width: 100%; height: 100%; object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(108,63,197,.4));
 }
 @keyframes bounce {
   0%,100% { transform: translateY(0) }
@@ -296,35 +300,35 @@ const QUESTIONS = [
 const CHARACTERS = {
   attack: {
     name: "Pikachu",
-    emoji: "⚡",
+    img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
     role: "Attacker",
     desc: "You're electric — literally! Like Pikachu, you light up every room (and every team fight). You've got a natural spark that draws people in, and when it's time to perform, you bring the thunder. You're not afraid to take the spotlight and carry the team on your back.",
     traits: ["High Energy", "Crowd Favorite", "Clutch Player", "Bold", "Expressive"]
   },
   defend: {
     name: "Snorlax",
-    emoji: "😴",
+    img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png",
     role: "Defender",
     desc: "Unshakeable. Like Snorlax, you're the rock your friends lean on — calm under pressure, impossibly loyal, and way tougher than you look. You might seem laid-back, but when it counts, nothing gets past you. Your strength is your steady, protective presence.",
     traits: ["Loyal", "Chill", "Protective", "Dependable", "Unshakeable"]
   },
   speed: {
     name: "Gengar",
-    emoji: "👻",
+    img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png",
     role: "Speedster",
     desc: "Sneaky, clever, and always one step ahead — that's you, Gengar. You love keeping people on their toes with your quick wit and unpredictable energy. You thrive on the element of surprise and have a mischievous streak that makes life way more fun.",
     traits: ["Witty", "Unpredictable", "Quick-Thinker", "Mischievous", "Creative"]
   },
   support: {
     name: "Eldegoss",
-    emoji: "🌸",
+    img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/830.png",
     role: "Supporter",
     desc: "You're the heart of the team. Like Eldegoss, you quietly lift everyone around you — healing, encouraging, and making sure no one gets left behind. People might underestimate you, but your team knows: without you, everything falls apart. Your empathy is your superpower.",
     traits: ["Empathetic", "Nurturing", "Team Player", "Selfless", "Perceptive"]
   },
   balance: {
     name: "Lucario",
-    emoji: "🥊",
+    img: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/448.png",
     role: "All-Rounder",
     desc: "Disciplined, versatile, and driven — you're Lucario. You don't just rely on one strength; you've worked hard to be good at everything. You lead by example with quiet determination and can adapt to any situation. You're the one people trust to get the job done, no matter what.",
     traits: ["Disciplined", "Versatile", "Determined", "Balanced", "Leader"]
@@ -399,7 +403,7 @@ function showResult() {
   resultDiv.innerHTML = `
     <div class="result-card">
       <div class="result-label">You are</div>
-      <div class="result-sprite">${char.emoji}</div>
+      <div class="result-sprite"><img src="${char.img}" alt="${char.name}"></div>
       <div class="result-name">${char.name}</div>
       <div class="result-role">${char.role}</div>
       <p class="result-desc">${char.desc}</p>
