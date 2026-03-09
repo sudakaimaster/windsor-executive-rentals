@@ -1,0 +1,29 @@
+---
+description: Use odin_decrypt() for encrypted fields when querying Databricks Salesforce DWH
+alwaysApply: true
+---
+
+# Databricks: Always Use odin_decrypt() for Encrypted Fields
+
+When querying tables in `ued_salesforce_dwh` (or any Databricks schema with KEY_IDPS_SALESFORCE encrypted values), always wrap encrypted PII fields with `odin_decrypt()` to return readable plaintext.
+
+## Commonly Encrypted Fields
+
+- `name`, `firstname`, `lastname`, `email`, `phone`, `alias` on user/lead/contact/account tables
+
+## Example
+
+```sql
+-- ✅ GOOD
+SELECT odin_decrypt(u.name) AS owner_name
+FROM ued_salesforce_dwh.sales_user u
+
+-- ❌ BAD (returns encrypted tokens)
+SELECT u.name AS owner_name
+FROM ued_salesforce_dwh.sales_user u
+```
+
+## Important Limitation
+
+- `odin_decrypt()` is a Hive UDF and only works on **interactive/job clusters**, NOT on SQL warehouses.
+- If a query fails with `CANNOT_LOAD_FUNCTION_CLASS`, advise the user to run the query in a Databricks notebook attached to an interactive cluster.

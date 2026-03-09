@@ -193,7 +193,7 @@ h1 .highlight {
   <div id="start" class="screen active">
     <div class="logo-badge">⚡</div>
     <h1>Which <span class="highlight">Pok&eacute;mon UNITE</span> Character Are You?</h1>
-    <p class="subtitle">Answer 10 personality questions and discover which Pok&eacute;mon matches your play style, temperament, and vibe.</p>
+    <p class="subtitle">Answer 8 quick questions and discover which Pok&eacute;mon matches your play style, temperament, and vibe.</p>
     <button class="btn" onclick="startQuiz()">
       Let's Go!
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -220,6 +220,24 @@ h1 .highlight {
 <script>
 const QUESTIONS = [
   {
+    text: "Mid-game, your stomach starts growling. Do you leave your teammates stranded to go grab snacks?",
+    options: [
+      { label: "Absolutely — chips and candy wait for no one 🍫", traits: { speed: 2, attack: 1 } },
+      { label: "I'd never! My team needs me right now", traits: { defend: 2, support: 1 } },
+      { label: "I'll grab snacks AND play — I can multitask", traits: { balance: 2, speed: 1 } },
+      { label: "Only if we're winning by a lot", traits: { attack: 2, balance: 1 } }
+    ]
+  },
+  {
+    text: "Be honest — how toxic are you in team chat?",
+    options: [
+      { label: "I'm spamming \"Thanks!\" sarcastically after every loss", traits: { attack: 2, speed: 1 } },
+      { label: "I never say anything negative — good vibes only", traits: { support: 2, defend: 1 } },
+      { label: "I'll roast you but in a funny way, no hard feelings", traits: { speed: 2, balance: 1 } },
+      { label: "I stay quiet but I'm judging everyone's builds", traits: { defend: 2, balance: 1 } }
+    ]
+  },
+  {
     text: "Your team is losing badly. What's your instinct?",
     options: [
       { label: "Dive in and try to turn the fight around myself", traits: { attack: 2, speed: 1 } },
@@ -238,24 +256,6 @@ const QUESTIONS = [
     ]
   },
   {
-    text: "Pick a weekend activity:",
-    options: [
-      { label: "Competitive sports or gaming tournament", traits: { attack: 2, speed: 1 } },
-      { label: "Cooking a big meal for friends", traits: { support: 2, defend: 1 } },
-      { label: "Exploring somewhere new and unfamiliar", traits: { speed: 2, balance: 1 } },
-      { label: "Working out or practicing a skill", traits: { balance: 2, attack: 1 } }
-    ]
-  },
-  {
-    text: "A friend comes to you with a problem. You…",
-    options: [
-      { label: "Give them a direct, no-nonsense solution", traits: { attack: 1, balance: 2 } },
-      { label: "Listen patiently and offer emotional support", traits: { support: 2, defend: 1 } },
-      { label: "Crack jokes to lighten the mood first", traits: { speed: 2, support: 1 } },
-      { label: "Stand by them quietly — actions over words", traits: { defend: 2, balance: 1 } }
-    ]
-  },
-  {
     text: "Which word resonates with you most?",
     options: [
       { label: "Power", traits: { attack: 3 } },
@@ -265,39 +265,21 @@ const QUESTIONS = [
     ]
   },
   {
-    text: "In a group project, you naturally become the…",
-    options: [
-      { label: "Go-getter who does the heavy lifting", traits: { attack: 2, balance: 1 } },
-      { label: "Organizer who keeps everyone on track", traits: { support: 1, balance: 2 } },
-      { label: "Creative spark with wild ideas", traits: { speed: 2, attack: 1 } },
-      { label: "Reliable one who fills in the gaps", traits: { defend: 2, support: 1 } }
-    ]
-  },
-  {
-    text: "Pick a travel destination vibe:",
-    options: [
-      { label: "A bustling city full of energy", traits: { attack: 2, speed: 1 } },
-      { label: "A cozy cabin in the mountains", traits: { defend: 2, support: 1 } },
-      { label: "An off-the-grid jungle adventure", traits: { speed: 2, balance: 1 } },
-      { label: "A peaceful garden or hot spring", traits: { support: 2, balance: 1 } }
-    ]
-  },
-  {
-    text: "What frustrates you the most?",
-    options: [
-      { label: "Feeling like I'm not making an impact", traits: { attack: 2, balance: 1 } },
-      { label: "People not caring about each other", traits: { support: 2, defend: 1 } },
-      { label: "Being stuck in a routine with no surprises", traits: { speed: 2, attack: 1 } },
-      { label: "Chaos when things could be stable", traits: { defend: 2, balance: 1 } }
-    ]
-  },
-  {
     text: "Your ideal superpower would be…",
     options: [
       { label: "Raw elemental power — fire, lightning, etc.", traits: { attack: 3 } },
       { label: "An unbreakable shield to protect everyone", traits: { defend: 3 } },
       { label: "Teleportation — be anywhere instantly", traits: { speed: 3 } },
       { label: "Healing — keep people safe and healthy", traits: { support: 3 } }
+    ]
+  },
+  {
+    text: "It's the final stretch — Zapdos just spawned. What's your move?",
+    options: [
+      { label: "Rush in and try to steal it — high risk, high reward", traits: { attack: 2, speed: 1 } },
+      { label: "Zone out the enemies so my team can secure it", traits: { defend: 2, balance: 1 } },
+      { label: "Sneak around back and ambush whoever's low HP", traits: { speed: 2, attack: 1 } },
+      { label: "Stick with my team and buff them for the fight", traits: { support: 2, balance: 1 } }
     ]
   },
   {
