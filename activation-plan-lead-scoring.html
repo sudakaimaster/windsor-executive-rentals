@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Activation Plan — Predictive Lead Scoring (MM IES)</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    color: #202124;
+    line-height: 1.5;
+    font-size: 11pt;
+  }
+  h1 { font-size: 20pt; color: #1a1a1a; border-bottom: 2px solid #4285f4; padding-bottom: 8px; }
+  h2 { font-size: 16pt; color: #1a73e8; margin-top: 32px; border-bottom: 1px solid #e0e0e0; padding-bottom: 4px; }
+  h3 { font-size: 13pt; color: #333; margin-top: 20px; }
+  h4 { font-size: 11pt; color: #555; margin-top: 16px; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0 20px 0;
+    font-size: 10pt;
+  }
+  th, td {
+    border: 1px solid #dadce0;
+    padding: 6px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background-color: #e8f0fe;
+    font-weight: bold;
+    color: #1a1a1a;
+  }
+  .new-tag {
+    background: #e6f4ea;
+    color: #137333;
+    font-size: 9pt;
+    font-weight: bold;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+  }
+  .action-item {
+    background: #fef7e0;
+    border-left: 4px solid #f9ab00;
+    padding: 10px 14px;
+    margin: 12px 0;
+    font-size: 10pt;
+  }
+  .decision-gate {
+    background: #e8f0fe;
+    border-left: 4px solid #4285f4;
+    padding: 10px 14px;
+    margin: 12px 0;
+    font-size: 10pt;
+  }
+  pre {
+    background: #f8f9fa;
+    border: 1px solid #dadce0;
+    padding: 16px;
+    font-family: 'Courier New', monospace;
+    font-size: 9pt;
+    overflow-x: auto;
+    line-height: 1.4;
+  }
+  ul, ol { margin: 8px 0; padding-left: 24px; }
+  li { margin: 4px 0; }
+  .status-red { color: #d93025; }
+  .status-yellow { color: #f9ab00; }
+  .status-box { font-size: 14px; }
+  hr { border: none; border-top: 1px solid #e0e0e0; margin: 28px 0; }
+  p { margin: 8px 0; }
+</style>
+</head>
+<body>
+
+<h1>Activation Plan — Predictive Lead Scoring (MM IES)</h1>
+
+<p><strong>PRD:</strong></p>
+<p><strong>Purpose:</strong> Today, 80% of IES inbound leads wait 24-72 hours to be scored and routed—by which time buyer intent has cooled. Sales wastes time on low-quality leads, high-potential prospects go cold, and the majority of our highest-intent leads can't be scored on the most important pillar.</p>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: FEATURE OVERVIEW -->
+<!-- ============================================================ -->
+<h2>1. Feature Overview</h2>
+
+<table>
+  <tr><th>Field</th><th>Details</th></tr>
+  <tr><td>Feature/Capability Name</td><td>MM IES Predictive Lead Scoring</td></tr>
+  <tr><td>Platform Team Owner</td><td></td></tr>
+  <tr><td>GTM Activation Owner</td><td></td></tr>
+  <tr><td>Target Ship Date</td><td>APR 30 – May TBD</td></tr>
+  <tr><td>Target Activation Date</td><td>TBD</td></tr>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: SCORING MODEL SUMMARY -->
+<!-- ============================================================ -->
+<h2>2. Scoring Model Summary <span class="new-tag">NEW</span></h2>
+
+<p>The new predictive lead scoring model replaces the legacy 3-pillar system with a 4-pillar approach. The legacy model has lost differentiation—93% of leads reach Salesforce with a "perfect" score of 100, and mid-range scores have a 90%+ disqualification rate.</p>
+
+<h3>4-Pillar Scoring Model</h3>
+
+<table>
+  <tr><th>Pillar</th><th>Weight</th><th>Description</th></tr>
+  <tr><td>ICP Fit</td><td>50%</td><td>Ideal Customer Profile match based on firmographic and technographic data (sourced via ZoomInfo enrichment)</td></tr>
+  <tr><td>Engagement</td><td>TBD%</td><td>Behavioral signals: web visits, content downloads, email engagement, event attendance</td></tr>
+  <tr><td>Intent</td><td>TBD%</td><td>Third-party intent signals including Surge multi-entity flags</td></tr>
+  <tr><td>Product Usage (NEW)</td><td>TBD%</td><td>21 first-party signals from Desktop, QBO, and Payroll product usage data</td></tr>
+</table>
+
+<h3>Scoring Tiers</h3>
+
+<table>
+  <tr><th>Tier</th><th>Score Range</th><th>Expected Action</th></tr>
+  <tr><td>A (Hot)</td><td>TBD</td><td>Immediate hand-raiser routing; &lt;10 min SLA</td></tr>
+  <tr><td>B (Warm)</td><td>TBD</td><td>Standard BDR follow-up within 24 hours</td></tr>
+  <tr><td>C (Cold)</td><td>TBD</td><td>Nurture track; no immediate outbound</td></tr>
+</table>
+
+<h3>Example Scoring Scenarios</h3>
+
+<table>
+  <tr><th>Scenario</th><th>ICP</th><th>Engagement</th><th>Intent</th><th>Product Usage</th><th>Total</th><th>Tier</th></tr>
+  <tr><td>QBO Outgrower with high engagement</td><td>High</td><td>High</td><td>Medium</td><td>High</td><td>TBD</td><td>A</td></tr>
+  <tr><td>Net-new prospect, low fit, clicked 1 email</td><td>Low</td><td>Low</td><td>None</td><td>N/A</td><td>TBD</td><td>C</td></tr>
+  <tr><td>Desktop Refugee, strong intent signals</td><td>High</td><td>Medium</td><td>High</td><td>Medium</td><td>TBD</td><td>A</td></tr>
+  <tr><td>Good ICP, no engagement yet</td><td>High</td><td>None</td><td>None</td><td>N/A</td><td>TBD</td><td>C</td></tr>
+</table>
+
+<div class="action-item"><strong>Action Item:</strong> Finalize pillar weights and tier boundaries. Get sign-off from Sales + Marketing leadership by [DATE].</div>
+
+<h3>MQL Threshold Definition <span class="new-tag">NEW — Critical</span></h3>
+
+<p>The new MQL definition replaces legacy scoring logic. A lead qualifies as MQL when:</p>
+<ul>
+  <li><strong>ICP Fit score ≥ [THRESHOLD]</strong> (mandatory — no lead can MQL without strong ICP fit)</li>
+  <li><strong>Combined Unified Score ≥ [THRESHOLD]</strong> (across all 4 pillars)</li>
+  <li><strong>Additional criteria for existing customers:</strong> [TBD — factor in segment and product usage]</li>
+</ul>
+
+<div class="action-item"><strong>Action Item:</strong> Define exact thresholds and get cross-functional sign-off by 3/20.</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: SYSTEM ARCHITECTURE -->
+<!-- ============================================================ -->
+<h2>3. System Architecture <span class="new-tag">NEW</span></h2>
+
+<pre>
+Lead Source (Web Form / Event / Content)
+        │
+        ▼
+Adobe Experience Platform (AEP)
+   [Streaming mode — 10 min refresh]
+        │
+        ▼
+┌───────────────────────────────────┐
+│     Relevvo Scoring Engine        │
+│  ┌─────────┐  ┌───────────────┐  │
+│  │ ICP Fit  │  │  Engagement   │  │
+│  │  (50%)   │  │    (TBD%)     │  │
+│  └─────────┘  └───────────────┘  │
+│  ┌─────────┐  ┌───────────────┐  │
+│  │  Intent  │  │ Product Usage │  │
+│  │  (TBD%)  │  │    (TBD%)     │  │
+│  └─────────┘  └───────────────┘  │
+│                                   │
+│  ZoomInfo Enrichment (ICP)        │
+│  Surge Signals (Intent)           │
+│  Data Lake — 21 1P Signals (Usage)│
+└───────────────────────────────────┘
+        │
+        ▼
+    Amazon S3
+   [Tiered tagging: Hot / Warm / Cold]
+        │
+        ├──────────────┐
+        ▼              ▼
+    Marketo          SFDC
+  (MQL routing)   (BDR tools, reports)
+</pre>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: BUSINESS CONTEXT -->
+<!-- ============================================================ -->
+<h2>4. Business Context</h2>
+
+<h3>What business problem does this solve?</h3>
+
+<p>Today, 80% of IES inbound leads wait 24-72 hours to be scored and routed—by which time buyer intent has cooled. Our current model has lost differentiation: 93% of leads reach Salesforce with a "perfect" score of 100, and mid-range scores have a 90%+ disqualification rate. Sales wastes time on low-quality leads while high-potential prospects go cold. With ICP weighted at 50% in the new model, no lead can MQL without strong ICP fit, enabling Sales to prioritize high-quality leads and improve conversion.</p>
+
+<h3>Who benefits from this capability?</h3>
+
+<table>
+  <tr><th>Beneficiary</th><th>How They Benefit</th></tr>
+  <tr><td>Sales Reps</td><td>Prioritize high-quality leads with strong ICP fit. Reduced time wasted on low-quality leads. Clear tiering (A/B/C) with actionable routing. Existing customer segments (Desktop Refugee, QBO Outgrower) enable tailored conversations.</td></tr>
+  <tr><td>Marketing</td><td>Faster lead scoring (&lt;10 min vs. 24-72 hours) preserves buyer intent. Differentiated scoring replaces the current model where 93% of leads score 100. Enables score-aware nurture campaigns by tier and customer segment.</td></tr>
+  <tr><td>Marketing Ops</td><td>Clearer MQL definition tied to ICP + Unified threshold. Automated suppression of non-ICP leads reduces noise. Score-based audience segmentation enables precision targeting.</td></tr>
+  <tr><td>Revenue Ops</td><td>Real-time scoring enables faster routing and SLA tracking. Data-driven P1-P4 prioritization replaces campaign-based logic. Score history pipeline enables trend analysis and model accountability.</td></tr>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: RACI MATRIX -->
+<!-- ============================================================ -->
+<h2>5. RACI Matrix <span class="new-tag">NEW</span></h2>
+
+<table>
+  <tr><th>Workstream</th><th>Responsible</th><th>Accountable</th><th>Consulted</th><th>Informed</th></tr>
+  <tr><td>Platform / Scoring Engine</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Marketing Ops (Marketo, MQL)</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Sales Innovation / Data Engineering</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Sales Enablement</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>GTM Tech (Monitoring, Dashboards)</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Revenue Ops</td><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<div class="action-item"><strong>Action Item:</strong> Fill in names for every cell. Every line item in the execution plan below should map to one of these owners.</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: PRE-SHIP EXECUTION PLAN -->
+<!-- ============================================================ -->
+<h2>6. Pre-Ship Execution Plan</h2>
+
+<p><strong>Prod Go-Live Target: 4/30</strong></p>
+
+<h3>6.1 Platform (Tracked in Jira)</h3>
+
+<table>
+  <tr><th>Milestone</th><th>What Needs to Happen</th><th>Dependencies</th><th>Due</th><th>Target Date</th><th>Owner</th><th>Status</th></tr>
+  <tr><td>Pre-Score 470K IES Customer Accounts</td><td>Load all IES prospect/customer accounts to Relevvo; generate scores; store in accessible location</td><td>—</td><td>Week before go-live</td><td>4/20</td><td></td><td>⬜</td></tr>
+  <tr><td>Product Usage Pipeline</td><td>Build Data Lake → Scoring pipeline for 21 1P signals</td><td>DE-P3 (data access)</td><td>Before go-live</td><td>4/20</td><td></td><td>⬜</td></tr>
+  <tr><td>Existing Customer Flag</td><td>Implement Relevvo_Is_Existing_Customer detection logic</td><td>—</td><td>Before go-live</td><td>4/20</td><td></td><td>⬜</td></tr>
+  <tr><td>Segment Assignment Logic</td><td>Implement Relevvo_Segment field (Desktop Refugee, QBO Outgrower, etc.)</td><td>Existing Customer Flag</td><td>Before go-live</td><td>4/20</td><td></td><td>⬜</td></tr>
+  <tr><td>Tiered Routing Rules</td><td>Configure S3 tagging for hand-raisers, hot leads, cold leads</td><td>—</td><td>Before go-live</td><td>4/20</td><td></td><td>⬜</td></tr>
+  <tr><td>AEP Streaming Configuration</td><td>Ensure AEP → S3 dataflows operate in streaming mode (10 min)</td><td>—</td><td>Before go-live</td><td>4/20</td><td></td><td>⬜</td></tr>
+  <tr><td>ZoomInfo Fallback Logic</td><td>Define ICP scoring behavior when enrichment fails</td><td>—</td><td>Before go-live</td><td>4/20</td><td></td><td>⬜</td></tr>
+</table>
+
+<h3>6.2 Marketing Ops</h3>
+
+<table>
+  <tr><th>#</th><th>Item</th><th>What Needs to Happen</th><th>Dependencies</th><th>Due</th><th>POC</th><th>Start</th><th>ETA</th><th>Status</th></tr>
+  <tr><td>MO-P1</td><td>Marketo Custom Fields (9 fields)</td><td>Create all new score fields in Marketo</td><td>—</td><td>1 week before go-live</td><td></td><td></td><td></td><td><span class="status-red">🔴 Not Started</span></td></tr>
+  <tr><td>MO-P2</td><td>Hot Lead Definition</td><td>Define criteria for "Hot Lead" tag (engagement threshold)</td><td>MQL threshold decision</td><td>Before go-live</td><td></td><td></td><td></td><td><span class="status-red">🔴 Not Started</span></td></tr>
+  <tr><td>MO-P3</td><td>Load Pre-Scored Accounts to Marketo</td><td>Ingest 600K pre-scored account data into Marketo for matching</td><td>Platform: Pre-Score 470K accounts</td><td>Before go-live</td><td></td><td></td><td></td><td><span class="status-red">🔴 Not Started</span></td></tr>
+  <tr><td>MO-P4</td><td>Updated MQL Definition</td><td>Replace legacy MQL logic with ICP + Unified threshold</td><td>Cross-functional sign-off</td><td>Before go-live</td><td></td><td>Mar 10</td><td></td><td><span class="status-red">🔴 Not Started</span></td></tr>
+  <tr><td>MO-P5</td><td>ICP Suppression Rules</td><td>Prevent routing of non-ICP leads</td><td>MO-P4 (MQL definition)</td><td>Before go-live</td><td></td><td></td><td></td><td><span class="status-red">🔴 Not Started</span></td></tr>
+  <tr><td>MO-P6</td><td>Internal Training / Communication</td><td>Training on new scoring model and changes to scoring workflows</td><td>All MO-P items above</td><td>Before go-live</td><td></td><td></td><td></td><td><span class="status-red">🔴 Not Started</span></td></tr>
+  <tr><td>MO-P7</td><td>Go-Live Cutover Plan</td><td>Document legacy vs. new scoring steps, cutover timing, rollback triggers</td><td>All items</td><td>Before go-live</td><td></td><td></td><td></td><td><span class="status-red">🔴 Not Started</span></td></tr>
+</table>
+
+<h3>6.3 Sales Innovation / Data Engineering</h3>
+
+<table>
+  <tr><th>#</th><th>Item</th><th>What Needs to Happen</th><th>Dependencies</th><th>Due</th><th>POC</th><th>ETA</th><th>Status</th></tr>
+  <tr><td>DE-P1</td><td>Data Lake → SFDC Sync</td><td>Add new score fields to daily sync; target &lt;2 min real-time</td><td>Platform fields finalized</td><td>Before go-live</td><td></td><td></td><td><span class="status-red">🔴 Not Started</span></td></tr>
+  <tr><td>DE-P2</td><td>Multi-Entity Signal Access</td><td>Expose Surge multi-entity flags to scoring pipeline</td><td>—</td><td>Before go-live</td><td></td><td></td><td><span class="status-yellow">🟡 In Progress</span></td></tr>
+  <tr><td>DE-P3</td><td>Product Usage Data Access</td><td>Expose Desktop, QBO, Payroll signals to scoring pipeline</td><td>—</td><td>Before go-live</td><td></td><td></td><td><span class="status-yellow">🟡 In Progress</span></td></tr>
+  <tr><td>DE-P4</td><td>Baseline Snapshot</td><td>Capture baseline scoring &amp; conversion metrics before cutover</td><td>—</td><td><strong>Before go-live (CRITICAL — cannot slip)</strong></td><td></td><td></td><td><span class="status-red">🔴 Not Started</span></td></tr>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: ROLLOUT STRATEGY -->
+<!-- ============================================================ -->
+<h2>7. Rollout Strategy: Phased Approach <span class="new-tag">NEW</span></h2>
+
+<p>Rather than a big-bang cutover, a phased rollout reduces risk and generates real conversion data for validation.</p>
+
+<h3>Recommended Phases</h3>
+
+<table>
+  <tr><th>Phase</th><th>Duration</th><th>What Happens</th><th>Scoring Model in Effect</th></tr>
+  <tr><td><strong>Shadow Mode</strong></td><td>Week 1-2 (4/30 – 5/13)</td><td>New scores are calculated and written to SFDC alongside legacy scores. Legacy scoring still drives routing and MQL decisions. BDRs can see new scores but are not required to act on them.</td><td>Legacy (primary) + Relevvo (shadow)</td></tr>
+  <tr><td><strong>A/B Split</strong></td><td>Week 3 (5/14 – 5/20)</td><td>50% of incoming leads scored and routed by new model, 50% by legacy. Enables direct conversion comparison.</td><td>50/50 split</td></tr>
+  <tr><td><strong>Full Cutover</strong></td><td>Week 4+ (5/21+)</td><td>If validation passes decision gates, all leads scored by new model. Legacy scoring retired.</td><td>Relevvo (primary)</td></tr>
+</table>
+
+<h3>Decision Gate: Shadow → A/B Split</h3>
+<ul>
+  <li>New model score distribution is healthy (&lt;30% at max score)</li>
+  <li>Latency SLAs are met (hand-raisers &lt;10 min)</li>
+  <li>No critical bugs or data pipeline failures</li>
+  <li>BDR qualitative feedback is neutral or positive</li>
+</ul>
+
+<h3>Decision Gate: A/B Split → Full Cutover</h3>
+<ul>
+  <li>New model leads convert at ≥ parity with legacy leads (MQL → SAL)</li>
+  <li>No significant volume drop (MQL volume within 20% of baseline)</li>
+  <li>P1-P4 switch decision validated (SI-5)</li>
+</ul>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: ROLLBACK PLAN -->
+<!-- ============================================================ -->
+<h2>8. Rollback Plan <span class="new-tag">NEW</span></h2>
+
+<h3>Rollback Triggers</h3>
+
+<p>If any of the following occur, initiate rollback to legacy scoring:</p>
+
+<table>
+  <tr><th>Trigger</th><th>Threshold</th><th>Detection Method</th></tr>
+  <tr><td>MQL volume drop</td><td>&gt;30% below baseline in first 48 hours</td><td>GT-4 monitoring dashboard</td></tr>
+  <tr><td>Hand-raiser latency</td><td>&gt;30 min average for 4+ consecutive hours</td><td>GT-3 latency monitoring</td></tr>
+  <tr><td>Score distribution collapse</td><td>&gt;50% of leads in a single tier</td><td>GT-4 health check</td></tr>
+  <tr><td>Data pipeline failure</td><td>AEP → S3 or S3 → Marketo/SFDC sync down &gt;1 hour</td><td>Pipeline alerting</td></tr>
+  <tr><td>ZoomInfo enrichment failure</td><td>&gt;40% of leads fail enrichment (ICP pillar = 50% weight)</td><td>Enrichment monitoring</td></tr>
+  <tr><td>Critical BDR escalation</td><td>5+ BDRs report unusable scores in first 24 hours</td><td>SE feedback channel</td></tr>
+</table>
+
+<h3>Rollback Steps</h3>
+<ol>
+  <li><strong>Marketo:</strong> Revert MQL smart campaign to legacy scoring logic (documented in MO-P7 cutover plan)</li>
+  <li><strong>SFDC:</strong> Switch lead assignment rules back to legacy priority field logic</li>
+  <li><strong>S3 Routing:</strong> Disable Relevvo-based tiered tagging; re-enable legacy routing tags</li>
+  <li><strong>Communication:</strong> Notify Sales Enablement → BDR managers → BDRs within 2 hours of rollback decision</li>
+  <li><strong>Post-Mortem:</strong> Conduct root cause analysis within 48 hours; document in this plan</li>
+</ol>
+
+<h3>Rollback Owners</h3>
+
+<table>
+  <tr><th>System</th><th>Primary Owner</th><th>Backup</th></tr>
+  <tr><td>Marketo</td><td></td><td></td></tr>
+  <tr><td>SFDC</td><td></td><td></td></tr>
+  <tr><td>S3 / Pipeline</td><td></td><td></td></tr>
+  <tr><td>Communication</td><td></td><td></td></tr>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 9: RISK REGISTER -->
+<!-- ============================================================ -->
+<h2>9. Risk Register <span class="new-tag">NEW</span></h2>
+
+<table>
+  <tr><th>#</th><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Mitigation</th><th>Owner</th></tr>
+  <tr><td>R1</td><td>ZoomInfo enrichment failure rate spikes — ICP pillar (50% weight) cannot score</td><td>Medium</td><td>High</td><td>ZoomInfo Fallback Logic (pre-ship item); define acceptable failure rate threshold (&lt;10%); degrade gracefully to 3-pillar scoring if enrichment unavailable</td><td></td></tr>
+  <tr><td>R2</td><td>Product Usage pipeline not ready by go-live</td><td>Medium</td><td>High</td><td>Decouple launch: go live with 3 pillars (ICP + Engagement + Intent), add Product Usage in Week 2-3 as fast-follow</td><td></td></tr>
+  <tr><td>R3</td><td>BDR resistance to new scoring model</td><td>High</td><td>Medium</td><td>Score Skeptic Playbook (SE-6); parallel validation proof points; BDR champions program; Score Clinic sessions</td><td></td></tr>
+  <tr><td>R4</td><td>AEP streaming latency exceeds 10 min target</td><td>Low</td><td>High</td><td>Alert at 15 min; fallback to batch scoring every 30 min; escalation to Platform team</td><td></td></tr>
+  <tr><td>R5</td><td>Score distribution still clusters at high end (loss of differentiation)</td><td>Medium</td><td>High</td><td>GT-4 daily health checks; model retraining (GT-9) at Week 5; threshold tuning cycles (SI-7, SI-8)</td><td></td></tr>
+  <tr><td>R6</td><td>MQL volume drops significantly, creating pipeline gap</td><td>Medium</td><td>High</td><td>Phased rollout (shadow mode first); adjustable thresholds; rollback plan with 48-hour trigger</td><td></td></tr>
+  <tr><td>R7</td><td>Pre-scored account data is stale or incomplete</td><td>Low</td><td>Medium</td><td>Validate sample of pre-scored accounts before go-live; establish refresh cadence</td><td></td></tr>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 10: POST-SHIP EXECUTION PLAN -->
+<!-- ============================================================ -->
+<h2>10. Post-Ship Execution Plan</h2>
+
+<h3>10.1 Activation Timeline</h3>
+
+<table>
+  <tr><th>Milestone</th><th>Target Date</th><th>Owner</th><th>Status</th></tr>
+  <tr><td>Feature ships to production</td><td>4/30</td><td>Platform</td><td>⬜</td></tr>
+  <tr><td>GTM team trained/enabled</td><td></td><td></td><td>⬜</td></tr>
+  <tr><td>Process documentation updated</td><td></td><td></td><td>⬜</td></tr>
+  <tr><td>Tool configuration complete</td><td></td><td></td><td>⬜</td></tr>
+  <tr><td>First campaign/use case live</td><td></td><td></td><td>⬜</td></tr>
+  <tr><td>Week 1 Checkpoint — Post Release Review</td><td>Week of May 5</td><td></td><td>⬜</td></tr>
+  <tr><td>30-day adoption checkpoint</td><td></td><td></td><td>⬜</td></tr>
+  <tr><td>90-day impact review</td><td></td><td></td><td>⬜</td></tr>
+</table>
+
+<h3>10.2 Launch Phase (Weeks 1-2)</h3>
+
+<h4>GTM Tech</h4>
+
+<table>
+  <tr><th>#</th><th>Item</th><th>What Needs to Happen</th><th>Week</th><th>POC</th><th>ETA</th><th>Status</th></tr>
+  <tr><td>GT-1</td><td>Scoring v2 Go-Live</td><td>Deploy 4-pillar scoring to production</td><td>Week 1</td><td></td><td>4/30</td><td>Pending</td></tr>
+  <tr><td>GT-2</td><td>Score Monitoring &amp; Alerting</td><td>Configure alerts: distribution, latency, processing success</td><td>Week 1</td><td></td><td>4/30</td><td></td></tr>
+  <tr><td>GT-3</td><td>Latency Monitoring by Lead Type</td><td>Track end-to-end latency separately for hand-raisers, hot, cold</td><td>Week 1</td><td></td><td>4/30</td><td></td></tr>
+  <tr><td>GT-4</td><td>Score Distribution Health Check</td><td>Daily check: &lt;30% at max score; alert if &gt;40% in any tier</td><td>Week 1+</td><td></td><td>4/30</td><td></td></tr>
+  <tr><td>GT-5</td><td>Product Usage Signal Validation</td><td>Verify 42 signals firing correctly for existing customers</td><td>Week 1</td><td></td><td>4/30</td><td></td></tr>
+</table>
+
+<h4>Sales Enablement</h4>
+
+<table>
+  <tr><th>#</th><th>Item</th><th>What Needs to Happen</th><th>Week</th><th>Status</th></tr>
+  <tr><td>SE-1</td><td>"What Changed v2" Communication</td><td>One-pager: 3-pillar → 4-pillar; new latency tiers; existing customer handling (see Section 12)</td><td>Week 1</td><td></td></tr>
+  <tr><td>SE-2</td><td>Score Adoption Training v2</td><td>Train on 4 pillars, A/B/C tiers, Relevvo_Top_Drivers, existing customer segments</td><td>Week 1</td><td></td></tr>
+  <tr><td>SE-3</td><td>Existing Customer Segment Training</td><td>Train BDRs on interpreting Desktop Refugee, QBO Outgrower, NTTF segments</td><td>Week 1</td><td></td></tr>
+  <tr><td>SE-4</td><td>Score Feedback Process Training</td><td>Train on weekly feedback form including Product Usage accuracy</td><td>Week 1</td><td></td></tr>
+  <tr><td>SE-NEW1</td><td>BDR Champions Program <span class="new-tag">NEW</span></td><td>Designate 2-3 BDRs as beta testers during shadow mode; they become peer advocates at full cutover</td><td>Week 1</td><td></td></tr>
+  <tr><td>SE-NEW2</td><td>Score Clinic Session <span class="new-tag">NEW</span></td><td>Live session where BDRs bring real leads and walk through how the new model scored them</td><td>Week 2</td><td></td></tr>
+</table>
+
+<h4>Sales Innovation</h4>
+
+<table>
+  <tr><th>#</th><th>Item</th><th>What Needs to Happen</th><th>Week</th><th>Status</th></tr>
+  <tr><td>SI-1</td><td>Parallel Validation v2</td><td>Run old scoring vs. 4-pillar Relevvo for 2 weeks</td><td>Weeks 1-2</td><td></td></tr>
+  <tr><td>SI-2</td><td>Score in Reports &amp; List Views</td><td>Add all Relevvo fields to BDR tools</td><td>Week 1</td><td></td></tr>
+  <tr><td>SI-3</td><td>Existing Customer Reports</td><td>Create SFDC reports filtering by Relevvo_Is_Existing_Customer and segment</td><td>Week 1</td><td></td></tr>
+</table>
+
+<h4>Marketing Ops</h4>
+
+<table>
+  <tr><th>#</th><th>Item</th><th>What Needs to Happen</th><th>Week</th><th>Status</th></tr>
+  <tr><td>MO-1</td><td>Score-Based Audience Definitions v2</td><td>Create Marketo audiences by tier AND by existing customer status</td><td>Week 1</td><td></td></tr>
+  <tr><td>MO-2</td><td>Existing Customer Campaign Targeting</td><td>Segment campaigns by Desktop Refugee, QBO Outgrower, NTTF</td><td>Week 2</td><td></td></tr>
+  <tr><td>MO-3</td><td>MQL Conversion Monitoring</td><td>Validate MQL → SAL performance under new logic</td><td>Week 2</td><td></td></tr>
+</table>
+
+<h3>10.3 Validation Phase (Weeks 3-4)</h3>
+
+<div class="decision-gate">
+  <strong>Decision Gate: Launch → Validation</strong> <span class="new-tag">NEW</span>
+  <ul>
+    <li>Parallel validation shows new model is not degrading conversion</li>
+    <li>Latency SLAs met for all lead types</li>
+    <li>Score distribution is healthy and differentiated</li>
+    <li>No rollback triggers activated</li>
+  </ul>
+</div>
+
+<h4>Sales Innovation</h4>
+
+<table>
+  <tr><th>#</th><th>Item</th><th>What Needs to Happen</th><th>Week</th><th>Status</th></tr>
+  <tr><td>SI-4</td><td>Parallel Validation Results Review</td><td>Analyze: conversion by tier, latency by lead type, product usage accuracy</td><td>Week 3</td><td></td></tr>
+  <tr><td>SI-5</td><td>P1-P4 Logic Switch Decision</td><td>Based on validation: switch from campaign-based to score-based</td><td>Week 3</td><td></td></tr>
+  <tr><td>SI-6</td><td>P1-P4 Configuration Switch</td><td>If validated, configure SFDC priority field logic</td><td>Week 3-4</td><td></td></tr>
+  <tr><td>SI-7</td><td>Score Threshold Tuning Cycle 1</td><td>Adjust P-level boundaries based on actual conversion data</td><td>Week 4</td><td></td></tr>
+</table>
+
+<h4>Sales Enablement</h4>
+
+<table>
+  <tr><th>#</th><th>Item</th><th>What Needs to Happen</th><th>Week</th><th>Status</th></tr>
+  <tr><td>SE-5</td><td>P1-P4 Workflow Training</td><td>Train BDRs on exhaustion model with 4-pillar scoring</td><td>Week 3-4</td><td></td></tr>
+  <tr><td>SE-6</td><td>Score Skeptic Playbook v2</td><td>Update with parallel validation results; include Product Usage value prop</td><td>Week 3</td><td></td></tr>
+</table>
+
+<h4>GTM Tech</h4>
+
+<table>
+  <tr><th>#</th><th>Item</th><th>What Needs to Happen</th><th>Week</th><th>POC</th><th>ETA</th><th>Status</th></tr>
+  <tr><td>GT-6</td><td>Score History Pipeline</td><td>Daily sync of scores + history + change reasons to Data Lake</td><td>Week 3</td><td></td><td></td><td></td></tr>
+  <tr><td>GT-7</td><td>Scoring Accuracy Dashboard</td><td>Build: predicted tier vs. actual conversion; conversion by segment</td><td>Week 4</td><td></td><td></td><td></td></tr>
+  <tr><td>GT-8</td><td>R² Correlation Baseline</td><td>Calculate initial R² (Score → MQL → SAL CVR); target &gt;0.9</td><td>Week 4</td><td></td><td></td><td></td></tr>
+</table>
+
+<h3>10.4 Optimization Phase (Weeks 5-8)</h3>
+
+<div class="decision-gate">
+  <strong>Decision Gate: Validation → Optimization</strong> <span class="new-tag">NEW</span>
+  <ul>
+    <li>R² &gt; 0.7 (with target of 0.9 by Week 8)</li>
+    <li>P1-P4 switch decision made and executed</li>
+    <li>Conversion by tier shows meaningful differentiation (A-tier converts ≥2x C-tier)</li>
+    <li>Leadership sign-off to proceed</li>
+  </ul>
+</div>
+
+<h4>GTM Tech</h4>
+
+<table>
+  <tr><th>#</th><th>Item</th><th>What Needs to Happen</th><th>Week</th><th>POC</th><th>ETA</th><th>Status</th></tr>
+  <tr><td>GT-9</td><td>First Monthly Model Retraining</td><td>Recalculate weights with 30 days of conversion data</td><td>Week 5</td><td></td><td></td><td></td></tr>
+  <tr><td>GT-10</td><td>Model Performance Assessment</td><td>AUC, Precision, Lift, R² vs. targets</td><td>Week 5</td><td></td><td></td><td></td></tr>
+  <tr><td>GT-11</td><td>Product Usage Signal Tuning</td><td>Adjust weights based on which 1P signals correlate with conversion</td><td>Week 6</td><td></td><td></td><td></td></tr>
+</table>
+
+<h4>Sales Innovation</h4>
+
+<table>
+  <tr><th>#</th><th>Item</th><th>What Needs to Happen</th><th>Week</th><th>POC</th><th>ETA</th><th>Status</th></tr>
+  <tr><td>SI-8</td><td>Score Threshold Tuning Cycle 2</td><td>Second adjustment of P-level boundaries</td><td>Week 6</td><td>TBD</td><td></td><td></td></tr>
+  <tr><td>SI-9</td><td>Scoring Accuracy Report to Leadership</td><td>Present: conversion improvement, adoption metrics, model performance</td><td>Week 8</td><td>TBD</td><td></td><td></td></tr>
+</table>
+
+<h4>Marketing Nurture (Plan in progress)</h4>
+
+<table>
+  <tr><th>#</th><th>Item</th><th>What Needs to Happen</th><th>Week</th><th>POC</th><th>ETA</th><th>Status</th></tr>
+  <tr><td>MO-3</td><td>Score-Aware Nurture Branching</td><td>Configure nurture streams by tier + existing customer status</td><td>Week 5-6</td><td></td><td></td><td></td></tr>
+  <tr><td>MO-4</td><td>Existing Customer Upsell Campaigns</td><td>Launch targeted campaigns for Desktop Refugee, QBO Outgrower segments</td><td>Week 6+</td><td></td><td></td><td></td></tr>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 11: COMMUNICATION PLAN -->
+<!-- ============================================================ -->
+<h2>11. Communication Plan <span class="new-tag">NEW</span></h2>
+
+<table>
+  <tr><th>Audience</th><th>Message</th><th>Channel</th><th>Timing</th><th>Owner</th></tr>
+  <tr><td>MM Sales Leadership</td><td>Executive summary: why we're changing, expected impact on pipeline, what success looks like</td><td>Deck + meeting</td><td>2 weeks pre-launch (4/16)</td><td></td></tr>
+  <tr><td>BDR Managers</td><td>Detailed walkthrough: new scoring model, tiering, routing changes, enablement plan, their role in rollout</td><td>Training session</td><td>1 week pre-launch (4/23)</td><td></td></tr>
+  <tr><td>BDRs</td><td>"What's Changing" one-pager + hands-on training (see SE-1, SE-2)</td><td>Email + live session</td><td>Launch week (4/30)</td><td></td></tr>
+  <tr><td>Marketing Leadership</td><td>New MQL definition, expected volume changes (may decrease short-term), audience segmentation opportunities</td><td>Deck + meeting</td><td>2 weeks pre-launch (4/16)</td><td></td></tr>
+  <tr><td>Revenue Ops</td><td>Field changes, SFDC sync logic, reporting updates, dashboard requirements</td><td>Technical doc + meeting</td><td>3 weeks pre-launch (4/9)</td><td></td></tr>
+  <tr><td>Executive Sponsors</td><td>High-level progress updates at each phase gate</td><td>Email summary</td><td>Weekly during Weeks 1-4; biweekly after</td><td></td></tr>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 12: SALES ENABLEMENT CONTENT PLAN -->
+<!-- ============================================================ -->
+<h2>12. Sales Enablement Content Plan <span class="new-tag">NEW</span></h2>
+
+<h3>12.1 "What Changed" One-Pager (SE-1)</h3>
+
+<p>Key content to include:</p>
+
+<h4>Before (Legacy Model)</h4>
+<ul>
+  <li>3-pillar scoring (ICP + Engagement + Intent)</li>
+  <li>93% of leads arrive at SFDC with a score of 100</li>
+  <li>24-72 hour scoring latency</li>
+  <li>Mid-range scores have 90%+ disqualification rate</li>
+  <li>No product usage data factored in</li>
+</ul>
+
+<h4>After (Predictive Lead Scoring v2)</h4>
+<ul>
+  <li>4-pillar scoring (ICP + Engagement + Intent + Product Usage)</li>
+  <li>Differentiated tier distribution (A / B / C)</li>
+  <li>&lt;10 min scoring latency for hand-raisers</li>
+  <li>ICP weighted at 50% — strong ICP fit required for MQL</li>
+  <li>Existing customer intelligence: segment labels (Desktop Refugee, QBO Outgrower, NTTF)</li>
+  <li>Relevvo_Top_Drivers field shows why a lead scored the way it did</li>
+</ul>
+
+<h3>12.2 BDR FAQ</h3>
+
+<table>
+  <tr><th>Question</th><th>Answer</th></tr>
+  <tr><td><strong>Why did my lead volume drop?</strong></td><td>The new model applies stricter ICP filtering. You'll get fewer leads, but they'll be significantly higher quality. Focus on A-tier leads first.</td></tr>
+  <tr><td><strong>What do the customer segments mean?</strong></td><td><strong>Desktop Refugee:</strong> Currently on Desktop, likely evaluating cloud migration. <strong>QBO Outgrower:</strong> QBO customer showing signs of needing more capability. <strong>NTTF:</strong> Net-new to the franchise — no existing Intuit product relationship.</td></tr>
+  <tr><td><strong>How do I read Relevvo_Top_Drivers?</strong></td><td>This field shows the top 3 factors that drove the lead's score. Use this to personalize your outreach — e.g., if "Product Usage: Desktop" is a top driver, reference their Desktop experience.</td></tr>
+  <tr><td><strong>What if I think a score is wrong?</strong></td><td>Use the weekly feedback form (SE-4 training). Your input directly improves the model during tuning cycles.</td></tr>
+  <tr><td><strong>When will scores appear in SFDC?</strong></td><td>Hand-raisers: &lt;10 min. Hot leads: &lt;30 min. Cold leads: scored in batch.</td></tr>
+  <tr><td><strong>Is this replacing P1-P4 priorities?</strong></td><td>Not immediately. During Weeks 1-2, legacy P1-P4 still drives routing. After validation (Week 3-4), we'll transition to score-based prioritization.</td></tr>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 13: ADOPTION TRACKING -->
+<!-- ============================================================ -->
+<h2>13. Adoption Tracking</h2>
+
+<table>
+  <tr><th>Metric</th><th>30-Day Target</th><th>90-Day Target</th><th>Who Measures</th></tr>
+  <tr><td>% of BDRs actively viewing new score fields in SFDC</td><td>80%</td><td>95%</td><td></td></tr>
+  <tr><td>% of leads scored by new model (vs. legacy fallback)</td><td>90%</td><td>99%</td><td></td></tr>
+  <tr><td>Avg lead-to-first-touch latency (hand-raisers)</td><td>&lt;10 min</td><td>&lt;5 min</td><td></td></tr>
+  <tr><td>Avg lead-to-first-touch latency (all leads)</td><td>&lt;2 hours</td><td>&lt;1 hour</td><td></td></tr>
+  <tr><td>BDR feedback form submission rate</td><td>50%+ weekly</td><td>30%+ weekly</td><td></td></tr>
+  <tr><td>Score distribution health (% at max score)</td><td>&lt;30%</td><td>&lt;20%</td><td></td></tr>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 14: BUSINESS IMPACT MEASUREMENT -->
+<!-- ============================================================ -->
+<h2>14. Business Impact Measurement</h2>
+
+<table>
+  <tr><th>Outcome Metric</th><th>Baseline (Pre-Launch)</th><th>30-Day Target</th><th>30-Day Actual</th><th>90-Day Target</th><th>90-Day Actual</th><th>Notes</th></tr>
+  <tr><td>MQL → SAL conversion rate</td><td><em>Capture in DE-P4</em></td><td>+15% vs. baseline</td><td></td><td>+25% vs. baseline</td><td></td><td></td></tr>
+  <tr><td>A-tier lead conversion rate</td><td>N/A (new metric)</td><td>Establish baseline</td><td></td><td>2x C-tier rate</td><td></td><td></td></tr>
+  <tr><td>Lead scoring latency (hand-raisers)</td><td>24-72 hours</td><td>&lt;10 min</td><td></td><td>&lt;5 min</td><td></td><td></td></tr>
+  <tr><td>% of leads at max score (100)</td><td>93%</td><td>&lt;30%</td><td></td><td>&lt;20%</td><td></td><td></td></tr>
+  <tr><td>Mid-range score disqualification rate</td><td>90%+</td><td>&lt;60%</td><td></td><td>&lt;40%</td><td></td><td></td></tr>
+  <tr><td>Sales-accepted lead (SAL) volume</td><td><em>Capture in DE-P4</em></td><td>≥ parity</td><td></td><td>+10% vs. baseline</td><td></td><td></td></tr>
+  <tr><td>Pipeline generated from scored leads</td><td><em>Capture in DE-P4</em></td><td>Track</td><td></td><td>+15% vs. baseline</td><td></td><td></td></tr>
+  <tr><td>Model R² (Score → Conversion)</td><td>N/A</td><td>&gt;0.7</td><td></td><td>&gt;0.9</td><td></td><td></td></tr>
+  <tr><td>BDR time-to-work (first action on lead)</td><td><em>Capture in DE-P4</em></td><td>-30%</td><td></td><td>-50%</td><td></td><td></td></tr>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 15: NEXT STEPS -->
+<!-- ============================================================ -->
+<h2>15. Next Steps — Priority Action Items <span class="new-tag">NEW</span></h2>
+
+<table>
+  <tr><th>#</th><th>Action Item</th><th>Due Date</th><th>Owner</th><th>Status</th></tr>
+  <tr><td>1</td><td>Assign owners to every line item (especially MO-P1 through MO-P7 and all RACI cells)</td><td>3/14</td><td></td><td></td></tr>
+  <tr><td>2</td><td>Define new MQL threshold (MO-P4) and get cross-functional sign-off from Sales + Marketing leadership</td><td>3/20</td><td></td><td></td></tr>
+  <tr><td>3</td><td>Fill in Adoption Tracking and Business Impact tables with concrete targets</td><td>3/20</td><td></td><td></td></tr>
+  <tr><td>4</td><td>Write the detailed rollback plan with explicit triggers and steps (MO-P7)</td><td>3/20</td><td></td><td></td></tr>
+  <tr><td>5</td><td>Decide on phased rollout (shadow → A/B → full) vs. big-bang and adjust timeline</td><td>3/27</td><td></td><td></td></tr>
+  <tr><td>6</td><td>Begin Sales Enablement content development (one-pager, FAQ, training deck)</td><td>3/27</td><td></td><td></td></tr>
+  <tr><td>7</td><td>Capture baseline metrics — DE-P4 (CRITICAL: cannot slip, needed for all post-launch measurement)</td><td>4/7</td><td></td><td></td></tr>
+  <tr><td>8</td><td>Complete all Marketing Ops pre-ship items (MO-P1 through MO-P7)</td><td>4/15</td><td></td><td></td></tr>
+  <tr><td>9</td><td>Communicate to MM Sales Leadership and Marketing Leadership (Communication Plan)</td><td>4/16</td><td></td><td></td></tr>
+  <tr><td>10</td><td>Train BDR Managers (Communication Plan)</td><td>4/23</td><td></td><td></td></tr>
+  <tr><td>11</td><td>Go-live: begin shadow/parallel scoring period</td><td>4/30</td><td></td><td></td></tr>
+  <tr><td>12</td><td>Week 1 Checkpoint — Post Release Review</td><td>Week of May 5</td><td></td><td></td></tr>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- APPENDIX A: GLOSSARY -->
+<!-- ============================================================ -->
+<h2>Appendix A: Glossary</h2>
+
+<table>
+  <tr><th>Term</th><th>Definition</th></tr>
+  <tr><td>ICP</td><td>Ideal Customer Profile — firmographic and technographic fit score</td></tr>
+  <tr><td>MQL</td><td>Marketing Qualified Lead — meets threshold for sales handoff</td></tr>
+  <tr><td>SAL</td><td>Sales Accepted Lead — MQL that sales confirms as worth pursuing</td></tr>
+  <tr><td>BDR</td><td>Business Development Representative</td></tr>
+  <tr><td>Relevvo</td><td>Predictive scoring engine used for the new 4-pillar model</td></tr>
+  <tr><td>Desktop Refugee</td><td>Existing customer segment: currently on Desktop product, evaluating cloud migration</td></tr>
+  <tr><td>QBO Outgrower</td><td>Existing customer segment: QBO customer showing signs of needing more capability</td></tr>
+  <tr><td>NTTF</td><td>Net New to the Franchise — no existing Intuit product relationship</td></tr>
+  <tr><td>1P Signals</td><td>First-party signals from product usage data</td></tr>
+  <tr><td>Surge</td><td>Third-party intent data provider (multi-entity flags)</td></tr>
+  <tr><td>AEP</td><td>Adobe Experience Platform — data streaming infrastructure</td></tr>
+  <tr><td>P1-P4</td><td>Lead priority tiers in SFDC (P1 = highest priority)</td></tr>
+  <tr><td>R²</td><td>R-squared — statistical measure of how well scores predict actual conversion</td></tr>
+</table>
+
+</body>
+</html>

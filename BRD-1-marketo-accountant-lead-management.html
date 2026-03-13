@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRD-1: Marketo Integration — Accountant Lead Management Pipeline</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px;
+      color: #333;
+    }
+    h1 { color: #1a1a2e; font-size: 1.8em; margin-bottom: 0.25em; }
+    h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 8px;
+      margin-top: 2em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1em 0;
+    }
+    th, td {
+      border: 1px solid #d0d0d0;
+      padding: 10px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #2c3e50;
+      color: white;
+      font-weight: 600;
+    }
+    tr:nth-child(even) { background: #f8f9fa; }
+    tr:nth-child(odd) { background: #ffffff; }
+    blockquote {
+      border-left: 4px solid #3498db;
+      background: #f0f7ff;
+      padding: 15px;
+      margin: 1em 0;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+    .chip {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-weight: 500;
+    }
+    .chip-draft { background: #fff3cd; color: #856404; }
+    .chip-p0 { background: #f8d7da; color: #721c24; }
+    .chip-p1 { background: #d4edda; color: #155724; }
+    .chip-p2 { background: #cce5ff; color: #004085; }
+    .meta { color: #666; font-size: 0.95em; margin: 0.5em 0; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Accountants Lead Management — Marketo Integration - BRD</h1>
+  <p class="meta"><strong>Subtitle:</strong> Business Use Cases & Requirements</p>
+  <p class="meta"><strong>Project ID:</strong> BRD-ACCT-MKT-001</p>
+  <p class="meta"><strong>Document Owner:</strong> (TBD)</p>
+  <p class="meta"><strong>Last Updated:</strong> (TBD)</p>
+  <p class="meta"><strong>Release Status:</strong> <span class="chip chip-draft">Draft</span></p>
+</header>
+
+<h2>BRD Approval</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Functional Area</th>
+      <th>Name</th>
+      <th>BRD Approval Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Marketing</td><td>(TBD)</td><td>🔲</td></tr>
+    <tr><td>GTM Tech</td><td>(TBD)</td><td>🔲</td></tr>
+    <tr><td>Sales Tech</td><td>(TBD)</td><td>🔲</td></tr>
+    <tr><td>Sales Innovation</td><td>(TBD)</td><td>🔲</td></tr>
+    <tr><td>Sales Analytics</td><td>(TBD)</td><td>🔲</td></tr>
+  </tbody>
+</table>
+
+<h2>Working Team</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th>POC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Marketing</td><td>(TBD)</td></tr>
+    <tr><td>GTM Tech</td><td>(TBD)</td></tr>
+    <tr><td>Sales Innovation</td><td>(TBD)</td></tr>
+    <tr><td>Sales Tech</td><td>(TBD)</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>1️⃣ Executive Summary</h2>
+<p>This BRD defines the technical requirements to integrate accountant personas into the Marketo lead management pipeline. The accountant channel is forecast to deliver 3,471 IES contracts in 2H (a 24x scale-up from 1H's 141 contracts). Without automation of accountant ingestion, enrichment, scoring, and routing in Marketo, this forecast is at serious risk. <strong>Estimated Business Impact:</strong> 350–400 incremental IES contracts (~$6.65M–$7.6M revenue).</p>
+
+<h2>2️⃣ Context & Current State</h2>
+<h3>Current State</h3>
+<ul>
+  <li>Marketo does not ingest, identify, or score accountant leads.</li>
+  <li>Accountant leads arriving via IPD abandonment, webinars, or content engagement enter a "black hole" — not scored, not routed, not actionable by Sales.</li>
+  <li>Manual enrichment processes ("fire drills") are the only mechanism, cannot scale.</li>
+  <li>L2A matching logic maps all leads to Client Accounts; accountants should map to Firm Account (employer).</li>
+</ul>
+
+<h3>Future State</h3>
+<ul>
+  <li>Marketo ingests accountant leads from all upstream sources (IPD, webinars, content engagement, ABM handoffs).</li>
+  <li>Automated enrichment via 1P BPP pipeline identifies accountant persona type and firm type at ingestion.</li>
+  <li>L2A logic correctly resolves accountant leads to Firm Accounts in SFDC.</li>
+  <li>Scoring model evaluates accountant-specific engagement signals, triggers lead pass to Sales at threshold.</li>
+  <li>Nurture campaigns at scale with proper segmentation by firm tier and engagement stage.</li>
+</ul>
+
+<h3>Audience Applicability</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Audience</th>
+      <th>Applicability (✅/❌)</th>
+      <th>Workflow Description</th>
+      <th>Current Tools/Data</th>
+      <th>Visuals</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mid Market</td>
+      <td>✅</td>
+      <td>Accountant leads from Mid Market firms flow through Marketo pipeline; enrichment, scoring, L2A, and nurture apply.</td>
+      <td>Marketo, SFDC, BPP enrichment</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>SMB</td>
+      <td>❌</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>Money</td>
+      <td>❌</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>Accountant</td>
+      <td>✅</td>
+      <td>Primary persona; accountant leads ingested from IPD, webinars, content; enriched, scored, routed to Firm Account owners; nurtured by engagement stage.</td>
+      <td>Marketo, SFDC, BPP, webinar platforms</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Partner</td>
+      <td>❌</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>International</td>
+      <td>❌</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>Mailchimp</td>
+      <td>❌</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>3️⃣ Problem Statements</h2>
+
+<blockquote>
+  <p><strong>Problem 1 — Sales Seller perspective</strong></p>
+  <ul style="list-style: none; padding-left: 0;">
+    <li>• I am a <em>Mid-Market Sales Seller</em></li>
+    <li>• I am trying to <em>contact accountant leads during the golden window when they show intent</em></li>
+    <li>• But <em>I don't receive accountant leads in a timely or prioritized manner</em></li>
+    <li>• Because <em>Marketo does not ingest, score, or route accountant leads — they require manual enrichment "fire drills"</em></li>
+    <li>• Which makes me feel <em>like I'm missing high-intent opportunities and can't hit my 2 IES contracts/week target</em></li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p><strong>Problem 2 — Marketing Ops perspective</strong></p>
+  <ul style="list-style: none; padding-left: 0;">
+    <li>• I am a <em>Marketing Operations Manager</em></li>
+    <li>• I am trying to <em>run automated nurture campaigns for accountant leads at scale</em></li>
+    <li>• But <em>accountant leads are not identified or classified in Marketo</em></li>
+    <li>• Because <em>there is no accountant identification field, no enrichment pipeline, and no L2A logic for accountant-to-firm mapping</em></li>
+    <li>• Which makes me feel <em>like I'm running manual processes that can't support the 24x scale-up planned for 2H</em></li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <p><strong>Problem 3 — GTM Tech perspective</strong></p>
+  <ul style="list-style: none; padding-left: 0;">
+    <li>• I am a <em>GTM Tech Engineer</em></li>
+    <li>• I am trying to <em>ensure accountant leads flow through the lead management pipeline correctly</em></li>
+    <li>• But <em>the current L2A logic maps accountants to Client Accounts instead of their employing Firm Account</em></li>
+    <li>• Because <em>the system was built for direct customer leads and has no conditional routing logic for accountant personas</em></li>
+    <li>• Which makes me feel <em>like the data architecture is fundamentally misaligned with the accountant GTM strategy</em></li>
+  </ul>
+</blockquote>
+
+<h2>4️⃣ Hypothesis</h2>
+<blockquote>
+  <p><strong>If we</strong> integrate accountant identification, enrichment, scoring, and L2A routing into Marketo</p>
+  <p><strong>then</strong> Sales will receive prioritized, correctly-routed accountant MQLs during the golden window, enabling timely outreach and nurture at scale</p>
+  <p><strong>as measured by:</strong></p>
+  <ol>
+    <li>MQL volume for accountant leads</li>
+    <li>MQL-to-meeting conversion rate</li>
+    <li>Time from lead creation to Sales contact (golden window SLA)</li>
+    <li>Incremental IES contracts attributable to Marketo-sourced accountant leads</li>
+  </ol>
+</blockquote>
+
+<h2>5️⃣ Business Use Cases and Requirements</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Use Cases</th>
+      <th>Priority</th>
+      <th>High Level Requirements</th>
+      <th>Persona(s)</th>
+      <th>Description</th>
+      <th>Acceptance Criteria</th>
+      <th>Delivered?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Accountant Identification</td>
+      <td><span class="chip chip-p0">P0</span></td>
+      <td>Add is_accountant and accountant_persona_type fields to Marketo Person object</td>
+      <td>GTM Tech Engineer</td>
+      <td>As a GTM Tech Engineer, I want to distinguish accountant leads from standard prospects so the pipeline can apply accountant-specific logic.</td>
+      <td>New leads correctly tagged; field populated by BPP enrichment within 60s.</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>1P BPP Enrichment Extension</td>
+      <td><span class="chip chip-p0">P0</span></td>
+      <td>Extend BPP pipeline to classify accountant personas and firm types on ingestion</td>
+      <td>GTM Tech Engineer</td>
+      <td>As a GTM Tech Engineer, I want automated enrichment on lead creation so accountant classification doesn't require manual effort.</td>
+      <td>BPP enrichment completes within 60s SLA at p95; failed enrichments routed to DLQ with alerting.</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>L2A Logic Modification</td>
+      <td><span class="chip chip-p0">P0</span></td>
+      <td>Update Lead-to-Account matching so accountants resolve to Firm Account (employer) not Client Account</td>
+      <td>GTM Tech Engineer, Sales Ops</td>
+      <td>As a Sales Ops Analyst, I want accountant leads mapped to the correct Firm Account so the right account owner receives the MQL.</td>
+      <td>&gt;90% auto-resolution rate; unmatched leads routed to holding queue.</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Accountant Scoring Model</td>
+      <td><span class="chip chip-p0">P0</span></td>
+      <td>Implement scoring for accountant engagement signals (webinar, IPD, email, content)</td>
+      <td>Marketing Ops, Sales Seller</td>
+      <td>As a Sales Seller, I want accountant leads scored by engagement so I can prioritize the highest-intent leads.</td>
+      <td>Score model produces expected scores for test leads; MQL threshold configurable per firm tier.</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Firm Tier Segmentation</td>
+      <td><span class="chip chip-p1">P1</span></td>
+      <td>Classify leads by firm segment: National, HVAM, Unmanaged. Map to SFDC account owner</td>
+      <td>Sales Ops, Marketing Ops</td>
+      <td>As a Sales Ops Analyst, I want leads segmented by firm tier so routing and prioritization align with sales motions.</td>
+      <td>100% of accountant leads have firm_tier populated; mapped to correct account owner.</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Automated Lead Pass</td>
+      <td><span class="chip chip-p0">P0</span></td>
+      <td>MQL handoff to Sales via SFDC sync when score &gt;= threshold</td>
+      <td>Sales Seller, Sales Manager</td>
+      <td>As a Sales Seller, I want to be immediately notified via SFDC Task when an accountant lead reaches MQL so I can contact them in the golden window.</td>
+      <td>MQL creates SFDC Task within 5 minutes; lead status updated to MQL.</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Nurture Campaign Orchestration</td>
+      <td><span class="chip chip-p1">P1</span></td>
+      <td>Automated nurture flows segmented by engagement stage</td>
+      <td>Marketing Ops</td>
+      <td>As a Marketing Ops Manager, I want automated nurture streams for accountants so I can scale campaigns without manual enrollment.</td>
+      <td>6 nurture streams operational with correct entry/exit criteria.</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>IPD Abandoner Ingestion</td>
+      <td><span class="chip chip-p1">P1</span></td>
+      <td>Ingest IES IPD abandoner events into Marketo, identify accountants, score</td>
+      <td>Marketing Ops, GTM Tech</td>
+      <td>As a Marketing Ops Manager, I want IPD abandoners automatically ingested and scored so we recover lost leads.</td>
+      <td>IPD events flow into Marketo; accountant abandoners identified and scored within pipeline SLA.</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Bi-directional SFDC Sync</td>
+      <td><span class="chip chip-p0">P0</span></td>
+      <td>SFDC opportunity stage changes sync back to Marketo for lifecycle and nurture</td>
+      <td>GTM Tech, Sales Ops</td>
+      <td>As a GTM Tech Engineer, I want SFDC changes reflected in Marketo so nurture suppression and lifecycle stages are accurate.</td>
+      <td>SFDC→Marketo sync within 15 minutes; nurture suppression triggers correctly on Meeting Scheduled/Closed Won.</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6️⃣ Success Metrics</h2>
+<p><strong>Measurement Approach:</strong> Metrics are measured via Marketo reporting, BPP pipeline monitoring, L2A matching logs, SFDC opportunity/meeting data, SFDC Task timestamps, and SFDC Closed Won attribution.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>What are we trying to answer?</th>
+      <th>Metric</th>
+      <th>How is it measured?</th>
+      <th>Rationale</th>
+      <th>Baseline Data</th>
+      <th>Success Threshold</th>
+      <th>Tie to Helix Scorecard?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Lead Pipeline Activation — MQL volume</td>
+      <td>Accountant MQL volume (count of accountant leads reaching MQL threshold per month)</td>
+      <td>Marketo reporting</td>
+      <td>Proves the pipeline is generating actionable leads</td>
+      <td>0 (no accountant MQLs today)</td>
+      <td>200+ MQLs/month by end of Phase 2</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Lead Pipeline Activation — Enrichment</td>
+      <td>Enrichment completion rate (% of leads enriched within 60s SLA)</td>
+      <td>BPP pipeline monitoring</td>
+      <td>Enrichment is prerequisite to scoring</td>
+      <td>N/A</td>
+      <td>≥95% at p95</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Lead Pipeline Activation — L2A</td>
+      <td>L2A auto-resolution rate</td>
+      <td>L2A matching logs</td>
+      <td>Validates routing accuracy</td>
+      <td>0%</td>
+      <td>≥90%</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Sales Effectiveness — Conversion</td>
+      <td>MQL-to-meeting conversion rate (% of accountant MQLs resulting in a Sales meeting within 7 days)</td>
+      <td>SFDC opportunity/meeting data</td>
+      <td>Validates lead quality</td>
+      <td>N/A</td>
+      <td>≥15%</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Sales Effectiveness — Golden Window</td>
+      <td>Golden window SLA (median time from lead creation to Sales first contact)</td>
+      <td>SFDC Task timestamps</td>
+      <td>Ensures timely outreach</td>
+      <td>Days/weeks (manual process)</td>
+      <td>&lt;4 hours for P0 leads</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Revenue Impact</td>
+      <td>Incremental IES contracts from Marketo-sourced accountant leads</td>
+      <td>SFDC Closed Won attribution</td>
+      <td>Direct revenue impact</td>
+      <td>0</td>
+      <td>350–400 incremental contracts in 2H</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>7️⃣ Phases and Milestones</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Phase</th>
+      <th>Core Theme</th>
+      <th>Description &amp; Key Features</th>
+      <th>Target Timing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Phase 0</td>
+      <td>Business Rules &amp; API Contract (Pre-work)</td>
+      <td>Finalize accountant classification rules, BPP API contract, SFDC field mapping.</td>
+      <td>(TBD)</td>
+    </tr>
+    <tr>
+      <td>Phase 1</td>
+      <td>Accountant Identification + Enrichment</td>
+      <td>Marketo schema changes (is_accountant, accountant_persona_type, firm_tier, firm_account_id__c) + BPP enrichment pipeline extension.</td>
+      <td>(TBD)</td>
+    </tr>
+    <tr>
+      <td>Phase 2</td>
+      <td>Scoring + L2A + Lead Pass</td>
+      <td>Lead scoring model, L2A logic modification, automated MQL handoff, SFDC bi-directional sync.</td>
+      <td>(TBD)</td>
+    </tr>
+    <tr>
+      <td>Phase 3</td>
+      <td>Nurture + IPD Ingestion</td>
+      <td>Nurture campaign orchestration (6 streams), IPD abandoner ingestion, end-to-end flow validation.</td>
+      <td>(TBD)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>8️⃣ Initial Dependencies, Risks Identification &amp; Mitigation</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Related Use Case(s)</th>
+      <th>What is the dependency?</th>
+      <th>Describe plan to resolve</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UC 1–3 (Identification, Enrichment, L2A)</td>
+      <td>BPP API contract must be finalized</td>
+      <td>Escalate to GTM Tech lead; define manual enrichment fallback</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <td>UC 3 (L2A)</td>
+      <td>SFDC Firm Account records must be populated</td>
+      <td>Pre-populate from BPP seed data; tune matching iteratively</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <td>UC 4 (Scoring)</td>
+      <td>Business rules for scoring weights and MQL thresholds</td>
+      <td>Workshop with Marketing + Sales to define; backtest against 1H data</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <td>UC 4 (Scoring)</td>
+      <td>Risk: Scoring model produces excessive false MQLs</td>
+      <td>Backtest against 1H data; implement 2-week shadow mode (MQLs logged but not routed)</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <td>UC 6 (Lead Pass)</td>
+      <td>SFDC field creation/modification (Sales Tech sign-off)</td>
+      <td>Submit SFDC change request in parallel with Phase 1</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <td>UC 7 (Nurture)</td>
+      <td>Phase 2 complete (scoring + L2A)</td>
+      <td>Begin campaign design during Phase 1; activate after Phase 2</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <td>UC 9 (SFDC Sync)</td>
+      <td>Risk: Sync latency exceeds SLA during peak webinar events</td>
+      <td>Pre-scale sync capacity; implement queue-based sync with burst handling</td>
+      <td>Open</td>
+    </tr>
+    <tr>
+      <td>All</td>
+      <td>Risk: BPP enrichment API not finalized in time for Phase 1</td>
+      <td>Escalate to GTM Tech; define manual enrichment fallback for initial launch</td>
+      <td>Open</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>Supplemental: Technical Appendix</h2>
+
+<h3>Technical Requirements Detail</h3>
+
+<h4>Schema Changes</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Requirement ID</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>MKT-SCH-001</td><td>Add <code>is_accountant</code> (Boolean) to Person object. Default false; set by enrichment.</td></tr>
+    <tr><td>MKT-SCH-002</td><td>Add <code>accountant_persona_type</code> (Picklist: Partner, Staff, Decision-Maker, Unknown) to Person. Populated by BPP.</td></tr>
+    <tr><td>MKT-SCH-003</td><td>Add <code>firm_tier</code> (Picklist: National, HVAM, Unmanaged) to Person. Derived from SFDC.</td></tr>
+    <tr><td>MKT-SCH-004</td><td>Add <code>firm_account_id__c</code> (String 18-char SFDC ID) to Person. FK to Firm Account.</td></tr>
+  </tbody>
+</table>
+
+<h4>Enrichment Pipeline</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Requirement ID</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>MKT-ENR-001</td><td>On new lead creation, invoke BPP enrichment API to classify accountant persona, firm type, firm tier.</td></tr>
+    <tr><td>MKT-ENR-002</td><td>Map BPP response → Marketo fields.</td></tr>
+    <tr><td>MKT-ENR-003</td><td>60s SLA, max 3 retries, exponential backoff.</td></tr>
+    <tr><td>MKT-ENR-004</td><td>On failure, flag <code>enrichment_status='failed'</code>, route to manual queue, alert GTM Tech via Slack.</td></tr>
+  </tbody>
+</table>
+
+<h4>L2A Logic</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Requirement ID</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>MKT-L2A-001</td><td>If <code>is_accountant=true</code>, match to Firm Account using firm name + domain fuzzy match. Else use existing logic.</td></tr>
+    <tr><td>MKT-L2A-002</td><td>Weighted matching: exact domain (1.0), firm name Levenshtein &lt;3 (0.7), BPP firm ID (1.0). Highest confidence wins.</td></tr>
+    <tr><td>MKT-L2A-003</td><td>If no match &gt;0.7 confidence, route to "Unmatched Accountant" queue.</td></tr>
+    <tr><td>MKT-L2A-004</td><td>After resolution, stamp <code>lead_owner</code> with Firm Account's SFDC owner.</td></tr>
+  </tbody>
+</table>
+
+<h4>Scoring Model</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Requirement ID</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>MKT-SCR-001</td><td>Behavioral weights: webinar reg (+5), attendance (+15), IPD start (+10), IPD abandon (+8), email open (+2), email click (+5), content download (+10), form fill (+12), hand-raiser (+25).</td></tr>
+    <tr><td>MKT-SCR-002</td><td>Demographic weights: National (+20), HVAM (+15), Unmanaged (+5). Decision-Maker (+15), Partner (+10), Staff (+5).</td></tr>
+    <tr><td>MKT-SCR-003</td><td>Score decay: -10% every 30 days of inactivity.</td></tr>
+    <tr><td>MKT-SCR-004</td><td>MQL threshold ≥100 points (configurable per firm tier).</td></tr>
+    <tr><td>MKT-SCR-005</td><td>Sync <code>marketo_lead_score</code> and <code>score_breakdown</code> (JSON) to SFDC on every change.</td></tr>
+  </tbody>
+</table>
+
+<h4>SFDC Sync</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Requirement ID</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>MKT-SYN-001</td><td>On MQL, change status, set <code>mql_date</code>, create SFDC Task for account owner.</td></tr>
+    <tr><td>MKT-SYN-002</td><td>SFDC opportunity stage changes sync back to Marketo for lifecycle/nurture.</td></tr>
+    <tr><td>MKT-SYN-003</td><td>Marketo→SFDC within 5 min. SFDC→Marketo within 15 min.</td></tr>
+  </tbody>
+</table>
+
+<h4>Nurture Architecture</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Requirement ID</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>MKT-NUR-001</td><td>6 streams (Webinar Attended, Webinar Not-Attended, Hand-Raisers, Post-Meeting Non-Buyers, Stalled/Cold, IPD Abandoners).</td></tr>
+    <tr><td>MKT-NUR-002</td><td>Entry via Smart List criteria on <code>is_accountant</code>, <code>persona_type</code>, <code>firm_tier</code>, activity, lifecycle.</td></tr>
+    <tr><td>MKT-NUR-003</td><td>Cadence 1 email/7 days. Suppress on open opp ≥ Meeting Scheduled.</td></tr>
+    <tr><td>MKT-NUR-004</td><td>Exit on MQL, Closed Won, Unsubscribe, Hard Bounce, or Sales opt-out.</td></tr>
+  </tbody>
+</table>
+
+<h3>Technical Recommendations (from the TPM)</h3>
+<ul>
+  <li>Define canonical Accountant data model in schema registry. Add <code>enrichment_timestamp</code>/<code>enrichment_source</code> fields.</li>
+  <li>Specify BPP API as versioned OpenAPI spec. Implement DLQ for failed enrichments.</li>
+  <li>Parameterize scoring weights in config layer. Add score audit log. Backtest model against 1H data.</li>
+  <li>Document L2A matching algorithm formally. Track L2A match rate as KPI (target &gt;90%).</li>
+  <li>Define SFDC field mapping table explicitly. Implement sync monitoring (p50/p95/p99 latency).</li>
+  <li>Build lead funnel dashboard. Define SLIs/SLOs for pipeline.</li>
+  <li>Require UAT per phase. Provide sample test data with expected outcomes.</li>
+</ul>
+
+<h3>Open Questions</h3>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Question</th>
+      <th>Owner</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>What is the finalized BPP API contract?</td><td>GTM Tech</td><td>Open</td></tr>
+    <tr><td>2</td><td>What are the exact business rules for accountant_persona_type?</td><td>Marketing</td><td>Open</td></tr>
+    <tr><td>3</td><td>Firm tier assignment logic — SFDC segment only or BPP independent?</td><td>Sales Tech/Marketing</td><td>Open</td></tr>
+    <tr><td>4</td><td>MQL score threshold per firm tier? Differentiated?</td><td>Marketing</td><td>Open</td></tr>
+    <tr><td>5</td><td>What SFDC fields need creation/modification?</td><td>Sales Tech</td><td>Open</td></tr>
+    <tr><td>6</td><td>SLA for Sales follow-up after MQL?</td><td>Sales Innovation</td><td>Open</td></tr>
+    <tr><td>7</td><td>Preferred webinar platform connector (ON24, Zoom) or webhooks?</td><td>GTM Tech</td><td>Open</td></tr>
+  </tbody>
+</table>
+
+<h3>Existing Marketo Campaigns</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Campaign ID</th>
+      <th>Campaign Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>ELM-8841</td><td>MM Accountant Nurture (V1)</td><td>IES journey awareness</td></tr>
+    <tr><td>ELM-9388</td><td>ACCT Nurture - Quarterly Content Launch</td><td>Full-funnel content-driven nurture</td></tr>
+    <tr><td>ELM-9389</td><td>ACCT Nurture - Monthly Event/Webinar Newsletter</td><td>Event-driven FAQ nurture</td></tr>
+    <tr><td>ELM-9390</td><td>ACCT Nurture - Monthly Evergreen "Moment in Time"</td><td>Milestone-timed IES content</td></tr>
+    <tr><td>ELM-9391</td><td>ACCT Nurture - Amplify Feature Demo</td><td>Visual demo content</td></tr>
+    <tr><td>ELM-9392</td><td>ACCT Nurture - Managed Firms</td><td>ABM+Relevvo high-value targets</td></tr>
+    <tr><td>ELM-9394</td><td>ACCT Nurture - Incentive Campaign</td><td>Discount/referral conversion</td></tr>
+    <tr><td>ELM-9395</td><td>ACCT Nurture - Re-engagement</td><td>Reactivation for cold/stalled leads</td></tr>
+  </tbody>
+</table>
+
+</body>
+</html>

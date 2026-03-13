@@ -1,5 +1,5 @@
 ---
-description: Use odin_decrypt() for encrypted fields when querying Databricks Salesforce DWH
+description: 
 alwaysApply: true
 ---
 

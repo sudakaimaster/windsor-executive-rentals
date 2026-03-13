@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRD-2: ABM Platform Integration — Accountant BU</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px;
+      line-height: 1.5;
+      color: #333;
+      font-size: 14px;
+    }
+    h1 { color: #1a1a1a; font-size: 1.6em; margin-bottom: 0.2em; }
+    h2 { border-bottom: 2px solid #2c3e50; padding-bottom: 0.25em; margin-top: 1.3em; margin-bottom: 0.5em; color: #2c3e50; font-size: 1.15em; }
+    h3 { margin-top: 1em; margin-bottom: 0.4em; font-size: 1em; color: #2c3e50; }
+    .subtitle { color: #555; font-size: 1em; margin-bottom: 1.2em; }
+    .meta-table { margin-bottom: 1.5em; }
+    .meta-table td { padding: 3px 12px 3px 0; vertical-align: top; font-size: 13px; }
+    .meta-table td:first-child { font-weight: 600; color: #555; min-width: 140px; }
+    table { border-collapse: collapse; width: 100%; margin: 0.6em 0; font-size: 13px; }
+    table th, table td { border: 1px solid #d0d0d0; padding: 7px 10px; text-align: left; }
+    table th { background: #2c3e50; color: white; font-weight: 600; font-size: 12px; }
+    table tbody tr:nth-child(even) { background: #f8f9fa; }
+    table tbody tr:nth-child(odd) { background: #ffffff; }
+    blockquote { border-left: 4px solid #3498db; background: #f0f7ff; padding: 12px 15px; margin: 0.8em 0; font-size: 13px; }
+    code { background: #f4f4f4; padding: 1px 5px; border-radius: 3px; font-family: monospace; font-size: 0.88em; }
+    pre { background: #f8f9fa; padding: 14px; border: 1px solid #ddd; border-radius: 4px; font-family: monospace; overflow-x: auto; font-size: 0.8em; line-height: 1.35; margin: 0.6em 0; }
+    .problem-block { margin: 0.6em 0; padding: 0.7em 1em; background: #fafafa; border-radius: 4px; border-left: 4px solid #e74c3c; font-size: 13px; }
+    .problem-block p { margin: 0.15em 0; }
+    ul { margin: 0.3em 0; padding-left: 1.4em; }
+    li { margin: 0.15em 0; font-size: 13px; }
+    .chip { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+    .chip-p0 { background: #fadbd8; color: #922b21; }
+    .chip-p1 { background: #fef9e7; color: #7d6608; }
+    hr { border: none; border-top: 1px solid #eee; margin: 1.2em 0; }
+  </style>
+</head>
+<body>
+
+<h1>Accountants Lead Management — ABM Platform Integration - BRD</h1>
+<p class="subtitle">Business Use Cases & Requirements</p>
+<table class="meta-table">
+  <tr><td>Project ID</td><td>BRD-ACCT-ABM-001</td></tr>
+  <tr><td>Document Owner</td><td>(TBD)</td></tr>
+  <tr><td>Last Updated</td><td>(TBD)</td></tr>
+  <tr><td>Release Status</td><td><span class="chip" style="background:#eee;color:#555;">Draft</span></td></tr>
+  <tr><td>Upstream Dependency</td><td>BRD-ACCT-MKT-001 (Marketo Integration — must complete Phase 2 before this BRD's Phase 1)</td></tr>
+</table>
+
+<h2>BRD Approval</h2>
+<table>
+  <thead><tr><th>Functional Area</th><th>Name</th><th>BRD Approval Status</th></tr></thead>
+  <tbody>
+    <tr><td>Marketing</td><td>(TBD)</td><td>🔲</td></tr>
+    <tr><td>GTM Tech</td><td>(TBD)</td><td>🔲</td></tr>
+    <tr><td>Sales Tech</td><td>(TBD)</td><td>🔲</td></tr>
+    <tr><td>Sales Innovation</td><td>(TBD)</td><td>🔲</td></tr>
+    <tr><td>Sales Analytics</td><td>(TBD)</td><td>🔲</td></tr>
+  </tbody>
+</table>
+
+<h2>Working Team</h2>
+<table>
+  <thead><tr><th>Team</th><th>POC</th></tr></thead>
+  <tbody>
+    <tr><td>Marketing</td><td>(TBD)</td></tr>
+    <tr><td>GTM Tech</td><td>(TBD)</td></tr>
+    <tr><td>Sales Innovation</td><td>(TBD)</td></tr>
+    <tr><td>Sales Tech</td><td>(TBD)</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>1️⃣ EXECUTIVE SUMMARY</h2>
+<p>ABM campaigns targeting HVAM accountant firms are exceeding CTR benchmarks — <strong>41% of firms (1.4k) are engaging with ads</strong>, representing access to 80,000 decision-makers across 3,200 firms. However, engagement signals are siloed in the ABM platform: firms showing high intent are not contacted during the "golden window," contact extraction is fully manual, and ABM influence on pipeline cannot be measured. This BRD automates ABM-to-Marketo signal ingestion, contact extraction, scoring integration, and closed-loop attribution to unlock ABM as a scalable pipeline driver.</p>
+
+<h2>2️⃣ CONTEXT & CURRENT STATE</h2>
+
+<table>
+  <thead><tr><th>Dimension</th><th>Current State (As-Is)</th><th>Future State (To-Be)</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Signal Flow</strong></td><td>ABM engagement data trapped in platform; no downstream flow</td><td>Signals flow to Marketo in near-real-time via API (≤30 min SLA)</td></tr>
+    <tr><td><strong>Contact Extraction</strong></td><td>Manual CSV exports → manual Marketo import</td><td>Auto-extract decision-maker contacts on engagement threshold</td></tr>
+    <tr><td><strong>Scoring</strong></td><td>ABM engagement not factored into lead scoring</td><td>ABM signals are a first-class scoring dimension (40-pt cap)</td></tr>
+    <tr><td><strong>SFDC ↔ ABM</strong></td><td>No data feeds; SFDC data not used for targeting/suppression</td><td>Bi-directional: SFDC feeds ABM audiences; ABM feeds attribution</td></tr>
+    <tr><td><strong>Attribution</strong></td><td>No closed-loop; ABM spend not attributable to revenue</td><td>Time-decay multi-touch model; "new meetings" as primary KPI</td></tr>
+  </tbody>
+</table>
+
+<h3>Audience Applicability</h3>
+<table>
+  <thead><tr><th>Audience</th><th>Applicable?</th><th>Workflow</th><th>Tools</th></tr></thead>
+  <tbody>
+    <tr><td>Mid Market</td><td>✅</td><td>HVAM firms targeted via ABM DSP/LinkedIn; engagement signals → Marketo → SFDC</td><td>ABM Platform, Marketo, SFDC</td></tr>
+    <tr><td>Accountant</td><td>✅</td><td>Primary BU; full signal orchestration, scoring, nurture, attribution</td><td>ABM Platform, Marketo, SFDC</td></tr>
+    <tr><td>SMB / Money / Partner / International / Mailchimp</td><td>❌</td><td>N/A</td><td>N/A</td></tr>
+  </tbody>
+</table>
+
+<h2>3️⃣ PROBLEM STATEMENTS</h2>
+
+<div class="problem-block">
+  <p><strong>Problem 1 — Marketing:</strong></p>
+  <p><em>I am a</em> Marketing Campaign Manager · <em>I am trying to</em> measure ABM effectiveness and prove ROI · <em>But</em> engagement data is siloed with no connection to pipeline · <em>Because</em> ABM, Marketo, and SFDC are not integrated · <em>Which makes me feel</em> like I can't justify ABM spend or optimize targeting</p>
+</div>
+
+<div class="problem-block">
+  <p><strong>Problem 2 — Sales:</strong></p>
+  <p><em>I am a</em> MM Sales Seller · <em>I am trying to</em> reach decision-makers at high-intent HVAM firms · <em>But</em> I don't receive ABM-engaged leads in a timely way · <em>Because</em> contact extraction is manual (CSV) with no automated routing · <em>Which makes me feel</em> like the 41% engagement rate is wasted — the golden window closes before I can act</p>
+</div>
+
+<div class="problem-block">
+  <p><strong>Problem 3 — Marketing Ops:</strong></p>
+  <p><em>I am a</em> Marketing Ops Manager · <em>I am trying to</em> activate nurture for ABM-engaged contacts at scale · <em>But</em> I manually pull lists, extract contacts, and enroll in Marketo · <em>Because</em> ABM and Marketo aren't integrated · <em>Which makes me feel</em> like I'm the bottleneck in a process that should be automated</p>
+</div>
+
+<h2>4️⃣ HYPOTHESIS</h2>
+<blockquote>
+  <strong>If we</strong> integrate ABM with Marketo/SFDC to automate signal ingestion, contact extraction, scoring, and attribution,
+  <strong>then</strong> Marketing proves ROI, Sales receives ABM-engaged leads during the golden window, and nurture activates at scale,
+  <strong>as measured by:</strong> (1) ABM-influenced new meetings, (2) ABM-influenced pipeline ($), (3) signal ingestion latency ≤30 min, (4) contact extraction automation rate ≥95%, (5) ABM-to-MQL conversion rate ≥10%
+</blockquote>
+
+<h2>5️⃣ BUSINESS USE CASES AND REQUIREMENTS</h2>
+<table>
+  <thead>
+    <tr><th>#</th><th>Use Case</th><th>Priority</th><th>Persona(s)</th><th>Description</th><th>Acceptance Criteria</th><th>Done?</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td><td>Signal Ingestion</td><td><span class="chip chip-p0">P0</span></td>
+      <td>GTM Tech</td>
+      <td>Ingest ABM engagement signals into Marketo via API (webhook or batch). Schema: account_id, signal_type, timestamp, contact (nullable). Deduplicate on 1-hr window.</td>
+      <td>Signals in Marketo ≤30 min; DLQ with alerting; handles ~175k signals/day at peak</td><td>🔲</td>
+    </tr>
+    <tr>
+      <td>2</td><td>Contact Extraction</td><td><span class="chip chip-p0">P0</span></td>
+      <td>Marketing Ops, GTM Tech</td>
+      <td>When account engagement score crosses threshold, auto-extract decision-maker contacts → create/update Marketo Persons (<code>is_accountant=true</code>, <code>lead_source='ABM'</code>).</td>
+      <td>Auto-created with BPP enrichment triggered; dedup by email; rate limited (300 calls/min)</td><td>🔲</td>
+    </tr>
+    <tr>
+      <td>3</td><td>ABM Scoring Integration</td><td><span class="chip chip-p0">P0</span></td>
+      <td>Marketing Ops, Sales Seller</td>
+      <td>Add <code>abm_engagement_score</code> to Marketo Person. Weights: click +5, site_visit +8, intent_surge +20. Propagate account-level scores to contacts. <strong>40-pt cap</strong> prevents ABM-only MQLs.</td>
+      <td>Scores additive to composite; cap enforced; propagation logic documented</td><td>🔲</td>
+    </tr>
+    <tr>
+      <td>4</td><td>Automated Nurture Activation</td><td><span class="chip chip-p0">P0</span></td>
+      <td>Marketing Ops</td>
+      <td>Auto-enroll extracted contacts in four-touch nurture sequence. <code>intent_surge</code> triggers immediate priority email (bypass cadence). Post-sequence → evaluate score for MQL.</td>
+      <td>Auto-enrollment on extraction; priority bypass working; MQL handoff on threshold</td><td>🔲</td>
+    </tr>
+    <tr>
+      <td>5</td><td>SFDC → ABM Data Feed</td><td><span class="chip chip-p1">P1</span></td>
+      <td>Sales Ops, Marketing</td>
+      <td>Push SFDC account fields (stage, owner, segment, opp status) into ABM. Suppress Closed Won (90d) and Closed Lost (30d). Dynamic audience refresh ≤24 hrs.</td>
+      <td>SFDC fields available as ABM selectors; suppression active; audiences refresh daily</td><td>🔲</td>
+    </tr>
+    <tr>
+      <td>6</td><td>Closed-Loop Attribution</td><td><span class="chip chip-p1">P1</span></td>
+      <td>Marketing Analytics, Leadership</td>
+      <td>Push SFDC opportunity data into ABM. Time-decay multi-touch attribution (90-day lookback). Report: influenced pipeline, revenue, new meetings, cost/opp. Control group for incrementality.</td>
+      <td>Attribution reports available; control group defined; cost per influenced opp tracked</td><td>🔲</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6️⃣ SUCCESS METRICS</h2>
+<p><strong>Measurement Approach:</strong> Integration health measured via pipeline monitoring and extraction logs. Pipeline influence measured via SFDC + ABM attribution with time-decay model. Incrementality proven via holdout control group.</p>
+
+<table>
+  <thead>
+    <tr><th>Value Dimension</th><th>Metric</th><th>How Measured</th><th>Baseline</th><th>Threshold</th><th>Helix?</th></tr>
+  </thead>
+  <tbody>
+    <tr><td rowspan="2"><strong>1. Integration Health</strong></td><td>Signal ingestion latency (p95)</td><td>Integration monitoring</td><td>N/A</td><td>≤30 min</td><td>🔲</td></tr>
+    <tr><td>Contact extraction automation rate</td><td>Extraction logs</td><td>0% (manual)</td><td>≥95%</td><td>🔲</td></tr>
+    <tr><td rowspan="2"><strong>2. ABM-Influenced Pipeline</strong></td><td>ABM-influenced new meetings</td><td>SFDC + ABM attribution (90-day lookback)</td><td>Unmeasurable</td><td>Directional MoM improvement</td><td>🔲</td></tr>
+    <tr><td>ABM-influenced pipeline ($)</td><td>Time-decay attribution reports</td><td>$0 attributable</td><td>Reportable with methodology</td><td>🔲</td></tr>
+    <tr><td rowspan="2"><strong>3. Campaign Efficiency</strong></td><td>ABM-to-MQL conversion rate</td><td>Marketo</td><td>N/A</td><td>≥10%</td><td>🔲</td></tr>
+    <tr><td>Account engagement lift vs. control</td><td>Control group analysis</td><td>N/A</td><td>Stat. significant (p&lt;0.05)</td><td>🔲</td></tr>
+  </tbody>
+</table>
+
+<h2>7️⃣ PHASES AND MILESTONES</h2>
+<table>
+  <thead><tr><th>Phase</th><th>Core Theme</th><th>Description & Key Features</th><th>Target</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Phase 0</strong></td><td>API Discovery & Architecture</td><td>Document ABM API capabilities, finalize integration pattern (webhook vs. polling vs. middleware), define signal schema, provision middleware if needed. Privacy review.</td><td>(TBD)</td></tr>
+    <tr><td><strong>Phase 1</strong></td><td>Signal Ingestion + Contact Extraction</td><td>ABM → Marketo signal ingestion, automated contact extraction, Marketo Person creation. <em>Hard dep: BRD-ACCT-MKT-001 Phase 2 complete.</em></td><td>(TBD)</td></tr>
+    <tr><td><strong>Phase 2</strong></td><td>Scoring + SFDC Data Feeds</td><td>ABM scoring dimension in Marketo (40-pt cap), SFDC → ABM account/opp feed, dynamic audience segmentation, suppression logic.</td><td>(TBD)</td></tr>
+    <tr><td><strong>Phase 3</strong></td><td>Nurture + Attribution</td><td>Automated nurture enrollment, closed-loop attribution model, reporting dashboards, control group analysis.</td><td>(TBD)</td></tr>
+  </tbody>
+</table>
+
+<h2>8️⃣ INITIAL DEPENDENCIES, RISKS IDENTIFICATION & MITIGATION</h2>
+<table>
+  <thead><tr><th>Related UC(s)</th><th>Dependency / Risk</th><th>Plan to Resolve</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>UC 1–2</td><td><strong>Hard dep:</strong> BRD-ACCT-MKT-001 Phase 2 (Marketo schema, enrichment, L2A)</td><td>Track as blocking dependency; align timelines with companion BRD</td><td>Open</td></tr>
+    <tr><td>UC 1</td><td><strong>Dep:</strong> ABM platform API access, docs, and webhook support</td><td>Request credentials in Phase 0. If no webhooks, fall back to middleware polling (15 min)</td><td>Open</td></tr>
+    <tr><td>UC 1</td><td><strong>Dep:</strong> Middleware (Workato/Tray.io) may need provisioning</td><td>Evaluate in Phase 0; submit procurement request if needed</td><td>Open</td></tr>
+    <tr><td>UC 2</td><td><strong>Risk:</strong> Contact extraction overwhelms Marketo API (300 calls/min limit)</td><td>Backpressure queuing; pre-request API limit increase for campaign windows</td><td>Open</td></tr>
+    <tr><td>UC 2</td><td><strong>Risk:</strong> ABM signal noise (high impression volume, low quality)</td><td>Filter: only ingest clicks + site visits + intent surges for scoring</td><td>Open</td></tr>
+    <tr><td>UC 5</td><td><strong>Dep:</strong> SFDC custom attributes for ABM segmentation (Sales Tech sign-off)</td><td>Requirements workshop with Sales Tech in Phase 0</td><td>Open</td></tr>
+    <tr><td>UC 6</td><td><strong>Risk:</strong> Attribution contested without control group</td><td>Define holdout group methodology; present incrementality alongside influence metrics</td><td>Open</td></tr>
+    <tr><td>All</td><td><strong>Risk:</strong> PII compliance for ABM-extracted contacts</td><td>Privacy review in Phase 0; consent verification if required</td><td>Open</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>APPENDIX: Integration Architecture</h2>
+
+<pre>
+┌─────────────┐      Engagement Signals       ┌──────────────┐
+│             │ ──────────────────────────────► │              │
+│  ABM        │      (webhook / API poll)       │   Marketo    │
+│  Platform   │                                 │              │
+│             │ ◄────────────────────────────── │              │
+│             │      Contact lists, nurture     │              │
+│             │      engagement data            │              │
+└──────┬──────┘                                 └──────┬───────┘
+       │                                               │
+       │  Account data,              Lead score,       │
+       │  opportunity data           MQL events,       │
+       │  (daily batch)              lifecycle stage    │
+       │                             (near-real-time)   │
+       ▼                                               ▼
+┌──────────────────────────────────────────────────────────────┐
+│                        Salesforce CRM                         │
+│  Accounts · Contacts · Opportunities · Tasks · Custom Objects │
+└──────────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌──────────────────────┐
+│  Analytics Warehouse  │
+│  (Attribution, KPIs)  │
+└──────────────────────┘
+</pre>
+
+<p><strong>Integration Patterns:</strong> ABM → Marketo via webhook (preferred) or middleware polling. ABM ↔ SFDC via native connector or middleware batch (daily). Marketo ↔ SFDC via existing native sync enhanced with new fields.</p>
+
+<h3>Open Questions</h3>
+<table>
+  <thead><tr><th>#</th><th>Question</th><th>Owner</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Which ABM platform is being used? What are its API capabilities (webhooks, rate limits)?</td><td>GTM Tech</td><td>Open</td></tr>
+    <tr><td>2</td><td>What is the account engagement threshold for triggering contact extraction?</td><td>Marketing</td><td>Open</td></tr>
+    <tr><td>3</td><td>What constitutes a "decision-maker" for extraction filtering (job titles, seniority)?</td><td>Marketing / Sales Innovation</td><td>Open</td></tr>
+    <tr><td>4</td><td>Attribution reporting destination — SFDC dashboards, Tableau, Looker, or Databricks?</td><td>Marketing Analytics</td><td>Open</td></tr>
+    <tr><td>5</td><td>Has a privacy/data governance review been completed for ABM contact extraction?</td><td>Legal / Compliance</td><td>Open</td></tr>
+  </tbody>
+</table>
+
+<h3>TPM Recommendations</h3>
+<ul>
+  <li><strong>Middleware layer over point-to-point:</strong> Centralized error handling, retry/DLQ management, and observability. Direct ABM → Marketo calls are brittle.</li>
+  <li><strong>Version the signal schema:</strong> Handle unknown signal types gracefully (log and skip, don't fail).</li>
+  <li><strong>Explicit decision-maker criteria:</strong> Define exact job titles/seniority. Set per-firm contact cap (max 50) to prevent data quality issues.</li>
+  <li><strong>Keep the 40-pt ABM score cap:</strong> Without it, high-engagement firms with zero direct contact could flood Sales with unqualified MQLs.</li>
+  <li><strong>Store raw attribution events</strong> in analytics warehouse (not just aggregates) to enable re-analysis under different models.</li>
+  <li><strong>Build an integration health dashboard:</strong> Signals/day, extraction events/day, DLQ depth, p95 latency, Marketo API usage %. Define failure runbooks.</li>
+</ul>
+
+</body>
+</html>
