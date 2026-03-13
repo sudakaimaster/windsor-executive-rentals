@@ -510,17 +510,17 @@ a { color: inherit; text-decoration: none }
 <div class="hero-gallery">
   <div class="gallery-grid" id="galleryGrid">
     <div class="gallery-img" onclick="openLightbox(0)">
-      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Property exterior">
+      <img src="images/13-living-fireplace.png" alt="Living room with fireplace and open concept layout">
     </div>
-    <div class="gallery-img" onclick="openLightbox(1)">
-      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Living room">
+    <div class="gallery-img" onclick="openLightbox(7)">
+      <img src="images/08-kitchen-island.png" alt="Gourmet kitchen with island seating">
     </div>
     <div class="gallery-img" onclick="openLightbox(2)">
-      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80" alt="Kitchen">
+      <img src="images/03-living-room-patio.png" alt="Living room with patio doors">
     </div>
-    <div class="gallery-img" onclick="openLightbox(3)">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Bedroom">
-      <button class="gallery-btn" onclick="event.stopPropagation();openLightbox(0)">Show all photos</button>
+    <div class="gallery-img" onclick="openLightbox(6)">
+      <img src="images/07-basement-games.png" alt="Basement lounge with ping pong and games">
+      <button class="gallery-btn" onclick="event.stopPropagation();openLightbox(0)">Show all 14 photos</button>
     </div>
   </div>
 </div>
@@ -981,12 +981,20 @@ a { color: inherit; text-decoration: none }
 
 <script>
 const GALLERY_IMAGES = [
-  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80',
-  'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80',
-  'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80',
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80',
-  'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&q=80',
-  'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1200&q=80'
+  'images/13-living-fireplace.png',
+  'images/14-living-patio.png',
+  'images/03-living-room-patio.png',
+  'images/04-living-fireplace-wide.png',
+  'images/01-open-living.png',
+  'images/12-kitchen-wide.png',
+  'images/11-kitchen-bar.png',
+  'images/08-kitchen-island.png',
+  'images/10-kitchen-galley.png',
+  'images/02-basement-lounge.png',
+  'images/09-basement-lounge2.png',
+  'images/05-basement-tv.png',
+  'images/06-basement-workspace.png',
+  'images/07-basement-games.png'
 ];
 
 let lightboxIdx = 0;
