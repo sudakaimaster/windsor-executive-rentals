@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Windsor Executive Rentals | Book Direct & Save</title>
-<meta name="description" content="Windsor Executive Rentals — premium furnished properties in Windsor, ON. Book directly with us and save on fees. Call us for details.">
+<title>Windsor Executive Rentals | Premium Furnished Properties</title>
+<meta name="description" content="Windsor Executive Rentals — premium furnished properties in Windsor, ON. Luxury stays with 5-star amenities. Book direct and save on fees.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
@@ -50,7 +50,6 @@ img { display: block; max-width: 100% }
 button { cursor: pointer; font-family: inherit }
 a { color: inherit; text-decoration: none }
 
-/* ─── NAV ─── */
 .nav {
   position: sticky; top: 0; z-index: 100;
   background: rgba(255,255,255,.92);
@@ -83,274 +82,200 @@ a { color: inherit; text-decoration: none }
   transition: background var(--transition), transform var(--transition);
 }
 .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px) }
-.nav-hamburger {
-  display: none; background: none; border: none; padding: 4px;
-}
-.nav-hamburger svg { width: 28px; height: 28px; color: var(--gray-700) }
 
-/* ─── HERO GALLERY ─── */
-.hero-gallery {
-  max-width: var(--max-w); margin: 20px auto 0; padding: 0 24px;
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--dark) 0%, #2d2d44 100%);
+  padding: 80px 24px 96px;
+  text-align: center; color: white;
+  position: relative; overflow: hidden;
 }
-.gallery-grid {
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(230,57,70,.15) 0%, transparent 60%),
+              radial-gradient(circle at 70% 80%, rgba(245,158,11,.1) 0%, transparent 50%);
+}
+.hero-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+  padding: 6px 16px; border-radius: 80px;
+  font-size: .82rem; font-weight: 500; color: rgba(255,255,255,.8);
+  margin-bottom: 24px;
+}
+.hero-badge svg { width: 16px; height: 16px }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700; line-height: 1.2; margin-bottom: 16px;
+}
+.hero h1 span {
+  background: linear-gradient(90deg, #fbbf24, #fde68a);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero p {
+  font-size: 1.1rem; color: rgba(255,255,255,.7);
+  max-width: 520px; margin: 0 auto 32px; line-height: 1.7;
+}
+.hero-stats {
+  display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+}
+.hero-stat { text-align: center }
+.hero-stat .num {
+  font-size: 1.8rem; font-weight: 800;
+  background: linear-gradient(90deg, #fbbf24, #fde68a);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-stat .label { font-size: .82rem; color: rgba(255,255,255,.5); margin-top: 2px }
+
+/* PROPERTIES SECTION */
+.properties-section {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 56px 24px 60px;
+}
+.section-header {
+  text-align: center; margin-bottom: 40px;
+}
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; font-weight: 700; margin-bottom: 8px;
+}
+.section-header p { color: var(--gray-500); font-size: 1rem; max-width: 480px; margin: 0 auto }
+
+.properties-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 220px 220px;
-  gap: 8px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
 }
-.gallery-grid .gallery-img { position: relative; overflow: hidden }
-.gallery-grid .gallery-img img {
+
+.property-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  overflow: hidden;
+  background: var(--white);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.property-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.property-card-img {
+  position: relative; height: 240px; overflow: hidden;
+}
+.property-card-img img {
   width: 100%; height: 100%; object-fit: cover;
   transition: transform .4s ease;
 }
-.gallery-grid .gallery-img:hover img { transform: scale(1.05) }
-.gallery-grid .gallery-img:first-child { grid-row: 1 / -1 }
-.gallery-btn {
-  position: absolute; bottom: 16px; right: 16px;
-  padding: 8px 18px; border-radius: 8px;
-  background: rgba(255,255,255,.95); border: 1px solid var(--gray-300);
-  font-weight: 600; font-size: .82rem; color: var(--gray-900);
-  backdrop-filter: blur(8px);
-  transition: transform var(--transition);
+.property-card:hover .property-card-img img { transform: scale(1.05) }
+.property-card-badge {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--white); padding: 4px 12px; border-radius: 80px;
+  font-size: .75rem; font-weight: 700; color: var(--gray-900);
+  box-shadow: var(--shadow-sm);
 }
-.gallery-btn:hover { transform: translateY(-1px) }
-
-/* ─── MAIN LAYOUT ─── */
-.main-layout {
-  max-width: var(--max-w); margin: 0 auto; padding: 32px 24px 60px;
-  display: grid; grid-template-columns: 1fr 380px; gap: 48px;
-  align-items: start;
+.property-card-rating {
+  position: absolute; top: 14px; right: 14px;
+  background: var(--white); padding: 4px 10px; border-radius: 80px;
+  font-size: .78rem; font-weight: 600; color: var(--gray-900);
+  display: flex; align-items: center; gap: 4px;
+  box-shadow: var(--shadow-sm);
 }
+.property-card-rating svg { width: 14px; height: 14px; fill: var(--gold) }
 
-/* ─── PROPERTY INFO ─── */
-.prop-header { padding-bottom: 24px; border-bottom: 1px solid var(--gray-200) }
-.prop-title {
+.property-card-body { padding: 22px 24px 24px }
+.property-card-location {
+  display: flex; align-items: center; gap: 5px;
+  font-size: .82rem; color: var(--gray-500); margin-bottom: 6px;
+}
+.property-card-location svg { width: 14px; height: 14px; flex-shrink: 0 }
+.property-card-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.9rem; font-weight: 700; line-height: 1.3;
-  margin-bottom: 8px;
+  font-size: 1.2rem; font-weight: 700; line-height: 1.35;
+  margin-bottom: 10px;
 }
-.prop-location {
-  display: flex; align-items: center; gap: 6px;
-  font-size: .95rem; color: var(--gray-600); margin-bottom: 12px;
+.property-card-features {
+  display: flex; flex-wrap: wrap; gap: 6px 16px;
+  font-size: .82rem; color: var(--gray-600); margin-bottom: 16px;
 }
-.prop-location svg { width: 16px; height: 16px; flex-shrink: 0 }
-.prop-stats {
-  display: flex; flex-wrap: wrap; gap: 6px 20px;
-  font-size: .92rem; color: var(--gray-600);
+.property-card-features span {
+  display: flex; align-items: center; gap: 4px;
 }
-.prop-stats span { display: flex; align-items: center; gap: 5px }
-.prop-stats svg { width: 16px; height: 16px }
-
-.prop-highlights {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
-  padding: 24px 0; border-bottom: 1px solid var(--gray-200);
+.property-card-features svg { width: 14px; height: 14px; flex-shrink: 0 }
+.property-card-highlights {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px;
 }
-.highlight-card {
-  display: flex; align-items: center; gap: 12px;
-  padding: 16px; border-radius: var(--radius);
-  background: var(--gray-50); border: 1px solid var(--gray-200);
-}
-.highlight-icon {
-  width: 42px; height: 42px; border-radius: 10px;
-  background: var(--primary-light);
-  display: grid; place-items: center; flex-shrink: 0;
-}
-.highlight-icon svg { width: 20px; height: 20px; color: var(--primary) }
-.highlight-text { font-size: .82rem }
-.highlight-text strong { display: block; font-weight: 600; color: var(--gray-900); margin-bottom: 1px }
-.highlight-text span { color: var(--gray-500) }
-
-/* ─── SECTIONS ─── */
-.section { padding: 28px 0; border-bottom: 1px solid var(--gray-200) }
-.section:last-child { border-bottom: none }
-.section-title {
-  font-size: 1.3rem; font-weight: 700; margin-bottom: 16px;
-  font-family: 'Playfair Display', serif;
-}
-.section-desc { color: var(--gray-600); line-height: 1.75; font-size: .95rem }
-.section-desc p + p { margin-top: 12px }
-.read-more-btn {
-  background: none; border: none; font-weight: 600;
-  color: var(--gray-900); font-size: .92rem; margin-top: 10px;
-  text-decoration: underline; text-underline-offset: 3px;
-}
-
-/* ─── AMENITIES ─── */
-.amenities-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
-}
-.amenity-item {
-  display: flex; align-items: center; gap: 14px;
-  font-size: .92rem; color: var(--gray-700);
-}
-.amenity-item svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--gray-500) }
-
-/* ─── REVIEWS ─── */
-.rating-bar {
-  display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
-}
-.rating-big {
-  font-size: 2.2rem; font-weight: 800; color: var(--gray-900);
-}
-.rating-stars { display: flex; gap: 2px; color: var(--gold) }
-.rating-stars svg { width: 20px; height: 20px; fill: currentColor }
-.rating-count { font-size: .92rem; color: var(--gray-500) }
-.reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px }
-.review-card {
-  padding: 20px; border-radius: var(--radius);
-  border: 1px solid var(--gray-200); background: var(--white);
-}
-.review-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px }
-.review-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--primary-light); display: grid; place-items: center;
-  font-weight: 700; font-size: .9rem; color: var(--primary);
-}
-.review-meta strong { display: block; font-size: .9rem }
-.review-meta span { font-size: .8rem; color: var(--gray-500) }
-.review-stars { display: flex; gap: 1px; color: var(--gold); margin-bottom: 8px }
-.review-stars svg { width: 14px; height: 14px; fill: currentColor }
-.review-text { font-size: .88rem; color: var(--gray-600); line-height: 1.6 }
-
-/* ─── HOUSE RULES ─── */
-.rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
-.rule-item {
-  display: flex; align-items: center; gap: 10px;
-  font-size: .9rem; color: var(--gray-700);
-  padding: 10px 0;
-}
-.rule-item svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--gray-400) }
-
-/* ─── HOST ─── */
-.host-card {
-  display: flex; align-items: center; gap: 20px;
-  padding: 24px; border-radius: var(--radius-lg);
-  background: var(--gray-50); border: 1px solid var(--gray-200);
-}
-.host-avatar {
-  width: 64px; height: 64px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), #ff6b6b);
-  display: grid; place-items: center;
-  font-size: 1.6rem; font-weight: 700; color: white;
-}
-.host-info { flex: 1 }
-.host-info h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px }
-.host-info p { font-size: .88rem; color: var(--gray-500); margin-bottom: 8px }
-.host-badge {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-size: .78rem; font-weight: 600; color: var(--green);
-  background: #ecfdf5; padding: 3px 10px; border-radius: 80px;
-}
-.host-badge svg { width: 14px; height: 14px }
-
-/* ─── BOOKING SIDEBAR ─── */
-.booking-sidebar {
-  position: sticky; top: 84px;
-}
-.booking-card {
-  background: var(--white);
+.property-chip {
+  padding: 4px 12px; border-radius: 80px;
+  font-size: .75rem; font-weight: 600;
+  background: var(--gray-100); color: var(--gray-600);
   border: 1px solid var(--gray-200);
-  border-radius: var(--radius-lg);
-  padding: 28px;
-  box-shadow: var(--shadow-lg);
 }
-.booking-price {
-  display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px;
+.property-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 16px; border-top: 1px solid var(--gray-100);
 }
-.booking-price .amount {
-  font-size: 1.6rem; font-weight: 800;
+.property-card-price {
+  font-size: .88rem; color: var(--gray-500);
 }
-.booking-price .per { font-size: .92rem; color: var(--gray-500) }
-.booking-save {
-  display: inline-flex; align-items: center; gap: 4px;
-  background: #ecfdf5; color: var(--green); font-size: .78rem;
-  font-weight: 600; padding: 3px 10px; border-radius: 80px; margin-bottom: 20px;
-}
-.booking-save svg { width: 14px; height: 14px }
-.booking-fields {
-  border: 1px solid var(--gray-300); border-radius: var(--radius);
-  overflow: hidden; margin-bottom: 16px;
-}
-.booking-row {
-  display: grid; grid-template-columns: 1fr 1fr;
-}
-.booking-field {
-  padding: 12px 14px; border: none; background: none;
-  font-family: inherit; font-size: .88rem; color: var(--gray-900);
-  border-bottom: 1px solid var(--gray-300);
-  width: 100%; text-align: center;
-}
-.booking-field:focus { outline: none; background: var(--gray-50) }
-.booking-row .booking-field:first-child {
-  border-right: 1px solid var(--gray-300);
-}
-.booking-field-label {
-  display: block; font-size: .68rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .5px;
-  color: var(--gray-900); padding: 12px 14px 0;
-  text-align: center;
-}
-.booking-field-full {
-  grid-column: 1 / -1;
-}
-.booking-field.no-border { border-bottom: none }
-.guest-selector {
-  padding: 12px 14px; font-family: inherit; font-size: .88rem;
-  border: none; background: none; color: var(--gray-900);
-  width: 100%; cursor: pointer;
-}
-.guest-selector:focus { outline: none; background: var(--gray-50) }
-.booking-submit {
-  width: 100%; padding: 16px; border: none; border-radius: var(--radius);
+.property-card-btn {
+  padding: 10px 24px; border-radius: var(--radius); border: none;
   background: linear-gradient(135deg, var(--primary), #ff6b6b);
-  color: white; font-size: 1.05rem; font-weight: 700;
+  color: white; font-weight: 600; font-size: .88rem;
   transition: transform var(--transition), box-shadow var(--transition);
-  margin-bottom: 14px;
+  display: inline-block; text-align: center;
 }
-.booking-submit:hover {
+.property-card-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(230,57,70,.35);
+  box-shadow: 0 6px 20px rgba(230,57,70,.3);
 }
-.booking-note {
-  text-align: center; font-size: .82rem; color: var(--gray-500);
-}
-.booking-breakdown {
-  margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--gray-200);
-}
-.breakdown-row {
-  display: flex; justify-content: space-between;
-  font-size: .9rem; margin-bottom: 10px;
-}
-.breakdown-row.total {
-  font-weight: 700; font-size: 1rem;
-  padding-top: 12px; border-top: 1px solid var(--gray-200);
-  margin-top: 12px;
-}
-.breakdown-row .label { color: var(--gray-600); text-decoration: underline; text-underline-offset: 2px }
-.breakdown-row.total .label { color: var(--gray-900); text-decoration: none }
 
-/* ─── SAVE BANNER ─── */
-.save-banner {
-  background: linear-gradient(135deg, #1a1a2e, #2d2d44);
-  color: white; padding: 48px 24px; text-align: center;
+.property-card.coming-soon .property-card-img { filter: brightness(.85) }
+.coming-soon-overlay {
+  position: absolute; inset: 0;
+  background: rgba(26,26,46,.6);
+  display: flex; align-items: center; justify-content: center;
 }
-.save-banner h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem; font-weight: 700; margin-bottom: 12px;
+.coming-soon-tag {
+  background: var(--white); padding: 10px 28px; border-radius: 80px;
+  font-weight: 700; font-size: .95rem; color: var(--gray-900);
+  box-shadow: var(--shadow);
 }
-.save-banner p { color: rgba(255,255,255,.7); max-width: 520px; margin: 0 auto 24px; font-size: .95rem; line-height: 1.7 }
-.save-badges { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 28px }
-.save-badge {
-  display: flex; align-items: center; gap: 8px;
-  font-size: .9rem; font-weight: 500;
-}
-.save-badge svg { width: 20px; height: 20px; color: var(--green) }
 
-/* ─── FOOTER ─── */
-.footer {
+/* WHY BOOK DIRECT */
+.why-section {
   background: var(--gray-50); border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+  padding: 56px 24px;
+}
+.why-inner {
+  max-width: var(--max-w); margin: 0 auto; text-align: center;
+}
+.why-inner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 700; margin-bottom: 12px;
+}
+.why-inner > p { color: var(--gray-500); font-size: .95rem; max-width: 480px; margin: 0 auto 36px }
+.why-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+}
+.why-card {
+  text-align: center; padding: 28px 20px;
+  border-radius: var(--radius-lg);
+  background: var(--white); border: 1px solid var(--gray-200);
+}
+.why-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: var(--primary-light);
+  display: grid; place-items: center;
+  margin: 0 auto 14px;
+}
+.why-icon svg { width: 24px; height: 24px; color: var(--primary) }
+.why-card h3 { font-size: .95rem; font-weight: 700; margin-bottom: 6px }
+.why-card p { font-size: .82rem; color: var(--gray-500); line-height: 1.6 }
+
+/* FOOTER */
+.footer {
+  background: var(--white); border-top: 1px solid var(--gray-200);
   padding: 40px 24px;
 }
 .footer-inner {
@@ -363,113 +288,15 @@ a { color: inherit; text-decoration: none }
 .footer-links a { font-size: .85rem; color: var(--gray-500); transition: color var(--transition) }
 .footer-links a:hover { color: var(--primary) }
 
-/* ─── MOBILE BOOKING BAR ─── */
-.mobile-booking-bar {
-  display: none;
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
-  background: var(--white); border-top: 1px solid var(--gray-200);
-  padding: 12px 20px;
-  box-shadow: 0 -4px 20px rgba(0,0,0,.08);
-}
-.mobile-booking-inner {
-  display: flex; align-items: center; justify-content: space-between;
-  max-width: var(--max-w); margin: 0 auto;
-}
-.mobile-booking-price .amount { font-size: 1.15rem; font-weight: 800 }
-.mobile-booking-price .per { font-size: .82rem; color: var(--gray-500) }
-.mobile-booking-btn {
-  padding: 12px 28px; border: none; border-radius: var(--radius);
-  background: linear-gradient(135deg, var(--primary), #ff6b6b);
-  color: white; font-weight: 700; font-size: .92rem;
-}
-
-/* ─── LIGHTBOX ─── */
-.lightbox {
-  display: none; position: fixed; inset: 0; z-index: 200;
-  background: rgba(0,0,0,.92);
-  justify-content: center; align-items: center;
-  padding: 40px;
-}
-.lightbox.active { display: flex }
-.lightbox-close {
-  position: absolute; top: 20px; right: 24px;
-  background: rgba(255,255,255,.15); border: none; border-radius: 50%;
-  width: 44px; height: 44px; display: grid; place-items: center;
-  color: white; font-size: 1.4rem;
-  transition: background var(--transition);
-}
-.lightbox-close:hover { background: rgba(255,255,255,.25) }
-.lightbox-img {
-  max-width: 90vw; max-height: 80vh;
-  border-radius: var(--radius); object-fit: contain;
-}
-.lightbox-nav {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: rgba(255,255,255,.15); border: none; border-radius: 50%;
-  width: 48px; height: 48px; display: grid; place-items: center;
-  color: white; font-size: 1.4rem;
-  transition: background var(--transition);
-}
-.lightbox-nav:hover { background: rgba(255,255,255,.25) }
-.lightbox-prev { left: 20px }
-.lightbox-next { right: 20px }
-.lightbox-counter {
-  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-  color: rgba(255,255,255,.7); font-size: .88rem;
-}
-
-/* ─── MOBILE NAV ─── */
-.mobile-nav {
-  display: none; position: fixed; inset: 0; z-index: 150;
-  background: rgba(0,0,0,.5);
-}
-.mobile-nav.active { display: block }
-.mobile-nav-panel {
-  position: absolute; top: 0; right: 0;
-  width: 280px; height: 100%; background: var(--white);
-  padding: 24px;
-  box-shadow: -8px 0 40px rgba(0,0,0,.1);
-  animation: slideIn .3s ease;
-}
-@keyframes slideIn {
-  from { transform: translateX(100%) }
-  to { transform: translateX(0) }
-}
-.mobile-nav-panel a {
-  display: block; padding: 14px 0; font-size: 1rem; font-weight: 500;
-  color: var(--gray-700); border-bottom: 1px solid var(--gray-100);
-}
-.mobile-nav-close {
-  background: none; border: none; font-size: 1.5rem;
-  color: var(--gray-500); margin-bottom: 16px;
-}
-
-/* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
-  .main-layout { grid-template-columns: 1fr; gap: 32px }
-  .booking-sidebar { position: static; display: none }
-  .mobile-booking-bar { display: block }
-  .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 240px 160px;
-  }
-  .gallery-grid .gallery-img:first-child { grid-column: 1 / -1 }
-  .gallery-grid .gallery-img:nth-child(n+4) { display: none }
-  .prop-highlights { grid-template-columns: 1fr }
-  .reviews-grid { grid-template-columns: 1fr }
+  .why-grid { grid-template-columns: 1fr 1fr }
+  .hero-stats { gap: 24px }
 }
 @media (max-width: 640px) {
-  .nav-links { display: none }
-  .nav-hamburger { display: block }
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: 260px;
-  }
-  .gallery-grid .gallery-img:nth-child(n+2) { display: none }
-  .amenities-grid { grid-template-columns: 1fr }
-  .rules-grid { grid-template-columns: 1fr }
-  .save-banner h2 { font-size: 1.4rem }
-  body { padding-bottom: 68px }
+  .properties-grid { grid-template-columns: 1fr }
+  .why-grid { grid-template-columns: 1fr }
+  .nav-links a:not(.nav-cta-link) { display: none }
+  .hero { padding: 56px 24px 68px }
 }
 </style>
 </head>
@@ -478,568 +305,186 @@ a { color: inherit; text-decoration: none }
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-brand">
+    <a href="index.html" class="nav-brand">
       <svg viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg>
       Windsor Executive Rentals
     </a>
     <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#amenities">Amenities</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
-      <button class="nav-cta" onclick="scrollToBooking()">Inquire Now</button>
+      <a href="#properties">Properties</a>
+      <a href="#why-direct">Why Book Direct</a>
+      <a href="mailto:your-email@example.com" class="nav-cta-link"><button class="nav-cta">Contact Us</button></a>
     </div>
-    <button class="nav-hamburger" onclick="openMobileNav()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
   </div>
 </nav>
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobileNav" onclick="closeMobileNav()">
-  <div class="mobile-nav-panel" onclick="event.stopPropagation()">
-    <button class="mobile-nav-close" onclick="closeMobileNav()">&times;</button>
-    <a href="#about" onclick="closeMobileNav()">About</a>
-    <a href="#amenities" onclick="closeMobileNav()">Amenities</a>
-    <a href="#reviews" onclick="closeMobileNav()">Reviews</a>
-    <a href="#contact" onclick="closeMobileNav()">Contact</a>
-    <a href="#booking" onclick="closeMobileNav()" style="color:var(--primary);font-weight:700">Book Now</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Perfect 5.0 Rating Across All Properties
+    </div>
+    <h1>Premium Furnished Stays in <span>Windsor, ON</span></h1>
+    <p>Luxury properties with 5-star amenities, hotel-quality linens, and everything you need for a perfect stay. Book direct and save.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">5.0</div>
+        <div class="label">Guest Rating</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">60+</div>
+        <div class="label">5-Star Reviews</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">3</div>
+        <div class="label">Properties</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">0%</div>
+        <div class="label">Service Fees</div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- HERO GALLERY -->
-<div class="hero-gallery">
-  <div class="gallery-grid" id="galleryGrid">
-    <div class="gallery-img" onclick="openLightbox(0)">
-      <img src="images/13-living-fireplace.png" alt="Living room with fireplace and open concept layout">
-    </div>
-    <div class="gallery-img" onclick="openLightbox(7)">
-      <img src="images/08-kitchen-island.png" alt="Gourmet kitchen with island seating">
-    </div>
-    <div class="gallery-img" onclick="openLightbox(2)">
-      <img src="images/03-living-room-patio.png" alt="Living room with patio doors">
-    </div>
-    <div class="gallery-img" onclick="openLightbox(6)">
-      <img src="images/07-basement-games.png" alt="Basement lounge with ping pong and games">
-      <button class="gallery-btn" onclick="event.stopPropagation();openLightbox(0)">Show all 14 photos</button>
-    </div>
+<!-- PROPERTIES -->
+<section class="properties-section" id="properties">
+  <div class="section-header">
+    <h2>Our Properties</h2>
+    <p>Each property is personally curated with luxury furnishings and hotel-grade amenities</p>
   </div>
-</div>
 
-<!-- MAIN CONTENT -->
-<div class="main-layout">
+  <div class="properties-grid">
 
-  <!-- LEFT: PROPERTY INFO -->
-  <div class="prop-content">
-
-    <div class="prop-header">
-      <h1 class="prop-title">5-Star Inspired Luxury Home &mdash; Over 3,400 SQ FT</h1>
-      <div class="prop-location">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Windsor, ON</span>
-        <span style="color:var(--gray-300)">·</span>
-        <span style="display:flex;align-items:center;gap:4px">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          5.0 · 60 reviews
+    <!-- PROPERTY 1: WINDSOR LUXURY HOME -->
+    <a href="property-1.html" class="property-card">
+      <div class="property-card-img">
+        <img src="images/13-living-fireplace.png" alt="5-Star Luxury Home — living room with fireplace">
+        <span class="property-card-badge">Featured</span>
+        <span class="property-card-rating">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          5.0 (60)
         </span>
       </div>
-      <div class="prop-stats">
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          8 guests
-        </span>
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M21 7H3l2-4h14l2 4z"/></svg>
-          3 bedrooms
-        </span>
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 12h20"/></svg>
-          4 beds
-        </span>
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M6 12V5a2 2 0 0 1 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v4"/></svg>
-          2 bathrooms
-        </span>
-      </div>
-    </div>
-
-    <div class="prop-highlights">
-      <div class="highlight-card">
-        <div class="highlight-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <div class="property-card-body">
+        <div class="property-card-location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Windsor, ON
         </div>
-        <div class="highlight-text">
-          <strong>5-Star Experience</strong>
-          <span>Luxury furnishings throughout</span>
-        </div>
-      </div>
-      <div class="highlight-card">
-        <div class="highlight-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-        </div>
-        <div class="highlight-text">
-          <strong>3,400+ SQ FT</strong>
-          <span>12-ft ceilings, open concept</span>
-        </div>
-      </div>
-      <div class="highlight-card">
-        <div class="highlight-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-        </div>
-        <div class="highlight-text">
-          <strong>Spotless Clean</strong>
-          <span>Sanitized to perfection</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ABOUT -->
-    <div class="section" id="about">
-      <h2 class="section-title">About this place</h2>
-      <div class="section-desc" id="descText">
-        <p>Come and stay at this 5-star inspired home! Over 3,400 SQ FT of living space featuring high-end furniture, a King Bed with Beautyrest Harmony Lux Mattress, Hotel Collection towels, and high thread count sheets. Perfect for professionals, couples, and families.</p>
-        <p>The beautiful open concept space boasts 12-foot high ceilings throughout the entire unit with main level laundry. Enjoy 2 living rooms, 6 flatscreen Sony &amp; Samsung TVs in every bedroom, a fully stocked kitchen, and a Keurig Coffee &amp; Tea Bar with a large selection of pods and condiments.</p>
-        <p id="descMore" style="display:none">Unwind in the private gym featuring a treadmill, free weights, bench, yoga mats, and a sauna. Stay entertained with board games, ping pong, and an arcade game room coming soon! Streaming includes Netflix, Disney Plus, Prime, and Cable TV. We provide premium toiletries including organic Crate 61 Soap and Chi Brand shampoo, plus refreshments to make your stay feel like home. We take pride in keeping the home spotless — everything is thoroughly cleaned &amp; sanitized to perfection before your arrival. Guest has access to the entire property!</p>
-      </div>
-      <button class="read-more-btn" id="readMoreBtn" onclick="toggleDesc()">Show more &darr;</button>
-    </div>
-
-    <!-- AMENITIES -->
-    <div class="section" id="amenities">
-      <h2 class="section-title">What this place offers</h2>
-      <div class="amenities-grid" id="amenitiesGrid">
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          Entire home — 3,400+ sq ft
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-          6 Flatscreen TVs (Sony/Samsung)
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-          Netflix, Disney+, Prime &amp; Cable
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
-          High-speed Wi-Fi
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-          Keurig Coffee &amp; Tea Bar
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
-          Fully stocked kitchen
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-          Private gym with sauna
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><rect x="9" y="12" width="6" height="8"/></svg>
-          Double car garage
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="9"/><rect x="3" y="14" width="18" height="7" rx="1"/></svg>
-          2 living rooms
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46L16 2 12 5.5 8 2l-4.38 1.46a1 1 0 0 0-.62.94v16.2a1 1 0 0 0 1.38.92L8 20l4-3.5 4 3.5 3.62 1.52a1 1 0 0 0 1.38-.92V4.4a1 1 0 0 0-.62-.94z"/></svg>
-          King bed — Beautyrest Harmony Lux
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          Main level washer &amp; dryer
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-          Board games, ping pong &amp; arcade
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          Premium toiletries &amp; refreshments
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
-          Hotel Collection towels &amp; linens
-        </div>
-      </div>
-    </div>
-
-    <!-- NEIGHBOURHOOD -->
-    <div class="section" id="location">
-      <h2 class="section-title">Windsor's Best Neighbourhood</h2>
-      <p class="section-desc" style="margin-bottom:18px">Conveniently located near everything you need:</p>
-      <div class="amenities-grid">
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          Quick highway access
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
-          Windsor International Airport
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 12 3 12 0v-5"/></svg>
-          St. Clair College
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          Shopping mall nearby
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-          Fine dining restaurants
-        </div>
-      </div>
-    </div>
-
-    <!-- REVIEWS -->
-    <div class="section" id="reviews">
-      <h2 class="section-title">Guest Reviews</h2>
-      <div class="rating-bar">
-        <span class="rating-big">5.0</span>
-        <div>
-          <div class="rating-stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <span class="rating-count">60 reviews</span>
-        </div>
-      </div>
-      <div class="reviews-grid" id="reviewsGrid">
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">T</div>
-            <div class="review-meta">
-              <strong>Tom</strong>
-              <span>January 2026 &middot; Newport Beach, CA</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">If you're looking for an Airbnb that feels like the Ritz-Carlton, this is the place. The home was spotless, the beds were incredibly comfortable, and the added bonus of a private gym and sauna put it over the top. The hosts went above and beyond by leaving a thoughtful selection of treats. Exceptional stay all around!</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">M</div>
-            <div class="review-meta">
-              <strong>Maureen</strong>
-              <span>September 2025 &middot; Cary, NC</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">This is our favorite Airbnb ever &mdash; the gold standard if ever we saw it! The home has the absolutely MOST comfortable beds, the kitchen and baths are immaculate. The hosts are the absolute best you could ever want! It will absolutely be our go-to spot for our next visit to Windsor. A win win all the way around!</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">J</div>
-            <div class="review-meta">
-              <strong>Jasem</strong>
-              <span>June 2024 &middot; Stayed with kids</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">This was the best experience I have ever had at an Airbnb. The home was SPOTLESS and everything, from mattresses to sheets to even decor pieces, was thought out and planned to be at luxury level. Barbara and Adrian went out of their way to make our stay memorable. We will definitely book with these hosts any chance we get.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">W</div>
-            <div class="review-meta">
-              <strong>Weijia</strong>
-              <span>March 2026 &middot; Toronto, Canada</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Absolutely exceeded expectations! Spotlessly clean and beautifully organized. Best surprise was the bidet toilet seat &mdash; so comfortable and luxurious! Every little detail shows how much thought and heart the host put in. This stay felt better than many 5-star hotels. Easily one of the best Airbnbs I've ever booked. 10/10!</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">J</div>
-            <div class="review-meta">
-              <strong>Jenell</strong>
-              <span>December 2025 &middot; Berkley, MI</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">This property deserves a very, very high luxury rating. Every detail was thoughtfully curated &mdash; from the high-end amenities and pristine linens to the sophisticated d&eacute;cor. It felt elegant, comfortable, and effortlessly stylish. This place is truly a hidden gem. I've already recommended it to multiple people.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">G</div>
-            <div class="review-meta">
-              <strong>Geoff</strong>
-              <span>January 2026 &middot; Winnipeg, Canada</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">This home was great &mdash; quiet street, high-end everything, comfortable beds, spotlessly clean rooms and even a heated toilet seat in the master ensuite. Barbara was incredibly responsive and made us feel right at home. Thanks for a great stay!</p>
-        </div>
-      </div>
-      <div class="reviews-grid" id="moreReviews" style="display:none;margin-top:20px">
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">S</div>
-            <div class="review-meta">
-              <strong>Sheryl</strong>
-              <span>December 2024 &middot; Welland, Canada</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">This place is simply beautiful &mdash; there are no words to describe the elegance. It gets a 12 out of 10 from me. Barbara always kept in contact. Her d&eacute;cor, the pristine beds and bathrooms &mdash; we all felt so at home and honestly didn't want to leave. Would stay again in a heartbeat.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">H</div>
-            <div class="review-meta">
-              <strong>Harold</strong>
-              <span>November 2024 &middot; Langley, Canada</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">An 11 out of 10 on all fronts. Communication was prompt and excellent. The home is very well equipped with many unexpected features. All of the comforts one could wish for were there in a quality that one noticed, including a warm welcome basket. The place exudes excellence in all respects.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">N</div>
-            <div class="review-meta">
-              <strong>Nicole</strong>
-              <span>June 2025 &middot; New York, NY</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">We thoroughly enjoyed our stay. The home is beautiful and has everything you need to feel like you are staying in luxury. Barbara was a very responsive and flexible host. We used the home as our getting ready location during our wedding weekend and it was absolutely perfect.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">R</div>
-            <div class="review-meta">
-              <strong>Robert</strong>
-              <span>July 2025 &middot; Edmonton, Canada</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">The ultra nice bedding and towels and the big showers were really nice. The spaces are nicely laid out and decorated like one would see in a magazine. We had lots of space for family to drop by for visits. For those looking for a newer modern place with tons of space, this is the place to select.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">K</div>
-            <div class="review-meta">
-              <strong>Katie</strong>
-              <span>December 2025 &middot; Hamilton, Canada</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">We had a wonderful stay! The place was extremely clean, well-maintained, and very spacious. Everything felt fresh and comfortable, which made it easy to relax right away. The layout was great and there was plenty of room to spread out. We would absolutely book again and highly recommend it to others.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">B</div>
-            <div class="review-meta">
-              <strong>Barbara</strong>
-              <span>March 2026 &middot; Frankfort, IL</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">I have been to a lot of Airbnbs over the years and this one far exceeded them all! The home is GORGEOUS &mdash; the pictures don't do it justice. Barbara and Adrian went out of their way to make our stay memorable, from stocking our fridge prior to arrival to minimal check out requirements. If you are in the Windsor area, this will NOT disappoint!</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">E</div>
-            <div class="review-meta">
-              <strong>Elliot</strong>
-              <span>January 2026 &middot; Houston, TX</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Absolutely loved our stay! The space was spotless, beautifully designed, and exactly as described, if not better. Every detail was thoughtfully considered, from the comfortable bedding to the well-stocked amenities. The location was perfect: quiet and relaxing, yet close to everything we needed.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">S</div>
-            <div class="review-meta">
-              <strong>Susan</strong>
-              <span>April 2025 &middot; Stayed with kids</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">What an amazing stay! Such a beautiful home with amazing amenities and thoughtful touches throughout. Barbara was so responsive and provided services beyond what we could have expected. Our family had a special time in a very special place.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">D</div>
-            <div class="review-meta">
-              <strong>Dave</strong>
-              <span>May 2024 &middot; Melbourne, FL</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">One of the best places I have stayed. Beds were so comfortable and prepared better than any 5 star hotel. You can tell the host thought of everything. You will not be disappointed.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">Y</div>
-            <div class="review-meta">
-              <strong>Yanick</strong>
-              <span>November 2025 &middot; Ottawa, Canada</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">We had an amazing stay! The place was spacious, spotless, and even better than we expected. It truly exceeded our expectations. The neighborhood was calm and peaceful. The host was fantastic &mdash; super friendly, quick to respond. The price is more than fair for what you get. Would definitely come back!</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">K</div>
-            <div class="review-meta">
-              <strong>Kelly</strong>
-              <span>January 2025 &middot; Scottsdale, AZ</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Modern, well appointed, very well stocked (coffee is key and there was plenty). Game room, gym were a hit with family. Upscale, easy and better value than all the Windsor hotels.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">C</div>
-            <div class="review-meta">
-              <strong>Carissa</strong>
-              <span>May 2025 &middot; Tampa, FL</span>
-            </div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Great stay! Modern design and well decorated. Washrooms, kitchen and linens all very clean. Comfortable bedrooms, living spaces and patio. Great basement and gym. Hosts very responsive and flexible. I would not hesitate to book this location again.</p>
-        </div>
-      </div>
-      <button class="read-more-btn" id="showMoreReviewsBtn" onclick="toggleMoreReviews()" style="margin-top:16px">Show all 60 reviews &darr;</button>
-    </div>
-
-    <!-- HOUSE RULES -->
-    <div class="section">
-      <h2 class="section-title">House Rules</h2>
-      <div class="rules-grid">
-        <div class="rule-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Check-in: 3:00 PM
-        </div>
-        <div class="rule-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 8 14"/></svg>
-          Checkout: 11:00 AM
-        </div>
-        <div class="rule-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          8 guests maximum
-        </div>
-        <div class="rule-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-          No smoking
-        </div>
-        <div class="rule-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-          No parties or events
-        </div>
-        <div class="rule-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .137 1.217 1.5 2 2.5 2s2-.5 3-2c1 1.5 2 2 3 2s2.363-.783 2.5-2c.113-.994-1.177-6.53-4-7C7.577 2.68 6 3.782 6 5.172"/></svg>
-          Pets allowed (ask first)
-        </div>
-      </div>
-    </div>
-
-    <!-- HOST -->
-    <div class="section" id="contact">
-      <h2 class="section-title">Your Host</h2>
-      <div class="host-card">
-        <div class="host-avatar">H</div>
-        <div class="host-info">
-          <h3>Your Host</h3>
-          <p>Superhost · Hosting since 2022</p>
-          <span class="host-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Identity verified
+        <h3 class="property-card-title">5-Star Inspired Luxury Home &mdash; Over 3,400 SQ FT</h3>
+        <div class="property-card-features">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            8 guests
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M21 7H3l2-4h14l2 4z"/></svg>
+            3 bedrooms
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg>
+            2 bathrooms
           </span>
         </div>
-      </div>
-      <div style="margin-top:20px">
-        <p class="section-desc">Response rate: 100% · Response time: within an hour</p>
-        <a href="mailto:your-email@example.com" style="display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:12px 24px;border-radius:var(--radius);border:1px solid var(--gray-300);font-weight:600;font-size:.9rem;color:var(--gray-900);transition:all var(--transition)">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Contact Host
-        </a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- RIGHT: BOOKING SIDEBAR -->
-  <div class="booking-sidebar" id="booking">
-    <div class="booking-card">
-      <div style="text-align:center;margin-bottom:8px">
-        <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="var(--primary)" stroke-width="1.5" style="margin-bottom:8px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <div style="font-size:1.3rem;font-weight:800;color:var(--gray-900)">Call Us for Pricing</div>
-        <p style="font-size:.88rem;color:var(--gray-500);margin-top:4px">Get the best rates when you book direct</p>
-      </div>
-      <div class="booking-save">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-        No service fees — save vs Airbnb!
-      </div>
-      <div class="booking-fields">
-        <div class="booking-row">
-          <div>
-            <label class="booking-field-label" for="checkin">Preferred Check-in</label>
-            <input type="date" class="booking-field" id="checkin">
-          </div>
-          <div>
-            <label class="booking-field-label" for="checkout">Preferred Checkout</label>
-            <input type="date" class="booking-field" id="checkout">
-          </div>
+        <div class="property-card-highlights">
+          <span class="property-chip">Private Gym &amp; Sauna</span>
+          <span class="property-chip">King Bed</span>
+          <span class="property-chip">6 TVs</span>
+          <span class="property-chip">Games Room</span>
         </div>
-        <div class="booking-field-full">
-          <label class="booking-field-label" for="guests">Guests</label>
-          <select class="guest-selector booking-field no-border" id="guests">
-            <option>1 guest</option>
-            <option>2 guests</option>
-            <option selected>3 guests</option>
-            <option>4 guests</option>
-            <option>5 guests</option>
-            <option>6 guests</option>
-            <option>7 guests</option>
-            <option>8 guests</option>
-          </select>
+        <div class="property-card-footer">
+          <span class="property-card-price">Call for pricing</span>
+          <span class="property-card-btn">View Property</span>
         </div>
       </div>
-      <button class="booking-submit" onclick="handleBooking()">Contact Us for Details</button>
-      <p class="booking-note">We'll respond within 1 hour</p>
+    </a>
+
+    <!-- PROPERTY 2: COMING SOON -->
+    <div class="property-card coming-soon">
+      <div class="property-card-img">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Property 2 coming soon">
+        <div class="coming-soon-overlay">
+          <span class="coming-soon-tag">Coming Soon</span>
+        </div>
+      </div>
+      <div class="property-card-body">
+        <div class="property-card-location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Windsor, ON
+        </div>
+        <h3 class="property-card-title">New Property &mdash; Details Coming Soon</h3>
+        <div class="property-card-features">
+          <span style="color:var(--gray-400)">Details will be announced shortly</span>
+        </div>
+        <div class="property-card-footer">
+          <span class="property-card-price">Contact us for details</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROPERTY 3: COMING SOON -->
+    <div class="property-card coming-soon">
+      <div class="property-card-img">
+        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80" alt="Property 3 coming soon">
+        <div class="coming-soon-overlay">
+          <span class="coming-soon-tag">Coming Soon</span>
+        </div>
+      </div>
+      <div class="property-card-body">
+        <div class="property-card-location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Windsor, ON
+        </div>
+        <h3 class="property-card-title">New Property &mdash; Details Coming Soon</h3>
+        <div class="property-card-features">
+          <span style="color:var(--gray-400)">Details will be announced shortly</span>
+        </div>
+        <div class="property-card-footer">
+          <span class="property-card-price">Contact us for details</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY BOOK DIRECT -->
+<section class="why-section" id="why-direct">
+  <div class="why-inner">
+    <h2>Why Book Direct?</h2>
+    <p>Skip the middleman — get the best rates and a personal touch when you book with us</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>No Service Fees</h3>
+        <p>Save 15%+ compared to booking platforms. Our prices go straight to your stay, not middlemen.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Best Price Guaranteed</h3>
+        <p>You'll never find a better rate anywhere else. We match or beat any platform price.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Direct Communication</h3>
+        <p>Talk to us directly — no bots, no ticket systems. Faster responses and personal service.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8l-8 8"/><path d="M8 8l8 8"/></svg>
+        </div>
+        <h3>Flexible Cancellation</h3>
+        <p>Life happens. We offer flexible cancellation policies so you can book with confidence.</p>
+      </div>
     </div>
   </div>
-
-</div>
-
-<!-- SAVE BANNER -->
-<div class="save-banner">
-  <h2>Why Book Direct?</h2>
-  <p>Skip the middleman and save money on every stay. When you book directly with us, you get the best rates guaranteed with a more personal experience.</p>
-  <div class="save-badges">
-    <div class="save-badge">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-      No service fees
-    </div>
-    <div class="save-badge">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-      Best price guaranteed
-    </div>
-    <div class="save-badge">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-      Direct communication
-    </div>
-    <div class="save-badge">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-      Flexible cancellation
-    </div>
-  </div>
-  <button class="nav-cta" onclick="scrollToBooking()" style="font-size:1rem;padding:14px 36px">Get in Touch</button>
-</div>
+</section>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -1052,191 +497,6 @@ a { color: inherit; text-decoration: none }
     </div>
   </div>
 </footer>
-
-<!-- MOBILE BOOKING BAR -->
-<div class="mobile-booking-bar">
-  <div class="mobile-booking-inner">
-    <div class="mobile-booking-price">
-      <span class="amount" style="font-size:1rem">Call for pricing</span>
-    </div>
-    <button class="mobile-booking-btn" onclick="scrollToBooking()">Inquire Now</button>
-  </div>
-</div>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
-  <img class="lightbox-img" id="lightboxImg" src="" alt="Property photo">
-  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
-  <div class="lightbox-counter" id="lightboxCounter"></div>
-</div>
-
-<!-- BOOKING MODAL -->
-<div id="bookingModal" style="display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.5);justify-content:center;align-items:center;padding:20px">
-  <div style="background:white;border-radius:var(--radius-lg);padding:36px;max-width:480px;width:100%;position:relative;animation:fadeIn .3s ease">
-    <button onclick="closeBookingModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.4rem;color:var(--gray-400)">&times;</button>
-    <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:6px">Get in Touch</h3>
-    <p style="color:var(--gray-500);font-size:.88rem;margin-bottom:24px">Tell us about your stay and we'll get back to you with pricing and availability within 1 hour.</p>
-    <form id="bookingForm" onsubmit="submitBooking(event)">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-        <div>
-          <label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">First Name</label>
-          <input type="text" required placeholder="John" style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem">
-        </div>
-        <div>
-          <label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">Last Name</label>
-          <input type="text" required placeholder="Doe" style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem">
-        </div>
-      </div>
-      <div style="margin-bottom:12px">
-        <label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">Email</label>
-        <input type="email" required placeholder="john@example.com" style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem">
-      </div>
-      <div style="margin-bottom:12px">
-        <label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">Phone</label>
-        <input type="tel" required placeholder="+1 (555) 123-4567" style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem">
-      </div>
-      <div style="margin-bottom:20px">
-        <label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">Message (optional)</label>
-        <textarea rows="3" placeholder="Any special requests or questions..." style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem;resize:vertical"></textarea>
-      </div>
-      <button type="submit" class="booking-submit" style="margin-bottom:0">Send Inquiry</button>
-    </form>
-  </div>
-</div>
-
-<style>
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(16px) }
-  to { opacity: 1; transform: translateY(0) }
-}
-</style>
-
-<script>
-const GALLERY_IMAGES = [
-  'images/13-living-fireplace.png',
-  'images/14-living-patio.png',
-  'images/03-living-room-patio.png',
-  'images/04-living-fireplace-wide.png',
-  'images/01-open-living.png',
-  'images/12-kitchen-wide.png',
-  'images/11-kitchen-bar.png',
-  'images/08-kitchen-island.png',
-  'images/10-kitchen-galley.png',
-  'images/02-basement-lounge.png',
-  'images/09-basement-lounge2.png',
-  'images/05-basement-tv.png',
-  'images/06-basement-workspace.png',
-  'images/07-basement-games.png'
-];
-
-let lightboxIdx = 0;
-
-function openLightbox(idx) {
-  lightboxIdx = idx;
-  updateLightbox();
-  document.getElementById('lightbox').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function navLightbox(dir) {
-  lightboxIdx = (lightboxIdx + dir + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
-  updateLightbox();
-}
-
-function updateLightbox() {
-  document.getElementById('lightboxImg').src = GALLERY_IMAGES[lightboxIdx];
-  document.getElementById('lightboxCounter').textContent = `${lightboxIdx + 1} / ${GALLERY_IMAGES.length}`;
-}
-
-document.addEventListener('keydown', e => {
-  if (!document.getElementById('lightbox').classList.contains('active')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') navLightbox(-1);
-  if (e.key === 'ArrowRight') navLightbox(1);
-});
-
-function toggleDesc() {
-  const more = document.getElementById('descMore');
-  const btn = document.getElementById('readMoreBtn');
-  if (more.style.display === 'none') {
-    more.style.display = 'block';
-    btn.innerHTML = 'Show less &uarr;';
-  } else {
-    more.style.display = 'none';
-    btn.innerHTML = 'Show more &darr;';
-  }
-}
-
-function toggleMoreReviews() {
-  const more = document.getElementById('moreReviews');
-  const btn = document.getElementById('showMoreReviewsBtn');
-  if (more.style.display === 'none') {
-    more.style.display = 'grid';
-    btn.innerHTML = 'Show fewer reviews &uarr;';
-  } else {
-    more.style.display = 'none';
-    btn.innerHTML = 'Show all 60 reviews &darr;';
-  }
-}
-
-function scrollToBooking() {
-  const sidebar = document.getElementById('booking');
-  if (window.innerWidth <= 900) {
-    sidebar.style.display = 'block';
-    sidebar.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    document.querySelector('.mobile-booking-bar').style.display = 'none';
-  } else {
-    sidebar.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
-
-function handleBooking() {
-  document.getElementById('bookingModal').style.display = 'flex';
-}
-
-function closeBookingModal() {
-  document.getElementById('bookingModal').style.display = 'none';
-}
-
-function submitBooking(e) {
-  e.preventDefault();
-  const form = e.target;
-  const formData = new FormData(form);
-  const checkin = document.getElementById('checkin').value;
-  const checkout = document.getElementById('checkout').value;
-  const guests = document.getElementById('guests').value;
-
-  const dateInfo = checkin && checkout ? `\nPreferred Dates: ${checkin} to ${checkout}` : '';
-  alert(`Thank you for your inquiry!${dateInfo}\nGuests: ${guests}\n\nA member of our team will get back to you with pricing and availability shortly.`);
-  closeBookingModal();
-}
-
-document.getElementById('bookingModal').addEventListener('click', function(e) {
-  if (e.target === this) closeBookingModal();
-});
-
-function openMobileNav() {
-  document.getElementById('mobileNav').classList.add('active');
-}
-
-function closeMobileNav() {
-  document.getElementById('mobileNav').classList.remove('active');
-}
-
-const today = new Date();
-const tomorrow = new Date(today);
-tomorrow.setDate(tomorrow.getDate() + 1);
-const formatDate = d => d.toISOString().split('T')[0];
-document.getElementById('checkin').min = formatDate(today);
-document.getElementById('checkout').min = formatDate(tomorrow);
-</script>
 
 </body>
 </html>
