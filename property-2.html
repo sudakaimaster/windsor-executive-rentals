@@ -276,27 +276,25 @@ a { color: inherit; text-decoration: none }
 .booking-row {
   display: grid; grid-template-columns: 1fr 1fr;
 }
+.booking-row > div {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.booking-row > div:first-child {
+  border-right: 1px solid var(--gray-300);
+}
 .booking-field {
   padding: 12px 14px; border: none; background: none;
   font-family: inherit; font-size: .88rem; color: var(--gray-900);
   border-bottom: 1px solid var(--gray-300);
   width: 100%; text-align: center;
+  box-sizing: border-box;
 }
 .booking-field:focus { outline: none; background: var(--gray-50) }
-.booking-row > div:first-child {
-  border-right: 1px solid var(--gray-300);
-}
-.booking-row > div {
-  text-align: center;
-}
-.booking-row .booking-field {
-  text-align: center;
-}
 .booking-field-label {
   display: block; font-size: .68rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: .5px;
   color: var(--gray-900); padding: 12px 14px 0;
-  text-align: center;
+  text-align: center; width: 100%; box-sizing: border-box;
 }
 .booking-field-full {
   grid-column: 1 / -1;
