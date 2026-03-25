@@ -187,6 +187,60 @@ a { color: inherit; text-decoration: none }
 }
 .amenity-item svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--gray-500) }
 
+/* ─── AVAILABILITY CALENDAR ─── */
+.cal-container {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+}
+@media (max-width: 768px) {
+  .cal-container { grid-template-columns: 1fr; gap: 24px; }
+}
+.cal-month-title {
+  text-align: center; font-weight: 700; font-size: 1rem;
+  margin-bottom: 12px; color: var(--gray-900);
+}
+.cal-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px;
+}
+.cal-nav button {
+  background: none; border: 1px solid var(--gray-300); border-radius: 50%;
+  width: 36px; height: 36px; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; color: var(--gray-600);
+  transition: background .2s;
+}
+.cal-nav button:hover { background: var(--gray-100); }
+.cal-nav-title { font-weight: 700; font-size: 1rem; color: var(--gray-900); }
+.cal-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr); text-align: center;
+}
+.cal-dow {
+  font-size: .7rem; font-weight: 600; color: var(--gray-400);
+  text-transform: uppercase; padding: 0 0 8px;
+}
+.cal-day {
+  padding: 8px 0; font-size: .85rem; color: var(--gray-800);
+  border-radius: 50%; position: relative;
+}
+.cal-day.empty { visibility: hidden; }
+.cal-day.past { color: var(--gray-300); }
+.cal-day.booked {
+  background: #fee2e2; color: #dc2626; text-decoration: line-through;
+  border-radius: 4px;
+}
+.cal-day.available { color: var(--gray-800); }
+.cal-day.today {
+  font-weight: 800; box-shadow: inset 0 0 0 2px var(--primary); border-radius: 50%;
+}
+.cal-legend {
+  display: flex; gap: 20px; margin-top: 16px; font-size: .8rem; color: var(--gray-500);
+}
+.cal-legend span { display: flex; align-items: center; gap: 6px; }
+.cal-legend-dot {
+  width: 12px; height: 12px; border-radius: 3px; display: inline-block;
+}
+.cal-legend-dot.avail { background: #fff; border: 1px solid var(--gray-300); }
+.cal-legend-dot.booked { background: #fee2e2; }
+
 /* ─── REVIEWS ─── */
 .rating-bar {
   display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
@@ -290,6 +344,52 @@ a { color: inherit; text-decoration: none }
   box-sizing: border-box;
 }
 .booking-field:focus { outline: none; background: var(--gray-50) }
+.date-picker-wrap { position: relative; }
+.date-picker-display {
+  padding: 12px 14px; font-size: .88rem; color: var(--gray-900);
+  cursor: pointer; min-height: 20px; width: 100%; box-sizing: border-box;
+  text-align: center;
+}
+.date-picker-display.placeholder { color: var(--gray-400); }
+.dp-dropdown {
+  display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  z-index: 100; background: #fff; border: 1px solid var(--gray-200);
+  border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,.12);
+  padding: 16px; width: 280px;
+}
+.dp-dropdown.open { display: block; }
+.dp-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
+}
+.dp-header button {
+  background: none; border: 1px solid var(--gray-300); border-radius: 50%;
+  width: 30px; height: 30px; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; color: var(--gray-600);
+}
+.dp-header button:hover { background: var(--gray-100); }
+.dp-title { font-weight: 700; font-size: .9rem; }
+.dp-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr); text-align: center;
+}
+.dp-dow {
+  font-size: .65rem; font-weight: 600; color: var(--gray-400);
+  text-transform: uppercase; padding: 0 0 6px;
+}
+.dp-day {
+  padding: 6px 0; font-size: .82rem; color: var(--gray-800);
+  border-radius: 50%; cursor: pointer; transition: background .15s;
+}
+.dp-day:hover:not(.dp-disabled):not(.dp-empty) { background: var(--gray-100); }
+.dp-day.dp-empty { visibility: hidden; }
+.dp-day.dp-disabled {
+  color: var(--gray-300); text-decoration: line-through; cursor: not-allowed;
+  background: #fee2e2; border-radius: 4px;
+}
+.dp-day.dp-past { color: var(--gray-300); cursor: not-allowed; }
+.dp-day.dp-selected {
+  background: var(--primary); color: #fff; font-weight: 700;
+}
+.dp-day.dp-today { box-shadow: inset 0 0 0 2px var(--primary); font-weight: 700; }
 .booking-field-label {
   display: block; font-size: .68rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: .5px;
@@ -699,6 +799,25 @@ a { color: inherit; text-decoration: none }
       </div>
     </div>
 
+    <!-- AVAILABILITY CALENDAR -->
+    <div class="section" id="availability">
+      <h2 class="section-title">Availability</h2>
+      <div class="cal-nav">
+        <button onclick="calNav(-2)" aria-label="Previous months">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <span class="cal-nav-title" id="calNavTitle"></span>
+        <button onclick="calNav(2)" aria-label="Next months">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="cal-container" id="calContainer"></div>
+      <div class="cal-legend">
+        <span><span class="cal-legend-dot avail"></span> Available</span>
+        <span><span class="cal-legend-dot booked"></span> Booked</span>
+      </div>
+    </div>
+
     <!-- REVIEWS -->
     <div class="section" id="reviews">
       <h2 class="section-title">Guest Reviews</h2>
@@ -990,13 +1109,17 @@ a { color: inherit; text-decoration: none }
       </div>
       <div class="booking-fields">
         <div class="booking-row">
-          <div>
-            <label class="booking-field-label" for="checkin">Preferred Check-in</label>
-            <input type="date" class="booking-field" id="checkin">
+          <div class="date-picker-wrap" id="checkinWrap">
+            <label class="booking-field-label">Preferred Check-in</label>
+            <div class="date-picker-display placeholder" id="checkinDisplay" onclick="toggleDatePicker('checkin')">Select date</div>
+            <input type="hidden" id="checkin">
+            <div class="dp-dropdown" id="checkinDropdown"></div>
           </div>
-          <div>
-            <label class="booking-field-label" for="checkout">Preferred Checkout</label>
-            <input type="date" class="booking-field" id="checkout">
+          <div class="date-picker-wrap" id="checkoutWrap">
+            <label class="booking-field-label">Preferred Checkout</label>
+            <div class="date-picker-display placeholder" id="checkoutDisplay" onclick="toggleDatePicker('checkout')">Select date</div>
+            <input type="hidden" id="checkout">
+            <div class="dp-dropdown" id="checkoutDropdown"></div>
           </div>
         </div>
         <div class="booking-field-full">
@@ -1234,12 +1357,156 @@ function closeMobileNav() {
   document.getElementById('mobileNav').classList.remove('active');
 }
 
-const today = new Date();
-const tomorrow = new Date(today);
-tomorrow.setDate(tomorrow.getDate() + 1);
-const formatDate = d => d.toISOString().split('T')[0];
-document.getElementById('checkin').min = formatDate(today);
-document.getElementById('checkout').min = formatDate(tomorrow);
+/* ─── Availability Calendar ─── */
+const BOOKED_RANGES = [
+  { start: new Date(2026, 2, 23), end: new Date(2026, 2, 25) },
+  { start: new Date(2026, 2, 27), end: new Date(2026, 3, 5)  },
+  { start: new Date(2026, 3, 11), end: new Date(2026, 3, 15) },
+  { start: new Date(2026, 3, 22), end: new Date(2026, 3, 26) },
+  { start: new Date(2026, 4, 14), end: new Date(2026, 4, 17) },
+  { start: new Date(2026, 5, 22), end: new Date(2026, 5, 28) },
+  { start: new Date(2026, 6, 2),  end: new Date(2026, 6, 5)  },
+  { start: new Date(2026, 6, 16), end: new Date(2026, 6, 19) },
+  { start: new Date(2026, 6, 31), end: new Date(2026, 7, 3)  },
+  { start: new Date(2026, 11, 20), end: new Date(2027, 2, 26) }
+];
+
+function isBooked(date) {
+  return BOOKED_RANGES.some(r => date >= r.start && date < r.end);
+}
+
+let calOffset = 0;
+
+function renderCalendar() {
+  const now = new Date();
+  const baseMonth = now.getMonth() + calOffset;
+  const baseYear = now.getFullYear();
+  const container = document.getElementById('calContainer');
+  container.innerHTML = '';
+
+  const d1 = new Date(baseYear, baseMonth, 1);
+  const d2 = new Date(baseYear, baseMonth + 1, 1);
+  const months = [d1, d2];
+  const names = [];
+
+  months.forEach(first => {
+    const year = first.getFullYear();
+    const month = first.getMonth();
+    const title = first.toLocaleString('default', { month: 'long', year: 'numeric' });
+    names.push(title);
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const startDay = first.getDay();
+
+    let html = '<div class="cal-month"><div class="cal-month-title">' + title + '</div><div class="cal-grid">';
+    const dows = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+    dows.forEach(d => { html += '<div class="cal-dow">' + d + '</div>'; });
+
+    for (let i = 0; i < startDay; i++) html += '<div class="cal-day empty"></div>';
+
+    const today = new Date(); today.setHours(0,0,0,0);
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dt = new Date(year, month, day);
+      let cls = 'cal-day';
+      if (dt < today) cls += ' past';
+      else if (isBooked(dt)) cls += ' booked';
+      else cls += ' available';
+      if (dt.getTime() === today.getTime()) cls += ' today';
+      html += '<div class="' + cls + '">' + day + '</div>';
+    }
+    html += '</div></div>';
+    container.innerHTML += html;
+  });
+
+  document.getElementById('calNavTitle').textContent = names[0] + '  —  ' + names[1];
+}
+
+function calNav(dir) {
+  calOffset += dir;
+  renderCalendar();
+}
+
+renderCalendar();
+
+/* ─── Custom Date Picker ─── */
+const dpState = { checkin: { month: new Date().getMonth(), year: new Date().getFullYear(), selected: null }, checkout: { month: new Date().getMonth(), year: new Date().getFullYear(), selected: null } };
+
+function toggleDatePicker(type) {
+  const dd = document.getElementById(type + 'Dropdown');
+  const wasOpen = dd.classList.contains('open');
+  document.querySelectorAll('.dp-dropdown').forEach(d => d.classList.remove('open'));
+  if (!wasOpen) { dd.classList.add('open'); renderDatePicker(type); }
+}
+
+function renderDatePicker(type) {
+  const s = dpState[type];
+  const dd = document.getElementById(type + 'Dropdown');
+  const year = s.year, month = s.month;
+  const title = new Date(year, month, 1).toLocaleString('default', { month: 'long', year: 'numeric' });
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const startDay = new Date(year, month, 1).getDay();
+  const todayDate = new Date(); todayDate.setHours(0,0,0,0);
+
+  let html = '<div class="dp-header">';
+  html += '<button onclick="dpNav(\'' + type + '\',-1)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>';
+  html += '<span class="dp-title">' + title + '</span>';
+  html += '<button onclick="dpNav(\'' + type + '\',1)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>';
+  html += '</div><div class="dp-grid">';
+  ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach(d => { html += '<div class="dp-dow">' + d + '</div>'; });
+  for (let i = 0; i < startDay; i++) html += '<div class="dp-day dp-empty"></div>';
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dt = new Date(year, month, day);
+    let cls = 'dp-day';
+    const isPast = dt < todayDate;
+    const booked = !isPast && isBooked(dt);
+    const sel = s.selected && dt.getTime() === s.selected.getTime();
+    if (isPast) cls += ' dp-past';
+    else if (booked) cls += ' dp-disabled';
+    if (sel) cls += ' dp-selected';
+    if (dt.getTime() === todayDate.getTime()) cls += ' dp-today';
+    if (isPast || booked) {
+      html += '<div class="' + cls + '">' + day + '</div>';
+    } else {
+      html += '<div class="' + cls + '" onclick="dpSelect(\'' + type + '\',' + year + ',' + month + ',' + day + ')">' + day + '</div>';
+    }
+  }
+  html += '</div>';
+  dd.innerHTML = html;
+}
+
+function dpNav(type, dir) {
+  const s = dpState[type];
+  s.month += dir;
+  if (s.month > 11) { s.month = 0; s.year++; }
+  if (s.month < 0) { s.month = 11; s.year--; }
+  renderDatePicker(type);
+}
+
+function dpSelect(type, y, m, d) {
+  const dt = new Date(y, m, d);
+  dpState[type].selected = dt;
+  const display = document.getElementById(type + 'Display');
+  display.textContent = dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  display.classList.remove('placeholder');
+  document.getElementById(type).value = dt.toISOString().split('T')[0];
+  document.getElementById(type + 'Dropdown').classList.remove('open');
+  if (type === 'checkin') {
+    const coState = dpState.checkout;
+    coState.month = m; coState.year = y;
+    if (!coState.selected || coState.selected <= dt) {
+      coState.selected = null;
+      document.getElementById('checkoutDisplay').textContent = 'Select date';
+      document.getElementById('checkoutDisplay').classList.add('placeholder');
+      document.getElementById('checkout').value = '';
+    }
+  }
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.date-picker-wrap')) {
+    document.querySelectorAll('.dp-dropdown').forEach(d => d.classList.remove('open'));
+  }
+});
 </script>
 
 </body>
