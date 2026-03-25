@@ -347,6 +347,52 @@ a { color: inherit; text-decoration: none }
   box-sizing: border-box;
 }
 .booking-field:focus { outline: none; background: var(--gray-50) }
+.date-picker-wrap { position: relative; }
+.date-picker-display {
+  padding: 12px 14px; font-size: .88rem; color: var(--gray-900);
+  cursor: pointer; min-height: 20px; width: 100%; box-sizing: border-box;
+  text-align: center;
+}
+.date-picker-display.placeholder { color: var(--gray-400); }
+.dp-dropdown {
+  display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  z-index: 100; background: #fff; border: 1px solid var(--gray-200);
+  border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,.12);
+  padding: 16px; width: 280px;
+}
+.dp-dropdown.open { display: block; }
+.dp-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
+}
+.dp-header button {
+  background: none; border: 1px solid var(--gray-300); border-radius: 50%;
+  width: 30px; height: 30px; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; color: var(--gray-600);
+}
+.dp-header button:hover { background: var(--gray-100); }
+.dp-title { font-weight: 700; font-size: .9rem; }
+.dp-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr); text-align: center;
+}
+.dp-dow {
+  font-size: .65rem; font-weight: 600; color: var(--gray-400);
+  text-transform: uppercase; padding: 0 0 6px;
+}
+.dp-day {
+  padding: 6px 0; font-size: .82rem; color: var(--gray-800);
+  border-radius: 50%; cursor: pointer; transition: background .15s;
+}
+.dp-day:hover:not(.dp-disabled):not(.dp-empty) { background: var(--gray-100); }
+.dp-day.dp-empty { visibility: hidden; }
+.dp-day.dp-disabled {
+  color: var(--gray-300); text-decoration: line-through; cursor: not-allowed;
+  background: #fee2e2; border-radius: 4px;
+}
+.dp-day.dp-past { color: var(--gray-300); cursor: not-allowed; }
+.dp-day.dp-selected {
+  background: var(--primary); color: #fff; font-weight: 700;
+}
+.dp-day.dp-today { box-shadow: inset 0 0 0 2px var(--primary); font-weight: 700; }
 .booking-field-label {
   display: block; font-size: .68rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: .5px;
@@ -1051,13 +1097,17 @@ a { color: inherit; text-decoration: none }
       </div>
       <div class="booking-fields">
         <div class="booking-row">
-          <div>
-            <label class="booking-field-label" for="checkin">Preferred Check-in</label>
-            <input type="date" class="booking-field" id="checkin">
+          <div class="date-picker-wrap" id="checkinWrap">
+            <label class="booking-field-label">Preferred Check-in</label>
+            <div class="date-picker-display placeholder" id="checkinDisplay" onclick="toggleDatePicker('checkin')">Select date</div>
+            <input type="hidden" id="checkin">
+            <div class="dp-dropdown" id="checkinDropdown"></div>
           </div>
-          <div>
-            <label class="booking-field-label" for="checkout">Preferred Checkout</label>
-            <input type="date" class="booking-field" id="checkout">
+          <div class="date-picker-wrap" id="checkoutWrap">
+            <label class="booking-field-label">Preferred Checkout</label>
+            <div class="date-picker-display placeholder" id="checkoutDisplay" onclick="toggleDatePicker('checkout')">Select date</div>
+            <input type="hidden" id="checkout">
+            <div class="dp-dropdown" id="checkoutDropdown"></div>
           </div>
         </div>
         <div class="booking-field-full">
@@ -1361,12 +1411,86 @@ function closeMobileNav() {
   document.getElementById('mobileNav').classList.remove('active');
 }
 
-const today = new Date();
-const tomorrow = new Date(today);
-tomorrow.setDate(tomorrow.getDate() + 1);
-const formatDate = d => d.toISOString().split('T')[0];
-document.getElementById('checkin').min = formatDate(today);
-document.getElementById('checkout').min = formatDate(tomorrow);
+/* ─── Custom Date Picker ─── */
+const dpState = { checkin: { month: new Date().getMonth(), year: new Date().getFullYear(), selected: null }, checkout: { month: new Date().getMonth(), year: new Date().getFullYear(), selected: null } };
+
+function toggleDatePicker(type) {
+  const dd = document.getElementById(type + 'Dropdown');
+  const wasOpen = dd.classList.contains('open');
+  document.querySelectorAll('.dp-dropdown').forEach(d => d.classList.remove('open'));
+  if (!wasOpen) { dd.classList.add('open'); renderDatePicker(type); }
+}
+
+function renderDatePicker(type) {
+  const s = dpState[type];
+  const dd = document.getElementById(type + 'Dropdown');
+  const year = s.year, month = s.month;
+  const title = new Date(year, month, 1).toLocaleString('default', { month: 'long', year: 'numeric' });
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const startDay = new Date(year, month, 1).getDay();
+  const todayDate = new Date(); todayDate.setHours(0,0,0,0);
+
+  let html = '<div class="dp-header">';
+  html += '<button onclick="dpNav(\'' + type + '\',-1)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>';
+  html += '<span class="dp-title">' + title + '</span>';
+  html += '<button onclick="dpNav(\'' + type + '\',1)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>';
+  html += '</div><div class="dp-grid">';
+  ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach(d => { html += '<div class="dp-dow">' + d + '</div>'; });
+  for (let i = 0; i < startDay; i++) html += '<div class="dp-day dp-empty"></div>';
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dt = new Date(year, month, day);
+    let cls = 'dp-day';
+    const isPast = dt < todayDate;
+    const booked = !isPast && isBooked(dt);
+    const sel = s.selected && dt.getTime() === s.selected.getTime();
+    if (isPast) cls += ' dp-past';
+    else if (booked) cls += ' dp-disabled';
+    if (sel) cls += ' dp-selected';
+    if (dt.getTime() === todayDate.getTime()) cls += ' dp-today';
+    if (isPast || booked) {
+      html += '<div class="' + cls + '">' + day + '</div>';
+    } else {
+      html += '<div class="' + cls + '" onclick="dpSelect(\'' + type + '\',' + year + ',' + month + ',' + day + ')">' + day + '</div>';
+    }
+  }
+  html += '</div>';
+  dd.innerHTML = html;
+}
+
+function dpNav(type, dir) {
+  const s = dpState[type];
+  s.month += dir;
+  if (s.month > 11) { s.month = 0; s.year++; }
+  if (s.month < 0) { s.month = 11; s.year--; }
+  renderDatePicker(type);
+}
+
+function dpSelect(type, y, m, d) {
+  const dt = new Date(y, m, d);
+  dpState[type].selected = dt;
+  const display = document.getElementById(type + 'Display');
+  display.textContent = dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  display.classList.remove('placeholder');
+  document.getElementById(type).value = dt.toISOString().split('T')[0];
+  document.getElementById(type + 'Dropdown').classList.remove('open');
+  if (type === 'checkin') {
+    const coState = dpState.checkout;
+    coState.month = m; coState.year = y;
+    if (!coState.selected || coState.selected <= dt) {
+      const next = new Date(y, m, d + 1);
+      coState.selected = null;
+      document.getElementById('checkoutDisplay').textContent = 'Select date';
+      document.getElementById('checkoutDisplay').classList.add('placeholder');
+      document.getElementById('checkout').value = '';
+    }
+  }
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.date-picker-wrap')) {
+    document.querySelectorAll('.dp-dropdown').forEach(d => d.classList.remove('open'));
+  }
+});
 </script>
 
 </body>
