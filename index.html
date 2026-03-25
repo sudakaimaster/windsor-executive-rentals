@@ -11,23 +11,23 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root {
-  --primary: #e63946;
-  --primary-dark: #c1121f;
-  --primary-light: #fce4e6;
-  --dark: #1a1a2e;
-  --dark-soft: #2d2d44;
-  --gray-900: #1f2937;
-  --gray-700: #374151;
-  --gray-600: #4b5563;
-  --gray-500: #6b7280;
-  --gray-400: #9ca3af;
-  --gray-300: #d1d5db;
-  --gray-200: #e5e7eb;
-  --gray-100: #f3f4f6;
-  --gray-50: #f9fafb;
+  --primary: #8b7355;
+  --primary-dark: #6b5740;
+  --primary-light: #f5f0eb;
+  --dark: #2c2620;
+  --dark-soft: #3d352c;
+  --gray-900: #2c2620;
+  --gray-700: #4a4139;
+  --gray-600: #5e554c;
+  --gray-500: #7a716a;
+  --gray-400: #a39d97;
+  --gray-300: #d4cfc9;
+  --gray-200: #e8e4df;
+  --gray-100: #f5f2ef;
+  --gray-50: #faf8f6;
   --white: #ffffff;
-  --gold: #f59e0b;
-  --green: #10b981;
+  --gold: #c9a96e;
+  --green: #7a9b76;
   --radius: 12px;
   --radius-lg: 16px;
   --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
@@ -52,7 +52,7 @@ a { color: inherit; text-decoration: none }
 
 .nav {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(255,255,255,.92);
+  background: rgba(250,248,246,.95);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--gray-200);
   padding: 0 24px;
@@ -85,15 +85,15 @@ a { color: inherit; text-decoration: none }
 
 /* HERO */
 .hero {
-  background: linear-gradient(135deg, var(--dark) 0%, #2d2d44 100%);
+  background: linear-gradient(135deg, #2c2620 0%, #3d352c 50%, #4a3f34 100%);
   padding: 80px 24px 96px;
   text-align: center; color: white;
   position: relative; overflow: hidden;
 }
 .hero::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 30% 50%, rgba(230,57,70,.15) 0%, transparent 60%),
-              radial-gradient(circle at 70% 80%, rgba(245,158,11,.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 30% 50%, rgba(201,169,110,.12) 0%, transparent 60%),
+              radial-gradient(circle at 70% 80%, rgba(139,115,85,.1) 0%, transparent 50%);
 }
 .hero-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto }
 .hero-badge {
@@ -110,7 +110,7 @@ a { color: inherit; text-decoration: none }
   font-weight: 700; line-height: 1.2; margin-bottom: 16px;
 }
 .hero h1 span {
-  background: linear-gradient(90deg, #fbbf24, #fde68a);
+  background: linear-gradient(90deg, #c9a96e, #e2d1a8);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .hero p {
@@ -123,7 +123,7 @@ a { color: inherit; text-decoration: none }
 .hero-stat { text-align: center }
 .hero-stat .num {
   font-size: 1.8rem; font-weight: 800;
-  background: linear-gradient(90deg, #fbbf24, #fde68a);
+  background: linear-gradient(90deg, #c9a96e, #e2d1a8);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .hero-stat .label { font-size: .82rem; color: rgba(255,255,255,.5); margin-top: 2px }
