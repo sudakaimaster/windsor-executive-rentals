@@ -30,20 +30,15 @@ async function submitBooking(){
   if(new Date(checkout)<=new Date(checkin)){alert('Check-out date must be after check-in date.');return;}
   const btn=document.getElementById('submitBtn');
   btn.disabled=true;btn.textContent='Sending...';
+  const data={property,name:firstName+' '+lastName,email,phone,'check-in':checkin,'check-out':checkout,guests,'special-requests':requests||'None'};
   try{
-    const res=await fetch('https://formspree.io/f/xnjopjgn',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({property,name:firstName+' '+lastName,email,phone,'check-in':checkin,'check-out':checkout,guests,'special-requests':requests||'None'})
-    });
-    if(res.ok){
-      document.getElementById('form-fields').style.display='none';
-      document.getElementById('form-success').style.display='block';
-    } else {
-      alert('Something went wrong. Please try again or contact us directly at 647-470-7333.');
-      btn.disabled=false;btn.textContent='Send Booking Request';
-    }
-  } catch(e){
+    await Promise.all([
+      fetch('https://formspree.io/f/xnjopjgn',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)}),
+      fetch('https://hook.us2.make.com/yqlhgkuuzbgnz5c5xlme674hh9jnkfin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+    ]);
+    document.getElementById('form-fields').style.display='none';
+    document.getElementById('form-success').style.display='block';
+  }catch(e){
     alert('Something went wrong. Please try again or contact us directly at 647-470-7333.');
     btn.disabled=false;btn.textContent='Send Booking Request';
   }
