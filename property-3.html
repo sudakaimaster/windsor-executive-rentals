@@ -178,6 +178,18 @@ img{display:block;max-width:100%}button{cursor:pointer;font-family:inherit}a{col
 @media(max-width:900px){.main-layout{grid-template-columns:1fr;gap:32px}.booking-sidebar{position:static;display:none}.mobile-booking-bar{display:block}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:240px 160px;}.gallery-grid .gallery-img:first-child{grid-column:1/-1}.gallery-grid .gallery-img:nth-child(n+4){display:none}.prop-highlights{grid-template-columns:1fr}.reviews-grid{grid-template-columns:1fr}}
 @media(max-width:640px){.nav-links{display:none}.nav-hamburger{display:block}.gallery-grid{grid-template-columns:1fr;grid-template-rows:260px;}.gallery-grid .gallery-img:nth-child(n+2){display:none}.amenities-grid{grid-template-columns:1fr}.rules-grid{grid-template-columns:1fr}.save-banner h2{font-size:1.4rem}body{padding-bottom:68px}.cal-d{min-height:38px;}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* Enhanced price summary */
+.price-est-row{display:flex;justify-content:space-between;color:var(--gray-500,#6b7280);margin-bottom:6px;font-size:.85rem;}
+.price-est-divider{height:1px;background:rgba(201,168,76,.2);margin:10px 0;}
+.price-est-tax{display:flex;justify-content:space-between;font-size:.82rem;color:var(--gray-500,#6b7280);margin-bottom:5px;}
+.price-est-total{display:flex;justify-content:space-between;font-weight:700;color:var(--gray-900,#1f2937);border-top:1.5px solid rgba(201,168,76,.4);padding-top:10px;margin-top:6px;font-size:1rem;}
+.price-est-savings{display:flex;align-items:flex-start;gap:7px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:7px;padding:9px 12px;margin-top:12px;}
+.price-est-savings svg{width:14px;height:14px;color:#10b981;flex-shrink:0;margin-top:1px;}
+.price-est-savings span{font-size:.75rem;color:#065f46;font-weight:500;line-height:1.4;}
+.book-now-btn{display:block;width:100%;background:linear-gradient(135deg,#c9a84c,#e8c97a);color:#1a1a1a;border:none;padding:15px;border-radius:50px;font-size:.95rem;font-weight:700;cursor:pointer;text-align:center;margin-top:14px;transition:transform .2s,box-shadow .2s;font-family:'Playfair Display',serif;letter-spacing:.04em;text-decoration:none;}
+.book-now-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(201,168,76,.4);}
+
 </style>
 </head>
 <body>
@@ -569,7 +581,30 @@ function updateDateDisplay(){
     document.getElementById('priceNights').textContent=`${nights.length} night${nights.length>1?'s':''} total`;
     document.getElementById('priceTotal').textContent='$'+total.toLocaleString();
     pe.classList.add('show');
-  }else{pe.classList.remove('show');}
+
+  // Taxes + book button
+  if(selStart&&selEnd){
+    const nights=calcNights(selStart,selEnd);
+    const sub=nights.reduce((s,n)=>s+n.price,0);
+    const mat=sub*MAT_RATE,hst=sub*HST_RATE,tot=sub+mat+hst;
+    const mv=document.getElementById('propMatVal'),hv=document.getElementById('propHstVal');
+    if(mv)mv.textContent=fmtMoney(mat);
+    if(hv)hv.textContent=fmtMoney(hst);
+    document.getElementById('priceNights').textContent=nights.length+' night'+(nights.length>1?'s':'')+' total (incl. taxes)';
+    document.getElementById('priceTotal').textContent=fmtMoney(tot);
+    const bb=document.getElementById('propBookBtn');
+    if(bb)bb.style.display='block';
+    pe.classList.add('show');
+  }else{
+    const bb=document.getElementById('propBookBtn');
+    if(bb)bb.style.display='none';
+    pe.classList.remove('show');
+  }
+
+  }else{
+    const bb=document.getElementById('propBookBtn');if(bb)bb.style.display='none';
+    pe.classList.remove('show');
+  }
 }
 
 // Init
@@ -593,6 +628,28 @@ function closeBookingModal(){document.getElementById('bookingModal').style.displ
 document.getElementById('bookingModal').addEventListener('click',function(e){if(e.target===this)closeBookingModal();});
 function openMobileNav(){document.getElementById('mobileNav').classList.add('active');}
 function closeMobileNav(){document.getElementById('mobileNav').classList.remove('active');}
+
+const MAT_RATE = 0.06, HST_RATE = 0.13;
+function fmtMoney(n){return '$'+n.toLocaleString('en-CA',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
+function goToCheckout(e){
+  e.preventDefault();
+  if(!selStart||!selEnd){alert('Please select dates first.');return;}
+  const nights=calcNights(selStart,selEnd);
+  const subtotal=nights.reduce((s,n)=>s+n.price,0);
+  let i=0,rowChunks=[];
+  while(i<nights.length){let j=i;while(j<nights.length&&nights[j].price===nights[i].price)j++;rowChunks.push((j-i)+'x'+nights[i].price);i=j;}
+  const url=new URL('checkout.html',window.location.href);
+  url.searchParams.set('prop',PROP_ID);
+  url.searchParams.set('checkin',selStart);
+  url.searchParams.set('checkout',selEnd);
+  url.searchParams.set('guests',document.getElementById('guests')?document.getElementById('guests').value:'2 guests');
+  url.searchParams.set('nights',nights.length);
+  url.searchParams.set('subtotal',subtotal.toFixed(2));
+  url.searchParams.set('nightrows',rowChunks.join(','));
+  window.location.href=url.toString();
+}
+
 </script>
 </body>
 </html>
