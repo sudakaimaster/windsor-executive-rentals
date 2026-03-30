@@ -4,642 +4,184 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stylish Downtown 2-Bedroom Home | Windsor, ON | Windsor Executive Rentals</title>
-<meta name="description" content="Fully renovated downtown Windsor home with high-end Gus Modern furniture, granite countertops, free parking &amp; garage. Steps from Casino, Detroit River &amp; Little Italy. Book direct and save.">
+<meta name="description" content="Over 3,400 sq ft of luxury living in Windsor, ON. King bed, private gym &amp; sauna, 6 TVs, gourmet kitchen. Perfect 5.0 rating. Book direct and save.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
 :root {
-  --primary: #e63946;
-  --primary-dark: #c1121f;
-  --primary-light: #fce4e6;
-  --dark: #1a1a2e;
-  --dark-soft: #2d2d44;
-  --gray-900: #1f2937;
-  --gray-700: #374151;
-  --gray-600: #4b5563;
-  --gray-500: #6b7280;
-  --gray-400: #9ca3af;
-  --gray-300: #d1d5db;
-  --gray-200: #e5e7eb;
-  --gray-100: #f3f4f6;
-  --gray-50: #f9fafb;
-  --white: #ffffff;
-  --gold: #f59e0b;
-  --green: #10b981;
-  --radius: 12px;
-  --radius-lg: 16px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
-  --shadow: 0 4px 20px rgba(0,0,0,.08);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,.12);
-  --max-w: 1120px;
-  --transition: .2s ease;
+  --primary: #e63946;--primary-dark: #c1121f;--primary-light: #fce4e6;
+  --dark: #1a1a2e;--dark-soft: #2d2d44;--gray-900: #1f2937;--gray-700: #374151;
+  --gray-600: #4b5563;--gray-500: #6b7280;--gray-400: #9ca3af;--gray-300: #d1d5db;
+  --gray-200: #e5e7eb;--gray-100: #f3f4f6;--gray-50: #f9fafb;--white: #ffffff;
+  --gold: #f59e0b;--green: #10b981;--radius: 12px;--radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);--shadow: 0 4px 20px rgba(0,0,0,.08);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.12);--max-w: 1120px;--transition: .2s ease;
 }
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--gray-900);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%}button{cursor:pointer;font-family:inherit}a{color:inherit;text-decoration:none}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--gray-200);padding:0 24px;}
+.nav-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-brand{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--primary);display:flex;align-items:center;gap:8px;white-space:nowrap;}
+.nav-brand svg{width:28px;height:28px;fill:var(--primary)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--gray-600);transition:color var(--transition);}
+.nav-links a:hover{color:var(--primary)}
+.nav-cta{padding:10px 22px;border-radius:80px;border:none;background:var(--primary);color:white;font-weight:600;font-size:.9rem;transition:background var(--transition),transform var(--transition);}
+.nav-cta:hover{background:var(--primary-dark);transform:translateY(-1px)}
+.nav-hamburger{display:none;background:none;border:none;padding:4px;}
+.nav-hamburger svg{width:28px;height:28px;color:var(--gray-700)}
+.hero-gallery{max-width:var(--max-w);margin:20px auto 0;padding:0 24px;}
+.gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:220px 220px;gap:8px;border-radius:var(--radius-lg);overflow:hidden;}
+.gallery-grid .gallery-img{position:relative;overflow:hidden}
+.gallery-grid .gallery-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+.gallery-grid .gallery-img:hover img{transform:scale(1.05)}
+.gallery-grid .gallery-img:first-child{grid-row:1/-1}
+.gallery-btn{position:absolute;bottom:16px;right:16px;padding:8px 18px;border-radius:8px;background:rgba(255,255,255,.95);border:1px solid var(--gray-300);font-weight:600;font-size:.82rem;color:var(--gray-900);backdrop-filter:blur(8px);transition:transform var(--transition);}
+.gallery-btn:hover{transform:translateY(-1px)}
+.main-layout{max-width:var(--max-w);margin:0 auto;padding:32px 24px 60px;display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:start;}
+.prop-header{padding-bottom:24px;border-bottom:1px solid var(--gray-200)}
+.prop-title{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.prop-location{display:flex;align-items:center;gap:6px;font-size:.95rem;color:var(--gray-600);margin-bottom:12px;}
+.prop-location svg{width:16px;height:16px;flex-shrink:0}
+.prop-stats{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:.92rem;color:var(--gray-600);}
+.prop-stats span{display:flex;align-items:center;gap:5px}
+.prop-stats svg{width:16px;height:16px}
+.prop-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:24px 0;border-bottom:1px solid var(--gray-200);}
+.highlight-card{display:flex;align-items:center;gap:12px;padding:16px;border-radius:var(--radius);background:var(--gray-50);border:1px solid var(--gray-200);}
+.highlight-icon{width:42px;height:42px;border-radius:10px;background:var(--primary-light);display:grid;place-items:center;flex-shrink:0;}
+.highlight-icon svg{width:20px;height:20px;color:var(--primary)}
+.highlight-text{font-size:.82rem}
+.highlight-text strong{display:block;font-weight:600;color:var(--gray-900);margin-bottom:1px}
+.highlight-text span{color:var(--gray-500)}
+.section{padding:28px 0;border-bottom:1px solid var(--gray-200)}
+.section:last-child{border-bottom:none}
+.section-title{font-size:1.3rem;font-weight:700;margin-bottom:16px;font-family:'Playfair Display',serif;}
+.section-desc{color:var(--gray-600);line-height:1.75;font-size:.95rem}
+.section-desc p+p{margin-top:12px}
+.read-more-btn{background:none;border:none;font-weight:600;color:var(--gray-900);font-size:.92rem;margin-top:10px;text-decoration:underline;text-underline-offset:3px;}
+.amenities-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.amenity-item{display:flex;align-items:center;gap:14px;font-size:.92rem;color:var(--gray-700);}
+.amenity-item svg{width:22px;height:22px;flex-shrink:0;color:var(--gray-500)}
 
-html { scroll-behavior: smooth }
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: var(--gray-900);
-  background: var(--white);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+/* ── New Pricing Calendar ── */
+.cal-section-wrap{margin-bottom:0;}
+.cal-section-label{font-size:.82rem;font-weight:600;color:var(--gray-900);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;}
+.cal-section-status{font-size:.72rem;color:var(--gray-500);font-weight:400;}
+.cal-wrap{border:1.5px solid var(--gray-200);border-radius:10px;overflow:hidden;background:var(--white);}
+.cal-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--dark);}
+.cal-hdr button{background:none;border:none;color:#c9a84c;font-size:1.1rem;cursor:pointer;padding:2px 8px;border-radius:4px;transition:background .15s;}
+.cal-hdr button:hover{background:rgba(201,168,76,.2);}
+.cal-hdr-title{font-family:'Playfair Display',serif;color:white;font-size:.95rem;}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);}
+.cal-dow{text-align:center;font-size:.68rem;font-weight:600;color:var(--gray-500);padding:8px 4px;background:var(--gray-50);text-transform:uppercase;letter-spacing:.05em;}
+.cal-d{text-align:center;padding:4px 2px 6px;font-size:.78rem;cursor:pointer;transition:background .15s,color .15s;border:1px solid transparent;position:relative;min-height:46px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;}
+.cal-d:hover:not(.blocked):not(.past):not(.empty){background:rgba(201,168,76,.15);border-radius:4px;}
+.cal-d.empty{cursor:default;}
+.cal-d.past{color:var(--gray-300);cursor:not-allowed;}
+.cal-d.blocked{background:#fee2e2;color:#dc2626;cursor:not-allowed;font-weight:600;}
+.cal-d.sel-start,.cal-d.sel-end{background:#c9a84c;color:#1a1a1a;font-weight:700;border-radius:4px;}
+.cal-d.in-range{background:rgba(201,168,76,.15);color:var(--gray-900);}
+.cal-d.today:not(.blocked):not(.sel-start):not(.sel-end){color:#c9a84c;font-weight:700;}
+.cal-d-num{font-size:.8rem;line-height:1;}
+.cal-d-price{font-size:.6rem;color:#c9a84c;font-weight:600;line-height:1;}
+.cal-d.blocked .cal-d-price,.cal-d.past .cal-d-price{display:none;}
+.cal-d.sel-start .cal-d-price,.cal-d.sel-end .cal-d-price{color:#1a1a1a;}
+.cal-legend-row{display:flex;gap:16px;padding:10px 16px;background:var(--gray-50);border-top:1px solid var(--gray-100);flex-wrap:wrap;}
+.cal-legend-item{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--gray-500);}
+.cal-legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+.cal-legend-dot.blocked{background:#fee2e2;border:1px solid #dc2626;}
+.cal-legend-dot.selected{background:#c9a84c;}
+.cal-legend-dot.available{background:var(--white);border:1px solid var(--gray-300);}
+.date-disp-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
+.date-box{padding:10px 14px;border:1.5px solid var(--gray-300);border-radius:8px;font-size:.85rem;color:var(--gray-500);background:var(--gray-50);}
+.date-box.filled{border-color:#c9a84c;color:var(--gray-900);background:var(--white);}
+.date-box-label{font-size:.72rem;font-weight:600;color:var(--gray-500);margin-bottom:2px;}
+.date-box-value{font-weight:600;}
+.price-est{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:12px 16px;margin-top:14px;display:none;font-size:.85rem;}
+.price-est.show{display:block;}
+.price-est-title{font-weight:600;color:var(--gray-900);margin-bottom:6px;}
+.price-est-row{display:flex;justify-content:space-between;color:var(--gray-500);margin-bottom:4px;}
+.price-est-total{display:flex;justify-content:space-between;font-weight:700;color:var(--gray-900);border-top:1px solid rgba(201,168,76,.3);padding-top:6px;margin-top:6px;}
 
-img { display: block; max-width: 100% }
-button { cursor: pointer; font-family: inherit }
-a { color: inherit; text-decoration: none }
-
-/* ─── NAV ─── */
-.nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--gray-200);
-  padding: 0 24px;
-}
-.nav-inner {
-  max-width: var(--max-w); margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 64px;
-}
-.nav-brand {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem; font-weight: 700; color: var(--primary);
-  display: flex; align-items: center; gap: 8px;
-  white-space: nowrap;
-}
-.nav-brand svg { width: 28px; height: 28px; fill: var(--primary) }
-.nav-links { display: flex; gap: 28px; align-items: center }
-.nav-links a {
-  font-size: .9rem; font-weight: 500; color: var(--gray-600);
-  transition: color var(--transition);
-}
-.nav-links a:hover { color: var(--primary) }
-.nav-cta {
-  padding: 10px 22px; border-radius: 80px; border: none;
-  background: var(--primary); color: white;
-  font-weight: 600; font-size: .9rem;
-  transition: background var(--transition), transform var(--transition);
-}
-.nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px) }
-.nav-hamburger {
-  display: none; background: none; border: none; padding: 4px;
-}
-.nav-hamburger svg { width: 28px; height: 28px; color: var(--gray-700) }
-
-/* ─── HERO GALLERY ─── */
-.hero-gallery {
-  max-width: var(--max-w); margin: 20px auto 0; padding: 0 24px;
-}
-.gallery-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 220px 220px;
-  gap: 8px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-.gallery-grid .gallery-img { position: relative; overflow: hidden }
-.gallery-grid .gallery-img img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .4s ease;
-}
-.gallery-grid .gallery-img:hover img { transform: scale(1.05) }
-.gallery-grid .gallery-img:first-child { grid-row: 1 / -1 }
-.gallery-btn {
-  position: absolute; bottom: 16px; right: 16px;
-  padding: 8px 18px; border-radius: 8px;
-  background: rgba(255,255,255,.95); border: 1px solid var(--gray-300);
-  font-weight: 600; font-size: .82rem; color: var(--gray-900);
-  backdrop-filter: blur(8px);
-  transition: transform var(--transition);
-}
-.gallery-btn:hover { transform: translateY(-1px) }
-
-/* ─── MAIN LAYOUT ─── */
-.main-layout {
-  max-width: var(--max-w); margin: 0 auto; padding: 32px 24px 60px;
-  display: grid; grid-template-columns: 1fr 380px; gap: 48px;
-  align-items: start;
-}
-
-/* ─── PROPERTY INFO ─── */
-.prop-header { padding-bottom: 24px; border-bottom: 1px solid var(--gray-200) }
-.prop-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.9rem; font-weight: 700; line-height: 1.3;
-  margin-bottom: 8px;
-}
-.prop-location {
-  display: flex; align-items: center; gap: 6px;
-  font-size: .95rem; color: var(--gray-600); margin-bottom: 12px;
-}
-.prop-location svg { width: 16px; height: 16px; flex-shrink: 0 }
-.prop-stats {
-  display: flex; flex-wrap: wrap; gap: 6px 20px;
-  font-size: .92rem; color: var(--gray-600);
-}
-.prop-stats span { display: flex; align-items: center; gap: 5px }
-.prop-stats svg { width: 16px; height: 16px }
-
-.prop-highlights {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
-  padding: 24px 0; border-bottom: 1px solid var(--gray-200);
-}
-.highlight-card {
-  display: flex; align-items: center; gap: 12px;
-  padding: 16px; border-radius: var(--radius);
-  background: var(--gray-50); border: 1px solid var(--gray-200);
-}
-.highlight-icon {
-  width: 42px; height: 42px; border-radius: 10px;
-  background: var(--primary-light);
-  display: grid; place-items: center; flex-shrink: 0;
-}
-.highlight-icon svg { width: 20px; height: 20px; color: var(--primary) }
-.highlight-text { font-size: .82rem }
-.highlight-text strong { display: block; font-weight: 600; color: var(--gray-900); margin-bottom: 1px }
-.highlight-text span { color: var(--gray-500) }
-
-/* ─── SECTIONS ─── */
-.section { padding: 28px 0; border-bottom: 1px solid var(--gray-200) }
-.section:last-child { border-bottom: none }
-.section-title {
-  font-size: 1.3rem; font-weight: 700; margin-bottom: 16px;
-  font-family: 'Playfair Display', serif;
-}
-.section-desc { color: var(--gray-600); line-height: 1.75; font-size: .95rem }
-.section-desc p + p { margin-top: 12px }
-.read-more-btn {
-  background: none; border: none; font-weight: 600;
-  color: var(--gray-900); font-size: .92rem; margin-top: 10px;
-  text-decoration: underline; text-underline-offset: 3px;
-}
-
-/* ─── AMENITIES ─── */
-.amenities-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
-}
-.amenity-item {
-  display: flex; align-items: center; gap: 14px;
-  font-size: .92rem; color: var(--gray-700);
-}
-.amenity-item svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--gray-500) }
-
-/* ─── AVAILABILITY CALENDAR ─── */
-.cal-container {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
-}
-@media (max-width: 768px) {
-  .cal-container { grid-template-columns: 1fr; gap: 24px; }
-}
-.cal-month { }
-.cal-month-title {
-  text-align: center; font-weight: 700; font-size: 1rem;
-  margin-bottom: 12px; color: var(--gray-900);
-}
-.cal-nav {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 20px;
-}
-.cal-nav button {
-  background: none; border: 1px solid var(--gray-300); border-radius: 50%;
-  width: 36px; height: 36px; cursor: pointer; display: flex;
-  align-items: center; justify-content: center; color: var(--gray-600);
-  transition: background .2s;
-}
-.cal-nav button:hover { background: var(--gray-100); }
-.cal-nav-title { font-weight: 700; font-size: 1rem; color: var(--gray-900); }
-.cal-grid {
-  display: grid; grid-template-columns: repeat(7, 1fr); text-align: center;
-}
-.cal-dow {
-  font-size: .7rem; font-weight: 600; color: var(--gray-400);
-  text-transform: uppercase; padding: 0 0 8px;
-}
-.cal-day {
-  padding: 8px 0; font-size: .85rem; color: var(--gray-800);
-  border-radius: 50%; position: relative;
-}
-.cal-day.empty { visibility: hidden; }
-.cal-day.past { color: var(--gray-300); }
-.cal-day.booked {
-  background: #fee2e2; color: #dc2626; text-decoration: line-through;
-  border-radius: 4px;
-}
-.cal-day.available {
-  color: var(--gray-800);
-}
-.cal-day.today {
-  font-weight: 800; box-shadow: inset 0 0 0 2px var(--primary); border-radius: 50%;
-}
-.cal-legend {
-  display: flex; gap: 20px; margin-top: 16px; font-size: .8rem; color: var(--gray-500);
-}
-.cal-legend span { display: flex; align-items: center; gap: 6px; }
-.cal-legend-dot {
-  width: 12px; height: 12px; border-radius: 3px; display: inline-block;
-}
-.cal-legend-dot.avail { background: #fff; border: 1px solid var(--gray-300); }
-.cal-legend-dot.booked { background: #fee2e2; }
-
-/* ─── AVAILABILITY CALENDAR ─── */
-.cal-container {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
-}
-@media (max-width: 768px) {
-  .cal-container { grid-template-columns: 1fr; gap: 24px; }
-}
-.cal-month { }
-.cal-month-title {
-  text-align: center; font-weight: 700; font-size: 1rem;
-  margin-bottom: 12px; color: var(--gray-900);
-}
-.cal-nav {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 20px;
-}
-.cal-nav button {
-  background: none; border: 1px solid var(--gray-300); border-radius: 50%;
-  width: 36px; height: 36px; cursor: pointer; display: flex;
-  align-items: center; justify-content: center; color: var(--gray-600);
-  transition: background .2s;
-}
-.cal-nav button:hover { background: var(--gray-100); }
-.cal-nav-title { font-weight: 700; font-size: 1rem; color: var(--gray-900); }
-.cal-grid {
-  display: grid; grid-template-columns: repeat(7, 1fr); text-align: center;
-}
-.cal-dow {
-  font-size: .7rem; font-weight: 600; color: var(--gray-400);
-  text-transform: uppercase; padding: 0 0 8px;
-}
-.cal-day {
-  padding: 8px 0; font-size: .85rem; color: var(--gray-800);
-  border-radius: 50%; position: relative;
-}
-.cal-day.empty { visibility: hidden; }
-.cal-day.past { color: var(--gray-300); }
-.cal-day.booked {
-  background: #fee2e2; color: #dc2626; text-decoration: line-through;
-  border-radius: 4px;
-}
-.cal-day.available {
-  color: var(--gray-800);
-}
-.cal-day.today {
-  font-weight: 800; box-shadow: inset 0 0 0 2px var(--primary); border-radius: 50%;
-}
-.cal-legend {
-  display: flex; gap: 20px; margin-top: 16px; font-size: .8rem; color: var(--gray-500);
-}
-.cal-legend span { display: flex; align-items: center; gap: 6px; }
-.cal-legend-dot {
-  width: 12px; height: 12px; border-radius: 3px; display: inline-block;
-}
-.cal-legend-dot.avail { background: #fff; border: 1px solid var(--gray-300); }
-.cal-legend-dot.booked { background: #fee2e2; }
-
-/* ─── REVIEWS ─── */
-.rating-bar {
-  display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
-}
-.rating-big {
-  font-size: 2.2rem; font-weight: 800; color: var(--gray-900);
-}
-.rating-stars { display: flex; gap: 2px; color: var(--gold) }
-.rating-stars svg { width: 20px; height: 20px; fill: currentColor }
-.rating-count { font-size: .92rem; color: var(--gray-500) }
-.reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px }
-.review-card {
-  padding: 20px; border-radius: var(--radius);
-  border: 1px solid var(--gray-200); background: var(--white);
-}
-.review-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px }
-.review-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--primary-light); display: grid; place-items: center;
-  font-weight: 700; font-size: .9rem; color: var(--primary);
-}
-.review-meta strong { display: block; font-size: .9rem }
-.review-meta span { font-size: .8rem; color: var(--gray-500) }
-.review-stars { display: flex; gap: 1px; color: var(--gold); margin-bottom: 8px }
-.review-stars svg { width: 14px; height: 14px; fill: currentColor }
-.review-text { font-size: .88rem; color: var(--gray-600); line-height: 1.6 }
-
-/* ─── HOUSE RULES ─── */
-.rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
-.rule-item {
-  display: flex; align-items: center; gap: 10px;
-  font-size: .9rem; color: var(--gray-700);
-  padding: 10px 0;
-}
-.rule-item svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--gray-400) }
-
-/* ─── HOST ─── */
-.host-card {
-  display: flex; align-items: center; gap: 20px;
-  padding: 24px; border-radius: var(--radius-lg);
-  background: var(--gray-50); border: 1px solid var(--gray-200);
-}
-.host-avatar {
-  width: 64px; height: 64px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), #ff6b6b);
-  display: grid; place-items: center;
-  font-size: 1.6rem; font-weight: 700; color: white;
-}
-.host-info { flex: 1 }
-.host-info h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px }
-.host-info p { font-size: .88rem; color: var(--gray-500); margin-bottom: 8px }
-.host-badge {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-size: .78rem; font-weight: 600; color: var(--green);
-  background: #ecfdf5; padding: 3px 10px; border-radius: 80px;
-}
-.host-badge svg { width: 14px; height: 14px }
-
-/* ─── BOOKING SIDEBAR ─── */
-.booking-sidebar {
-  position: sticky; top: 84px;
-}
-.booking-card {
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-lg);
-  padding: 28px;
-  box-shadow: var(--shadow-lg);
-}
-.booking-price {
-  display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px;
-}
-.booking-price .amount {
-  font-size: 1.6rem; font-weight: 800;
-}
-.booking-price .per { font-size: .92rem; color: var(--gray-500) }
-.booking-save {
-  display: inline-flex; align-items: center; gap: 4px;
-  background: #ecfdf5; color: var(--green); font-size: .78rem;
-  font-weight: 600; padding: 3px 10px; border-radius: 80px; margin-bottom: 20px;
-}
-.booking-save svg { width: 14px; height: 14px }
-.booking-fields {
-  border: 1px solid var(--gray-300); border-radius: var(--radius);
-  overflow: hidden; margin-bottom: 16px;
-}
-.booking-row {
-  display: grid; grid-template-columns: 1fr 1fr;
-}
-.booking-row > div {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-}
-.booking-row > div:first-child {
-  border-right: 1px solid var(--gray-300);
-}
-.booking-field {
-  padding: 12px 14px; border: none; background: none;
-  font-family: inherit; font-size: .88rem; color: var(--gray-900);
-  border-bottom: 1px solid var(--gray-300);
-  width: 100%; text-align: center;
-  box-sizing: border-box;
-}
-.booking-field:focus { outline: none; background: var(--gray-50) }
-.date-picker-wrap { position: relative; }
-.date-picker-display {
-  padding: 12px 14px; font-size: .88rem; color: var(--gray-900);
-  cursor: pointer; min-height: 20px; width: 100%; box-sizing: border-box;
-  text-align: center;
-}
-.date-picker-display.placeholder { color: var(--gray-400); }
-.dp-dropdown {
-  display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-  z-index: 100; background: #fff; border: 1px solid var(--gray-200);
-  border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,.12);
-  padding: 16px; width: 280px;
-}
-.dp-dropdown.open { display: block; }
-.dp-header {
-  display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
-}
-.dp-header button {
-  background: none; border: 1px solid var(--gray-300); border-radius: 50%;
-  width: 30px; height: 30px; cursor: pointer; display: flex;
-  align-items: center; justify-content: center; color: var(--gray-600);
-}
-.dp-header button:hover { background: var(--gray-100); }
-.dp-title { font-weight: 700; font-size: .9rem; }
-.dp-grid {
-  display: grid; grid-template-columns: repeat(7, 1fr); text-align: center;
-}
-.dp-dow {
-  font-size: .65rem; font-weight: 600; color: var(--gray-400);
-  text-transform: uppercase; padding: 0 0 6px;
-}
-.dp-day {
-  padding: 6px 0; font-size: .82rem; color: var(--gray-800);
-  border-radius: 50%; cursor: pointer; transition: background .15s;
-}
-.dp-day:hover:not(.dp-disabled):not(.dp-empty) { background: var(--gray-100); }
-.dp-day.dp-empty { visibility: hidden; }
-.dp-day.dp-disabled {
-  color: var(--gray-300); text-decoration: line-through; cursor: not-allowed;
-  background: #fee2e2; border-radius: 4px;
-}
-.dp-day.dp-past { color: var(--gray-300); cursor: not-allowed; }
-.dp-day.dp-selected {
-  background: var(--primary); color: #fff; font-weight: 700;
-}
-.dp-day.dp-today { box-shadow: inset 0 0 0 2px var(--primary); font-weight: 700; }
-.booking-field-label {
-  display: block; font-size: .68rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .5px;
-  color: var(--gray-900); padding: 12px 14px 0;
-  text-align: center; width: 100%; box-sizing: border-box;
-}
-.booking-field-full {
-  grid-column: 1 / -1;
-}
-.booking-field.no-border { border-bottom: none }
-.guest-selector {
-  padding: 12px 14px; font-family: inherit; font-size: .88rem;
-  border: none; background: none; color: var(--gray-900);
-  width: 100%; cursor: pointer;
-}
-.guest-selector:focus { outline: none; background: var(--gray-50) }
-.booking-submit {
-  width: 100%; padding: 16px; border: none; border-radius: var(--radius);
-  background: linear-gradient(135deg, var(--primary), #ff6b6b);
-  color: white; font-size: 1.05rem; font-weight: 700;
-  transition: transform var(--transition), box-shadow var(--transition);
-  margin-bottom: 14px;
-}
-.booking-submit:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(230,57,70,.35);
-}
-.booking-note {
-  text-align: center; font-size: .82rem; color: var(--gray-500);
-}
-.booking-breakdown {
-  margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--gray-200);
-}
-.breakdown-row {
-  display: flex; justify-content: space-between;
-  font-size: .9rem; margin-bottom: 10px;
-}
-.breakdown-row.total {
-  font-weight: 700; font-size: 1rem;
-  padding-top: 12px; border-top: 1px solid var(--gray-200);
-  margin-top: 12px;
-}
-.breakdown-row .label { color: var(--gray-600); text-decoration: underline; text-underline-offset: 2px }
-.breakdown-row.total .label { color: var(--gray-900); text-decoration: none }
-
-/* ─── SAVE BANNER ─── */
-.save-banner {
-  background: linear-gradient(135deg, #1a1a2e, #2d2d44);
-  color: white; padding: 48px 24px; text-align: center;
-}
-.save-banner h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem; font-weight: 700; margin-bottom: 12px;
-}
-.save-banner p { color: rgba(255,255,255,.7); max-width: 520px; margin: 0 auto 24px; font-size: .95rem; line-height: 1.7 }
-.save-badges { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 28px }
-.save-badge {
-  display: flex; align-items: center; gap: 8px;
-  font-size: .9rem; font-weight: 500;
-}
-.save-badge svg { width: 20px; height: 20px; color: var(--green) }
-
-/* ─── FOOTER ─── */
-.footer {
-  background: var(--gray-50); border-top: 1px solid var(--gray-200);
-  padding: 40px 24px;
-}
-.footer-inner {
-  max-width: var(--max-w); margin: 0 auto;
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 16px;
-}
-.footer-copy { font-size: .85rem; color: var(--gray-500) }
-.footer-links { display: flex; gap: 24px }
-.footer-links a { font-size: .85rem; color: var(--gray-500); transition: color var(--transition) }
-.footer-links a:hover { color: var(--primary) }
-
-/* ─── MOBILE BOOKING BAR ─── */
-.mobile-booking-bar {
-  display: none;
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
-  background: var(--white); border-top: 1px solid var(--gray-200);
-  padding: 12px 20px;
-  box-shadow: 0 -4px 20px rgba(0,0,0,.08);
-}
-.mobile-booking-inner {
-  display: flex; align-items: center; justify-content: space-between;
-  max-width: var(--max-w); margin: 0 auto;
-}
-.mobile-booking-price .amount { font-size: 1.15rem; font-weight: 800 }
-.mobile-booking-price .per { font-size: .82rem; color: var(--gray-500) }
-.mobile-booking-btn {
-  padding: 12px 28px; border: none; border-radius: var(--radius);
-  background: linear-gradient(135deg, var(--primary), #ff6b6b);
-  color: white; font-weight: 700; font-size: .92rem;
-}
-
-/* ─── LIGHTBOX ─── */
-.lightbox {
-  display: none; position: fixed; inset: 0; z-index: 200;
-  background: rgba(0,0,0,.92);
-  justify-content: center; align-items: center;
-  padding: 40px;
-}
-.lightbox.active { display: flex }
-.lightbox-close {
-  position: absolute; top: 20px; right: 24px;
-  background: rgba(255,255,255,.15); border: none; border-radius: 50%;
-  width: 44px; height: 44px; display: grid; place-items: center;
-  color: white; font-size: 1.4rem;
-  transition: background var(--transition);
-}
-.lightbox-close:hover { background: rgba(255,255,255,.25) }
-.lightbox-img {
-  max-width: 90vw; max-height: 80vh;
-  border-radius: var(--radius); object-fit: contain;
-}
-.lightbox-nav {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: rgba(255,255,255,.15); border: none; border-radius: 50%;
-  width: 48px; height: 48px; display: grid; place-items: center;
-  color: white; font-size: 1.4rem;
-  transition: background var(--transition);
-}
-.lightbox-nav:hover { background: rgba(255,255,255,.25) }
-.lightbox-prev { left: 20px }
-.lightbox-next { right: 20px }
-.lightbox-counter {
-  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-  color: rgba(255,255,255,.7); font-size: .88rem;
-}
-
-/* ─── MOBILE NAV ─── */
-.mobile-nav {
-  display: none; position: fixed; inset: 0; z-index: 150;
-  background: rgba(0,0,0,.5);
-}
-.mobile-nav.active { display: block }
-.mobile-nav-panel {
-  position: absolute; top: 0; right: 0;
-  width: 280px; height: 100%; background: var(--white);
-  padding: 24px;
-  box-shadow: -8px 0 40px rgba(0,0,0,.1);
-  animation: slideIn .3s ease;
-}
-@keyframes slideIn {
-  from { transform: translateX(100%) }
-  to { transform: translateX(0) }
-}
-.mobile-nav-panel a {
-  display: block; padding: 14px 0; font-size: 1rem; font-weight: 500;
-  color: var(--gray-700); border-bottom: 1px solid var(--gray-100);
-}
-.mobile-nav-close {
-  background: none; border: none; font-size: 1.5rem;
-  color: var(--gray-500); margin-bottom: 16px;
-}
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 900px) {
-  .main-layout { grid-template-columns: 1fr; gap: 32px }
-  .booking-sidebar { position: static; display: none }
-  .mobile-booking-bar { display: block }
-  .gallery-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 240px 160px;
-  }
-  .gallery-grid .gallery-img:first-child { grid-column: 1 / -1 }
-  .gallery-grid .gallery-img:nth-child(n+4) { display: none }
-  .prop-highlights { grid-template-columns: 1fr }
-  .reviews-grid { grid-template-columns: 1fr }
-}
-@media (max-width: 640px) {
-  .nav-links { display: none }
-  .nav-hamburger { display: block }
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: 260px;
-  }
-  .gallery-grid .gallery-img:nth-child(n+2) { display: none }
-  .amenities-grid { grid-template-columns: 1fr }
-  .rules-grid { grid-template-columns: 1fr }
-  .save-banner h2 { font-size: 1.4rem }
-  body { padding-bottom: 68px }
-}
+.rating-bar{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+.rating-big{font-size:2.2rem;font-weight:800;color:var(--gray-900);}
+.rating-stars{display:flex;gap:2px;color:var(--gold)}
+.rating-stars svg{width:20px;height:20px;fill:currentColor}
+.rating-count{font-size:.92rem;color:var(--gray-500)}
+.reviews-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.review-card{padding:20px;border-radius:var(--radius);border:1px solid var(--gray-200);background:var(--white);}
+.review-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.review-avatar{width:40px;height:40px;border-radius:50%;background:var(--primary-light);display:grid;place-items:center;font-weight:700;font-size:.9rem;color:var(--primary);}
+.review-meta strong{display:block;font-size:.9rem}
+.review-meta span{font-size:.8rem;color:var(--gray-500)}
+.review-stars{display:flex;gap:1px;color:var(--gold);margin-bottom:8px}
+.review-stars svg{width:14px;height:14px;fill:currentColor}
+.review-text{font-size:.88rem;color:var(--gray-600);line-height:1.6}
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rule-item{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--gray-700);padding:10px 0;}
+.rule-item svg{width:20px;height:20px;flex-shrink:0;color:var(--gray-400)}
+.host-card{display:flex;align-items:center;gap:20px;padding:24px;border-radius:var(--radius-lg);background:var(--gray-50);border:1px solid var(--gray-200);}
+.host-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--primary),#ff6b6b);display:grid;place-items:center;font-size:1.6rem;font-weight:700;color:white;}
+.host-info{flex:1}
+.host-info h3{font-size:1.1rem;font-weight:700;margin-bottom:2px}
+.host-info p{font-size:.88rem;color:var(--gray-500);margin-bottom:8px}
+.host-badge{display:inline-flex;align-items:center;gap:4px;font-size:.78rem;font-weight:600;color:var(--green);background:#ecfdf5;padding:3px 10px;border-radius:80px;}
+.host-badge svg{width:14px;height:14px}
+.booking-sidebar{position:sticky;top:84px;}
+.booking-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-lg);}
+.booking-save{display:inline-flex;align-items:center;gap:4px;background:#ecfdf5;color:var(--green);font-size:.78rem;font-weight:600;padding:3px 10px;border-radius:80px;margin-bottom:20px;}
+.booking-save svg{width:14px;height:14px}
+.booking-fields{border:1px solid var(--gray-300);border-radius:var(--radius);overflow:hidden;margin-bottom:16px;}
+.booking-field-full{grid-column:1/-1;}
+.booking-field-label{display:block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gray-900);padding:12px 14px 0;text-align:center;width:100%;box-sizing:border-box;}
+.booking-field{padding:12px 14px;border:none;background:none;font-family:inherit;font-size:.88rem;color:var(--gray-900);border-bottom:1px solid var(--gray-300);width:100%;text-align:center;box-sizing:border-box;}
+.booking-field.no-border{border-bottom:none}
+.guest-selector{padding:12px 14px;font-family:inherit;font-size:.88rem;border:none;background:none;color:var(--gray-900);width:100%;cursor:pointer;}
+.guest-selector:focus{outline:none;background:var(--gray-50)}
+.booking-submit{width:100%;padding:16px;border:none;border-radius:var(--radius);background:linear-gradient(135deg,var(--primary),#ff6b6b);color:white;font-size:1.05rem;font-weight:700;transition:transform var(--transition),box-shadow var(--transition);margin-bottom:14px;}
+.booking-submit:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(230,57,70,.35);}
+.booking-note{text-align:center;font-size:.82rem;color:var(--gray-500);}
+.save-banner{background:linear-gradient(135deg,#1a1a2e,#2d2d44);color:white;padding:48px 24px;text-align:center;}
+.save-banner h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;margin-bottom:12px;}
+.save-banner p{color:rgba(255,255,255,.7);max-width:520px;margin:0 auto 24px;font-size:.95rem;line-height:1.7}
+.save-badges{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:28px}
+.save-badge{display:flex;align-items:center;gap:8px;font-size:.9rem;font-weight:500;}
+.save-badge svg{width:20px;height:20px;color:var(--green)}
+.footer{background:var(--gray-50);border-top:1px solid var(--gray-200);padding:40px 24px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-copy{font-size:.85rem;color:var(--gray-500)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:.85rem;color:var(--gray-500);transition:color var(--transition)}
+.footer-links a:hover{color:var(--primary)}
+.mobile-booking-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;background:var(--white);border-top:1px solid var(--gray-200);padding:12px 20px;box-shadow:0 -4px 20px rgba(0,0,0,.08);}
+.mobile-booking-inner{display:flex;align-items:center;justify-content:space-between;max-width:var(--max-w);margin:0 auto;}
+.mobile-booking-price .amount{font-size:1.15rem;font-weight:800}
+.mobile-booking-price .per{font-size:.82rem;color:var(--gray-500)}
+.mobile-booking-btn{padding:12px 28px;border:none;border-radius:var(--radius);background:linear-gradient(135deg,var(--primary),#ff6b6b);color:white;font-weight:700;font-size:.92rem;}
+.lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);justify-content:center;align-items:center;padding:40px;}
+.lightbox.active{display:flex}
+.lightbox-close{position:absolute;top:20px;right:24px;background:rgba(255,255,255,.15);border:none;border-radius:50%;width:44px;height:44px;display:grid;place-items:center;color:white;font-size:1.4rem;transition:background var(--transition);}
+.lightbox-close:hover{background:rgba(255,255,255,.25)}
+.lightbox-img{max-width:90vw;max-height:80vh;border-radius:var(--radius);object-fit:contain;}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;border-radius:50%;width:48px;height:48px;display:grid;place-items:center;color:white;font-size:1.4rem;transition:background var(--transition);}
+.lightbox-nav:hover{background:rgba(255,255,255,.25)}
+.lightbox-prev{left:20px}.lightbox-next{right:20px}
+.lightbox-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.7);font-size:.88rem;}
+.mobile-nav{display:none;position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.5);}
+.mobile-nav.active{display:block}
+.mobile-nav-panel{position:absolute;top:0;right:0;width:280px;height:100%;background:var(--white);padding:24px;box-shadow:-8px 0 40px rgba(0,0,0,.1);animation:slideIn .3s ease;}
+@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.mobile-nav-panel a{display:block;padding:14px 0;font-size:1rem;font-weight:500;color:var(--gray-700);border-bottom:1px solid var(--gray-100);}
+.mobile-nav-close{background:none;border:none;font-size:1.5rem;color:var(--gray-500);margin-bottom:16px;}
+@media(max-width:900px){.main-layout{grid-template-columns:1fr;gap:32px}.booking-sidebar{position:static;display:none}.mobile-booking-bar{display:block}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:240px 160px;}.gallery-grid .gallery-img:first-child{grid-column:1/-1}.gallery-grid .gallery-img:nth-child(n+4){display:none}.prop-highlights{grid-template-columns:1fr}.reviews-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.nav-links{display:none}.nav-hamburger{display:block}.gallery-grid{grid-template-columns:1fr;grid-template-rows:260px;}.gallery-grid .gallery-img:nth-child(n+2){display:none}.amenities-grid{grid-template-columns:1fr}.rules-grid{grid-template-columns:1fr}.save-banner h2{font-size:1.4rem}body{padding-bottom:68px}.cal-d{min-height:38px;}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-brand">
@@ -659,7 +201,6 @@ a { color: inherit; text-decoration: none }
   </div>
 </nav>
 
-<!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav" onclick="closeMobileNav()">
   <div class="mobile-nav-panel" onclick="event.stopPropagation()">
     <button class="mobile-nav-close" onclick="closeMobileNav()">&times;</button>
@@ -671,29 +212,19 @@ a { color: inherit; text-decoration: none }
   </div>
 </div>
 
-<!-- HERO GALLERY -->
 <div class="hero-gallery">
   <div class="gallery-grid" id="galleryGrid">
-    <div class="gallery-img" onclick="openLightbox(16)">
-      <img src="images/property-3/17-living-open.png" alt="Open concept living room with Gus Modern furniture">
-    </div>
-    <div class="gallery-img" onclick="openLightbox(10)">
-      <img src="images/property-3/11-kitchen-island.png" alt="Kitchen with granite island and bar stools">
-    </div>
-    <div class="gallery-img" onclick="openLightbox(8)">
-      <img src="images/property-3/09-bedroom-birch.png" alt="Bedroom with birch tree wallpaper">
-    </div>
-    <div class="gallery-img" onclick="openLightbox(13)">
-      <img src="images/property-3/14-bedroom-gold.png" alt="Bedroom with gold damask wallpaper">
-      <button class="gallery-btn" onclick="event.stopPropagation();openLightbox(0)">Show all 27 photos</button>
+    <div class="gallery-img" onclick="openLightbox(0)"><img src="images/13-living-fireplace.png" alt="Living room with fireplace"/></div>
+    <div class="gallery-img" onclick="openLightbox(7)"><img src="images/08-kitchen-island.png" alt="Gourmet kitchen"/></div>
+    <div class="gallery-img" onclick="openLightbox(2)"><img src="images/03-living-room-patio.png" alt="Living room with patio"/></div>
+    <div class="gallery-img" onclick="openLightbox(6)">
+      <img src="images/07-basement-games.png" alt="Basement games room"/>
+      <button class="gallery-btn" onclick="event.stopPropagation();openLightbox(0)">Show all 14 photos</button>
     </div>
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
 <div class="main-layout">
-
-  <!-- LEFT: PROPERTY INFO -->
   <div class="prop-content">
 
     <div class="prop-header">
@@ -704,181 +235,88 @@ a { color: inherit; text-decoration: none }
         <span style="color:var(--gray-300)">·</span>
         <span style="display:flex;align-items:center;gap:4px">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="var(--gold)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          4.97 (31 reviews)
+          5.0 · 60 reviews
         </span>
       </div>
       <div class="prop-stats">
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          4 guests
-        </span>
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M21 7H3l2-4h14l2 4z"/></svg>
-          2 bedrooms
-        </span>
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 12h20"/></svg>
-          2 beds
-        </span>
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M6 12V5a2 2 0 0 1 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v4"/></svg>
-          1 bathroom
-        </span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>8 guests</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M21 7H3l2-4h14l2 4z"/></svg>3 bedrooms</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 12h20"/></svg>4 beds</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M6 12V5a2 2 0 0 1 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v4"/></svg>2 bathrooms</span>
       </div>
     </div>
 
     <div class="prop-highlights">
-      <div class="highlight-card">
-        <div class="highlight-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <div class="highlight-text">
-          <strong>Downtown Location</strong>
-          <span>Casino, Detroit River &amp; Little Italy</span>
-        </div>
-      </div>
-      <div class="highlight-card">
-        <div class="highlight-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </div>
-        <div class="highlight-text">
-          <strong>Self Check-in</strong>
-          <span>Smart lock for easy access</span>
-        </div>
-      </div>
-      <div class="highlight-card">
-        <div class="highlight-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-        </div>
-        <div class="highlight-text">
-          <strong>Spotless Clean</strong>
-          <span>Thoroughly sanitized every stay</span>
-        </div>
-      </div>
+      <div class="highlight-card"><div class="highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="highlight-text"><strong>5-Star Experience</strong><span>Luxury furnishings throughout</span></div></div>
+      <div class="highlight-card"><div class="highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><div class="highlight-text"><strong>3,400+ SQ FT</strong><span>12-ft ceilings, open concept</span></div></div>
+      <div class="highlight-card"><div class="highlight-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div><div class="highlight-text"><strong>Spotless Clean</strong><span>Sanitized to perfection</span></div></div>
     </div>
 
-    <!-- ABOUT -->
     <div class="section" id="about">
       <h2 class="section-title">About this place</h2>
-      <div class="section-desc" id="descText">
-        <p>Beautiful fully renovated two-bedroom home with high-end Gus Modern furniture, granite kitchen and laundry countertops, one-car garage, and high-end bedsheets with two queen-sized mattresses. Modernly designed and furnished &mdash; cleaned very thoroughly before every stay!</p>
-        <p>Conveniently located in downtown Windsor, just a few blocks from the Windsor-Detroit Tunnel. Walking distance to Caesars Windsor Casino, the scenic Detroit River, and Little Italy on Erie Street. Single-level home with no stairs &mdash; perfect for accessibility.</p>
-        <p id="descMore" style="display:none">We pride ourselves on our cleanliness &mdash; we make sure to clean everything, even if it&rsquo;s been put away or unused, before your stay. We treat your stay the way we would hope others would for us. The home features self check-in via smart lock, free parking on premises plus free street parking, a private backyard with outdoor furniture, in-unit washer &amp; dryer, and a dedicated workspace. Family-friendly with crib, pack &rsquo;n play, high chair, baby bath, baby safety gates, and outlet covers available. Long-term stays welcome (28+ days).</p>
+      <div class="section-desc">
+        <p>Come and stay at this 5-star inspired home! Over 3,400 SQ FT of living space featuring high-end furniture, a King Bed with Beautyrest Harmony Lux Mattress, Hotel Collection towels, and high thread count sheets.</p>
+        <p>The beautiful open concept space boasts 12-foot high ceilings throughout the entire unit with main level laundry. Enjoy 2 living rooms, 6 flatscreen Sony &amp; Samsung TVs, a fully stocked kitchen, and a Keurig Coffee &amp; Tea Bar.</p>
+        <p id="descMore" style="display:none">Unwind in the private gym featuring a treadmill, free weights, bench, yoga mats, and a sauna. Stay entertained with board games, ping pong, and an arcade game room. Streaming includes Netflix, Disney Plus, Prime, and Cable TV. We provide premium toiletries including organic Crate 61 Soap and Chi Brand shampoo. Guest has access to the entire property!</p>
       </div>
       <button class="read-more-btn" id="readMoreBtn" onclick="toggleDesc()">Show more &darr;</button>
     </div>
 
-    <!-- AMENITIES -->
     <div class="section" id="amenities">
       <h2 class="section-title">What this place offers</h2>
-      <div class="amenities-grid" id="amenitiesGrid">
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-          HDTV with Chromecast &amp; Netflix
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
-          Wi-Fi &amp; Ethernet connection
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-          Coffee maker &amp; hot water kettle
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
-          Full kitchen, dishwasher &amp; blender
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
-          Central A/C &amp; heating
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          Self check-in with smart lock
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          In-unit washer &amp; dryer
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          Private backyard &amp; patio
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3z"/><path d="M14 3h7v7h-7z"/><path d="M3 14h7v7H3z"/><path d="M14 14h7v7h-7z"/></svg>
-          Free parking + garage
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          Dedicated workspace
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-          Family-friendly (crib, high chair, baby gates)
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46L16 2 12 5.5 8 2l-4.38 1.46a1 1 0 0 0-.62.94v16.2a1 1 0 0 0 1.38.92L8 20l4-3.5 4 3.5 3.62 1.52a1 1 0 0 0 1.38-.92V4.4a1 1 0 0 0-.62-.94z"/></svg>
-          2 queen beds &mdash; granite countertops
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          Single level &mdash; no stairs
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Smoke &amp; CO alarms, first aid kit
-        </div>
-      </div>
-    </div>
-
-    <!-- NEIGHBOURHOOD -->
-    <div class="section" id="location">
-      <h2 class="section-title">Downtown Windsor</h2>
-      <p class="section-desc" style="margin-bottom:18px">In the heart of the city &mdash; everything at your doorstep:</p>
       <div class="amenities-grid">
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          Windsor-Detroit Tunnel nearby
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          Caesars Windsor Casino
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          Scenic Detroit River waterfront
-        </div>
-        <div class="amenity-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-          Little Italy &mdash; Erie Street dining
-        </div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Entire home — 3,400+ sq ft</div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>6 Flatscreen TVs (Sony/Samsung)</div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Netflix, Disney+, Prime &amp; Cable</div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>High-speed Wi-Fi</div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Keurig Coffee &amp; Tea Bar</div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>Fully stocked kitchen</div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>Private gym with sauna</div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><rect x="9" y="12" width="6" height="8"/></svg>Double car garage</div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="9"/><rect x="3" y="14" width="18" height="7" rx="1"/></svg>2 living rooms</div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46L16 2 12 5.5 8 2l-4.38 1.46a1 1 0 0 0-.62.94v16.2a1 1 0 0 0 1.38.92L8 20l4-3.5 4 3.5 3.62 1.52a1 1 0 0 0 1.38-.92V4.4a1 1 0 0 0-.62-.94z"/></svg>King bed — Beautyrest Harmony Lux</div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Main level washer &amp; dryer</div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>Board games, ping pong &amp; arcade</div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Premium toiletries &amp; refreshments</div>
+        <div class="amenity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>Hotel Collection towels &amp; linens</div>
       </div>
     </div>
 
-    <!-- AVAILABILITY CALENDAR -->
+    <!-- LIVE PRICING CALENDAR -->
     <div class="section" id="availability">
-      <h2 class="section-title">Availability</h2>
-      <div class="cal-nav">
-        <button onclick="calNav(-2)" aria-label="Previous months">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <span class="cal-nav-title" id="calNavTitle"></span>
-        <button onclick="calNav(2)" aria-label="Next months">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-      <div class="cal-container" id="calContainer"></div>
-      <div class="cal-legend">
-        <span><span class="cal-legend-dot avail"></span> Available</span>
-        <span><span class="cal-legend-dot booked"></span> Booked</span>
+      <h2 class="section-title">Availability &amp; Pricing</h2>
+      <div class="cal-section-wrap">
+        <div class="cal-section-label">Select Your Dates <span class="cal-section-status" id="calStatus">Loading availability...</span></div>
+        <div class="cal-wrap">
+          <div class="cal-hdr">
+            <button onclick="changeMonth(-1)">&#8249;</button>
+            <span class="cal-hdr-title" id="calTitle"></span>
+            <button onclick="changeMonth(1)">&#8250;</button>
+          </div>
+          <div class="cal-g"><div class="cal-dow">Su</div><div class="cal-dow">Mo</div><div class="cal-dow">Tu</div><div class="cal-dow">We</div><div class="cal-dow">Th</div><div class="cal-dow">Fr</div><div class="cal-dow">Sa</div></div>
+          <div class="cal-g" id="calDays"></div>
+          <div class="cal-legend-row">
+            <div class="cal-legend-item"><div class="cal-legend-dot available"></div>Available</div>
+            <div class="cal-legend-item"><div class="cal-legend-dot blocked"></div>Booked</div>
+            <div class="cal-legend-item"><div class="cal-legend-dot selected"></div>Your Selection</div>
+          </div>
+        </div>
+        <div class="date-disp-row">
+          <div class="date-box" id="ciBox"><div class="date-box-label">CHECK-IN</div><div class="date-box-value" id="ciDisp">Select date</div></div>
+          <div class="date-box" id="coBox"><div class="date-box-label">CHECK-OUT</div><div class="date-box-value" id="coDisp">Select date</div></div>
+        </div>
+        <div class="price-est" id="priceEst">
+          <div class="price-est-title">Price Estimate</div>
+          <div id="priceRows"></div>
+          <div class="price-est-total"><span id="priceNights"></span><span id="priceTotal"></span></div>
+        </div>
       </div>
     </div>
 
-    <!-- REVIEWS -->
     <div class="section" id="reviews">
       <h2 class="section-title">Guest Reviews</h2>
       <div class="rating-bar">
-        <span class="rating-big">4.97</span>
+        <span class="rating-big">5.0</span>
         <div>
           <div class="rating-stars">
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -887,344 +325,42 @@ a { color: inherit; text-decoration: none }
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
-          <span class="rating-count">31 reviews</span>
+          <span class="rating-count">60 reviews</span>
         </div>
       </div>
-      <div class="reviews-grid" id="reviewsGrid">
-        <!-- 1 - Christopher -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">C</div>
-            <div class="review-meta"><strong>Christopher</strong><span>February 2026 &middot; Stayed a few nights</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Excellent communication, wonderfully renovated home and super clean. Barb and Adrian really went above and beyond to ensure we had a great stay. Definitely would choose their place again on the next visit.</p>
-        </div>
-        <!-- 2 - Omar -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">O</div>
-            <div class="review-meta"><strong>Omar</strong><span>Dubai, United Arab Emirates &middot; February 2026 &middot; Stayed with kids</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">We loved our stay here. The location is great, and the space itself is beautiful and thoughtfully designed and you could feel the incredible attention to detail. The kitchen and home are fully equipped with everything you could possibly need including high-quality appliances that make longer stays especially comfortable. Barbara is a wonderful host who is so responsive and professional. We wish every Airbnb felt like this, and every host was like her. We will only be staying at one of her properties next time we visit Windsor.</p>
-        </div>
-        <!-- 3 - Stacy -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">S</div>
-            <div class="review-meta"><strong>Stacy</strong><span>August 2025 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Beautiful place to call home in Windsor. This house has been designed to a very high standard. The hosts have provided everything a guest could possibly need and more. We felt right at home as soon as we arrived. Having looked at the other Airbnb alternatives in the area, this house stands head and shoulders above the rest.</p>
-        </div>
-        <!-- 4 - Jeremey -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">J</div>
-            <div class="review-meta"><strong>Jeremey</strong><span>Canada &middot; May 2025 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">If I could give this place an extra star I would! I stayed at Barbara's for about 3 months and it was perfect for me. This home has everything you need for a long stay and everything is in new condition and works properly. Fully stocked kitchen cook ware and tools. Very comfortable beds and very nice bedding. Very nicely renovated place. Nice large private and fenced back yard, with a large garage. Barbara was a great host always responsive and accommodating.</p>
-        </div>
-        <!-- 5 - Jeffrey -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">J</div>
-            <div class="review-meta"><strong>Jeffrey</strong><span>August 2022 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Barbara's place met and exceeded my expectations in every way. She is always quick to respond, and is a very gracious hostess! I had the pleasure of being a guest for 1 month, and it felt just like being at home. Very close to downtown, groceries, restaurants, the Windsor Riverfront walking path and so much more. Very comfortable beds and all the feature comforts of home. Upon arrival the home was absolutely spotless. Highly Recommend!</p>
-        </div>
-        <!-- 6 - Jay -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">J</div>
-            <div class="review-meta"><strong>Jay</strong><span>Tampa, Florida &middot; March 2023 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Me and my wife have been here for 2 months+ and Barbara by far is the best host I have ever had. She was very responsive, kind, caring, always accommodating our needs, and always checked on us from time to time. The place is brand new, it was spotless, easy to access and the neighbors were very nice. We had zero problems with the water, internet, air conditioner etc. Thank you again Barbara!</p>
-        </div>
+      <div class="reviews-grid">
+        <div class="review-card"><div class="review-header"><div class="review-avatar">T</div><div class="review-meta"><strong>Tom</strong><span>January 2026 &middot; Newport Beach, CA</span></div></div><div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="review-text">If you're looking for an Airbnb that feels like the Ritz-Carlton, this is the place. The home was spotless, the beds were incredibly comfortable, and the added bonus of a private gym and sauna put it over the top. Exceptional stay all around!</p></div>
+        <div class="review-card"><div class="review-header"><div class="review-avatar">M</div><div class="review-meta"><strong>Maureen</strong><span>September 2025 &middot; Cary, NC</span></div></div><div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="review-text">This is our favorite Airbnb ever — the gold standard! The home has the MOST comfortable beds, the kitchen and baths are immaculate. The hosts are the absolute best. It will be our go-to spot for our next visit to Windsor!</p></div>
+        <div class="review-card"><div class="review-header"><div class="review-avatar">J</div><div class="review-meta"><strong>Jasem</strong><span>June 2024 &middot; Stayed with kids</span></div></div><div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="review-text">This was the best experience I have ever had at an Airbnb. The home was SPOTLESS and everything was at luxury level. Barbara and Adrian went out of their way to make our stay memorable. We will definitely book again!</p></div>
+        <div class="review-card"><div class="review-header"><div class="review-avatar">W</div><div class="review-meta"><strong>Weijia</strong><span>March 2026 &middot; Toronto, Canada</span></div></div><div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="review-text">Absolutely exceeded expectations! Best surprise was the bidet toilet seat — so comfortable and luxurious! Every detail shows how much thought the host put in. Easily one of the best Airbnbs I've ever booked. 10/10!</p></div>
       </div>
-      <!-- More reviews (collapsible) -->
-      <div class="reviews-grid" id="moreReviews" style="display:none;margin-top:20px">
-        <!-- 7 - Theressa -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">T</div>
-            <div class="review-meta"><strong>Theressa</strong><span>Calgary, Canada &middot; 1 week ago &middot; Stayed a few nights</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Great communication from the host, a central location, and a comfortable stay overall.</p>
-        </div>
-        <!-- 8 - 立石 牧子 -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">立</div>
-            <div class="review-meta"><strong>立石 牧子</strong><span>November 2025 &middot; Stayed with kids</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">The room and kitchen were both very clean, with everything we needed right where we needed it. We stayed for about two months. The kitchen was easy to use, making it simple to prepare daily lunches. Both the washer and dryer were large and easy to use. When there was an issue, the owner's husband came right over and was very kind. If we go back to Windsor, we will definitely rent it again.</p>
-        </div>
-        <!-- 9 - Casey -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">C</div>
-            <div class="review-meta"><strong>Casey</strong><span>Newmarket, Canada &middot; July 2025 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Clean and very well equipped. I spent a month here and Barbara and Adrian really care about how your stay goes. My favourite was having the use of their garage for parking and the beautiful backyard.</p>
-        </div>
-        <!-- 10 - Jackson -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">J</div>
-            <div class="review-meta"><strong>Jackson</strong><span>August 2025 &middot; Stayed about a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">The place was very clean and the beds were so comfortable. Kitchen supplies were easy to find. Overall, an awesome stay!</p>
-        </div>
-        <!-- 11 - Jesse -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">J</div>
-            <div class="review-meta"><strong>Jesse</strong><span>July 2025 &middot; Stayed about a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Beautiful spot and great host! Thank you Barbara!</p>
-        </div>
-        <!-- 12 - Don -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">D</div>
-            <div class="review-meta"><strong>Don</strong><span>Amherstburg, Canada &middot; September 2024 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Barbara was a great host. The place is beautiful and meticulously clean. There was a garage that I could park my car in which is rare in a downtown home. There is also lots of privacy in the fenced back yard. Barbara even offered to bring a crib by for my young daughter if we needed it. Overall it was a great stay.</p>
-        </div>
-        <!-- 13 - Kathy -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">K</div>
-            <div class="review-meta"><strong>Kathy</strong><span>Averill Park, New York &middot; June 2024 &middot; Stayed about a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Barbara (owner) was super responsive and helpful. The place was clean and neat and had all the amenities one would want (such as washer dryer/dishwasher, dishes, pans, and other kitchen needs). It was super easy to get to downtown Windsor by foot or car. Garage for the car. All really well thought out. Thank you Barbara!</p>
-        </div>
-        <!-- 14 - Dalia -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">D</div>
-            <div class="review-meta"><strong>Dalia</strong><span>January 2025</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Barbara's place is exactly as described; clean, homey and included everything we could possibly need during our extended stay. We felt right at home. Barbara is friendly, responds quickly, and is quite accommodating. The place is close to the border and downtown. I strongly recommend this place, especially for long stays.</p>
-        </div>
-        <!-- 15 - 주영 -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">주</div>
-            <div class="review-meta"><strong>주영</strong><span>August 2024</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Super worth staying. I had stayed here for a month and I found this house very comfortable and cozy like my own house. Barbara responds very quickly and sincerely. Moreover, there are enough items for taking care of baby such as highchair, crib and bouncer. You can also enjoy tea in backyard under the sunshine. Very close from Riverside and Food Basics. Friendly neighborhood.</p>
-        </div>
-        <!-- 16 - Carol-Ann -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">C</div>
-            <div class="review-meta"><strong>Carol-Ann</strong><span>Wallaceburg, Canada &middot; July 2023 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Barbara's place was a perfect haven for us when my mom was in the hospital in Windsor. We could walk back and forth to the hospital. The house was well appointed with everything we needed, cleaning supplies and cooking utensils/appliances. Wonderful stay, highly recommend!</p>
-        </div>
-        <!-- 17 - Jenny -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">J</div>
-            <div class="review-meta"><strong>Jenny</strong><span>May 2024 &middot; Stayed with kids</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">I found it, I felt at home, it has all the comforts to be cozy, without a doubt it is the best option, excellent hosts. It's close to everything in downtown. An unforgettable place. I'm very grateful. I recommend it!</p>
-        </div>
-        <!-- 18 - Chaunyce -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">C</div>
-            <div class="review-meta"><strong>Chaunyce</strong><span>Mississauga, Canada &middot; April 2022 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Barbara was absolutely incredible. Made sure I was well taken care of from the moment I started messaging her. The house was perfect and welcoming especially for a long stay! I did a lot of research prior to committing and I'm so happy I picked this one. It was like winning the Airbnb jackpot. My stay was truly fabulous. Would DEFINITELY recommend and would definitely stay again.</p>
-        </div>
-        <!-- 19 - Tricia -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">T</div>
-            <div class="review-meta"><strong>Tricia</strong><span>Stone Mountain, Georgia &middot; December 2021 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Barbara's home is outstanding. It is meticulously clean, modern and bright, and in a prime location within walking distance to grocery store, restaurants. My husband and I stayed there for 3 weeks and were beyond pleased. Barbara's hospitality was exemplary. She ensured we arrived safely, assisted us with a bike repair, and when we forgot an item during check out offered to mail it back to us. Barbara is a one of a kind host.</p>
-        </div>
-        <!-- 20 - Harry -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">H</div>
-            <div class="review-meta"><strong>Harry</strong><span>June 2022 &middot; Stayed about a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Everything is perfect! The location is convenient. 10 minutes walk to Riverside. 3 minutes walk to a supermarket. The inside of the house is totally updated. Furniture and bedding quality is high level. Barbara responds fast. Strongly recommend!</p>
-        </div>
-        <!-- 21 - Sarah (UK) -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">S</div>
-            <div class="review-meta"><strong>Sarah</strong><span>East Kilbride, United Kingdom &middot; June 2022 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">We would highly recommend if you're looking for a clean and stylish place with a hotel feel. Our month-long stay was lovely, with great communication and care from our host. Wonderful!</p>
-        </div>
-        <!-- 22 - Zahra -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">Z</div>
-            <div class="review-meta"><strong>Zahra</strong><span>February 2022 &middot; Stayed with kids</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Barbara is a great host! Her house is super clean and nice. You'll feel like you're staying at your own home. She is very communicative. We stayed for 3 nights and loved it. Location is good too. Near US border and was convenient for us. Definitely recommend.</p>
-        </div>
-        <!-- 23 - Ali -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">A</div>
-            <div class="review-meta"><strong>Ali</strong><span>Hamilton, Canada &middot; September 2021 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">My wife and I stayed there for almost a month. Barbara's home was tidy and spotless. Also it was fully equipped. It's close to the downtown (10 minutes walking) and close to Food Basics store (2 minutes walking). I would highly recommend staying here.</p>
-        </div>
-        <!-- 24 - Tian Min -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">T</div>
-            <div class="review-meta"><strong>Tian Min</strong><span>December 2021</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">The place is well equipped and much better than we expected, the fruit tray and two bottles of water make us feel welcome, the home is cozy, bright and sparkling clean. The kitchen is well stocked, comfortable beds, all cleaning/laundry supplies were ready to use, good location close to everything, highly recommend!</p>
-        </div>
-        <!-- 25 - John -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">J</div>
-            <div class="review-meta"><strong>John</strong><span>Prince George, Canada &middot; November 2020 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Very clean and modern 2 bedroom house. All appliances are new and work well. Parking on the street or in the back shed. The host was very thoughtful and left a few starting food items. Would gladly stay here again next time in Windsor. Definitely a 5/5 stay for value.</p>
-        </div>
-        <!-- 26 - Tolu -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">T</div>
-            <div class="review-meta"><strong>Tolu</strong><span>May 2023 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Barbara was a kind and responsive host. She managed my concerns responsibly. Overall it was a pleasant stay.</p>
-        </div>
-        <!-- 27 - Ahmad -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">A</div>
-            <div class="review-meta"><strong>Ahmad</strong><span>October 2023 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Barbara was a great host and the place met all expectations.</p>
-        </div>
-        <!-- 28 - 조조 -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">조</div>
-            <div class="review-meta"><strong>조조</strong><span>February 2024</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Barbara's house is clean, smells good, and has all the amenities. It's the best if you're staying on a business trip.</p>
-        </div>
-        <!-- 29 - Emily -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">E</div>
-            <div class="review-meta"><strong>Emily</strong><span>Toronto, Canada &middot; June 2022 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">This was a fantastic place to stay &mdash; very clean, tidy, had everything that you needed. Convenient location. We really enjoyed our stay.</p>
-        </div>
-        <!-- 30 - Peter -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">P</div>
-            <div class="review-meta"><strong>Peter</strong><span>Calgary, Canada &middot; November 2021 &middot; Stayed over a week</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">The hosts and the house are extraordinary. I've stayed in numerous Airbnb, this wonderful place sets the bar above all else. Superb!</p>
-        </div>
-        <!-- 31 - Jeremy -->
-        <div class="review-card">
-          <div class="review-header">
-            <div class="review-avatar">J</div>
-            <div class="review-meta"><strong>Jeremy</strong><span>Canada &middot; September 2021 &middot; Stayed a few nights</span></div>
-          </div>
-          <div class="review-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="review-text">Great spot!</p>
-        </div>
-      </div>
-      <button class="read-more-btn" id="showMoreReviewsBtn" onclick="toggleMoreReviews()" style="margin-top:16px">Show all 31 reviews &darr;</button>
     </div>
 
-    <!-- HOUSE RULES -->
     <div class="section">
       <h2 class="section-title">House Rules</h2>
       <div class="rules-grid">
-        <div class="rule-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Check-in: 3:00 PM
-        </div>
-        <div class="rule-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 8 14"/></svg>
-          Checkout: 11:00 AM
-        </div>
-        <div class="rule-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          8 guests maximum
-        </div>
-        <div class="rule-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-          No smoking
-        </div>
-        <div class="rule-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-          No parties or events
-        </div>
-        <div class="rule-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .137 1.217 1.5 2 2.5 2s2-.5 3-2c1 1.5 2 2 3 2s2.363-.783 2.5-2c.113-.994-1.177-6.53-4-7C7.577 2.68 6 3.782 6 5.172"/></svg>
-          Pets allowed (ask first)
-        </div>
+        <div class="rule-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Check-in: 3:00 PM</div>
+        <div class="rule-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 8 14"/></svg>Checkout: 11:00 AM</div>
+        <div class="rule-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>8 guests maximum</div>
+        <div class="rule-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>No smoking</div>
+        <div class="rule-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>No parties or events</div>
+        <div class="rule-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .137 1.217 1.5 2 2.5 2s2-.5 3-2c1 1.5 2 2 3 2s2.363-.783 2.5-2c.113-.994-1.177-6.53-4-7C7.577 2.68 6 3.782 6 5.172"/></svg>Pets allowed (ask first)</div>
       </div>
     </div>
 
-    <!-- HOST -->
     <div class="section" id="contact">
       <h2 class="section-title">Your Host</h2>
       <div class="host-card">
         <div class="host-avatar">H</div>
         <div class="host-info">
-          <h3>Your Host</h3>
+          <h3>Adrian &amp; Barbara</h3>
           <p>Superhost · Hosting since 2022</p>
-          <span class="host-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Identity verified
-          </span>
+          <span class="host-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Identity verified</span>
         </div>
       </div>
       <div style="margin-top:20px">
         <p class="section-desc">Response rate: 100% · Response time: within an hour</p>
-        <a href="mailto:your-email@example.com" style="display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:12px 24px;border-radius:var(--radius);border:1px solid var(--gray-300);font-weight:600;font-size:.9rem;color:var(--gray-900);transition:all var(--transition)">
+        <a href="mailto:jaworskibnb@gmail.com" style="display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:12px 24px;border-radius:var(--radius);border:1px solid var(--gray-300);font-weight:600;font-size:.9rem;color:var(--gray-900);transition:all var(--transition)">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           Contact Host
         </a>
@@ -1233,7 +369,7 @@ a { color: inherit; text-decoration: none }
 
   </div>
 
-  <!-- RIGHT: BOOKING SIDEBAR -->
+  <!-- BOOKING SIDEBAR -->
   <div class="booking-sidebar" id="booking">
     <div class="booking-card">
       <div style="text-align:center;margin-bottom:8px">
@@ -1241,22 +377,14 @@ a { color: inherit; text-decoration: none }
         <div style="font-size:1.3rem;font-weight:800;color:var(--gray-900)">Call Us for Pricing</div>
         <p style="font-size:.88rem;color:var(--gray-500);margin-top:4px">Get the best rates when you book direct</p>
       </div>
-      <div class="booking-save">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-        No service fees — save vs Airbnb!
-      </div>
+      <div class="booking-save"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>No service fees — save vs Airbnb!</div>
       <div class="booking-fields">
         <div class="booking-field-full">
           <label class="booking-field-label" for="guests">Guests</label>
           <select class="guest-selector booking-field no-border" id="guests">
-            <option>1 guest</option>
-            <option>2 guests</option>
-            <option selected>3 guests</option>
-            <option>4 guests</option>
-            <option>5 guests</option>
-            <option>6 guests</option>
-            <option>7 guests</option>
-            <option>8 guests</option>
+            <option>1 guest</option><option>2 guests</option><option selected>3 guests</option>
+            <option>4 guests</option><option>5 guests</option><option>6 guests</option>
+            <option>7 guests</option><option>8 guests</option>
           </select>
         </div>
       </div>
@@ -1264,57 +392,34 @@ a { color: inherit; text-decoration: none }
       <p class="booking-note">We'll respond within 1 hour</p>
     </div>
   </div>
-
 </div>
 
-<!-- SAVE BANNER -->
 <div class="save-banner">
   <h2>Why Book Direct?</h2>
   <p>Skip the middleman and save money on every stay. When you book directly with us, you get the best rates guaranteed with a more personal experience.</p>
   <div class="save-badges">
-    <div class="save-badge">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-      No service fees
-    </div>
-    <div class="save-badge">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-      Best price guaranteed
-    </div>
-    <div class="save-badge">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-      Direct communication
-    </div>
-    <div class="save-badge">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-      Flexible cancellation
-    </div>
+    <div class="save-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>No service fees</div>
+    <div class="save-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Best price guaranteed</div>
+    <div class="save-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Direct communication</div>
+    <div class="save-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Flexible cancellation</div>
   </div>
   <button class="nav-cta" onclick="scrollToBooking()" style="font-size:1rem;padding:14px 36px">Get in Touch</button>
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
     <span class="footer-copy">&copy; 2026 Windsor Executive Rentals. All rights reserved.</span>
-    <div class="footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="mailto:your-email@example.com">Contact</a>
-    </div>
+    <div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="mailto:jaworskibnb@gmail.com">Contact</a></div>
   </div>
 </footer>
 
-<!-- MOBILE BOOKING BAR -->
 <div class="mobile-booking-bar">
   <div class="mobile-booking-inner">
-    <div class="mobile-booking-price">
-      <span class="amount" style="font-size:1rem">Call for pricing</span>
-    </div>
+    <div class="mobile-booking-price"><span class="amount" style="font-size:1rem">Call for pricing</span></div>
     <button class="mobile-booking-btn" onclick="scrollToBooking()">Inquire Now</button>
   </div>
 </div>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
   <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
@@ -1323,321 +428,171 @@ a { color: inherit; text-decoration: none }
   <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
-<!-- BOOKING MODAL -->
 <div id="bookingModal" style="display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.5);justify-content:center;align-items:center;padding:20px">
   <div style="background:white;border-radius:var(--radius-lg);padding:36px;max-width:480px;width:100%;position:relative;animation:fadeIn .3s ease">
     <button onclick="closeBookingModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.4rem;color:var(--gray-400)">&times;</button>
     <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:6px">Get in Touch</h3>
-    <p style="color:var(--gray-500);font-size:.88rem;margin-bottom:24px">Tell us about your stay and we'll get back to you with pricing and availability within 1 hour.</p>
-    <form id="bookingForm" onsubmit="submitBooking(event)">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-        <div>
-          <label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">First Name</label>
-          <input type="text" required placeholder="John" style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem">
-        </div>
-        <div>
-          <label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">Last Name</label>
-          <input type="text" required placeholder="Doe" style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem">
-        </div>
-      </div>
-      <div style="margin-bottom:12px">
-        <label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">Email</label>
-        <input type="email" required placeholder="john@example.com" style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem">
-      </div>
-      <div style="margin-bottom:12px">
-        <label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">Phone</label>
-        <input type="tel" required placeholder="+1 (555) 123-4567" style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem">
-      </div>
-      <div style="margin-bottom:20px">
-        <label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">Message (optional)</label>
-        <textarea rows="3" placeholder="Any special requests or questions..." style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem;resize:vertical"></textarea>
-      </div>
-      <button type="submit" class="booking-submit" style="margin-bottom:0">Send Inquiry</button>
-    </form>
+    <p style="color:var(--gray-500);font-size:.88rem;margin-bottom:24px">Tell us about your stay and we'll get back to you within 1 hour.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+      <div><label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">First Name</label><input type="text" required placeholder="John" style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem"></div>
+      <div><label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">Last Name</label><input type="text" required placeholder="Doe" style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem"></div>
+    </div>
+    <div style="margin-bottom:12px"><label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">Email</label><input type="email" required placeholder="john@example.com" style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem"></div>
+    <div style="margin-bottom:12px"><label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">Phone</label><input type="tel" required placeholder="+1 (555) 123-4567" style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem"></div>
+    <div style="margin-bottom:20px"><label style="display:block;font-size:.78rem;font-weight:600;margin-bottom:4px;color:var(--gray-700)">Message (optional)</label><textarea rows="3" placeholder="Any special requests or questions..." style="width:100%;padding:10px 14px;border:1px solid var(--gray-300);border-radius:8px;font-family:inherit;font-size:.9rem;resize:vertical"></textarea></div>
+    <button class="booking-submit" style="margin-bottom:0" onclick="alert('Thank you! We will contact you shortly.');closeBookingModal()">Send Inquiry</button>
   </div>
 </div>
 
-<style>
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(16px) }
-  to { opacity: 1; transform: translateY(0) }
-}
-</style>
-
 <script>
-const BOOKED_RANGES = [
-  { start: new Date(2026, 3, 2),  end: new Date(2026, 3, 7)  },
-  { start: new Date(2026, 4, 19), end: new Date(2026, 4, 26) },
-  { start: new Date(2026, 11, 19), end: new Date(2027, 2, 26) }
-];
+// ── Property for this page ──
+const PROP_ID = 'downtown';
+const PROXY = 'https://corsproxy.io/?';
+const ICAL_URL = 'https://www.airbnb.ca/calendar/ical/45517705.ics?t=9c1e81cad08149a6a15fa207772e8adf';
+const DEFAULT_PRICES = { luxury:[500,650], riverside:[350,400], downtown:[200,300] };
 
-function isBooked(date) {
-  return BOOKED_RANGES.some(r => date >= r.start && date < r.end);
+let blockedDates = new Set();
+let calYear, calMonth, selStart=null, selEnd=null;
+
+function loadRules(){try{return JSON.parse(localStorage.getItem('wer_price_rules')||'{}');}catch{return{};}}
+function toYMD(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function todayYMD(){return toYMD(new Date());}
+function fmtDate(ymd){if(!ymd)return'';const[y,m,d]=ymd.split('-');const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return mo[parseInt(m)-1]+' '+parseInt(d)+', '+y;}
+
+function getPriceForDate(ymd){
+  const rules=(loadRules()[PROP_ID]||[]).slice().reverse();
+  for(const r of rules){if(ymd>=r.from&&ymd<=r.to)return r.price;}
+  const dow=new Date(ymd+'T12:00:00').getDay();
+  const[wd,we]=DEFAULT_PRICES[PROP_ID];
+  return(dow===5||dow===6)?we:wd;
 }
 
-let calOffset = 0;
+function calcNights(startYMD,endYMD){
+  const nights=[];let cur=new Date(startYMD+'T12:00:00');const end=new Date(endYMD+'T12:00:00');
+  while(cur<end){const ymd=toYMD(cur);nights.push({date:ymd,price:getPriceForDate(ymd)});cur.setDate(cur.getDate()+1);}
+  return nights;
+}
 
-function renderCalendar() {
-  const now = new Date();
-  const baseMonth = now.getMonth() + calOffset;
-  const baseYear = now.getFullYear();
-  const container = document.getElementById('calContainer');
-  container.innerHTML = '';
+// Fetch iCal
+async function fetchBlocked(){
+  try{
+    const res=await fetch(PROXY+encodeURIComponent(ICAL_URL));
+    if(!res.ok)throw new Error();
+    blockedDates=parseIcal(await res.text());
+    document.getElementById('calStatus').textContent='Live availability';
+    renderCalendar();
+  }catch{
+    document.getElementById('calStatus').textContent='Availability unavailable';
+  }
+}
 
-  const d1 = new Date(baseYear, baseMonth, 1);
-  const d2 = new Date(baseYear, baseMonth + 1, 1);
-  const months = [d1, d2];
-  const names = [];
-
-  months.forEach(first => {
-    const year = first.getFullYear();
-    const month = first.getMonth();
-    const title = first.toLocaleString('default', { month: 'long', year: 'numeric' });
-    names.push(title);
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const startDay = first.getDay();
-
-    let html = '<div class="cal-month"><div class="cal-month-title">' + title + '</div><div class="cal-grid">';
-    const dows = ['Su','Mo','Tu','We','Th','Fr','Sa'];
-    dows.forEach(d => { html += '<div class="cal-dow">' + d + '</div>'; });
-
-    for (let i = 0; i < startDay; i++) html += '<div class="cal-day empty"></div>';
-
-    const today = new Date(); today.setHours(0,0,0,0);
-
-    for (let day = 1; day <= daysInMonth; day++) {
-      const dt = new Date(year, month, day);
-      let cls = 'cal-day';
-      if (dt < today) cls += ' past';
-      else if (isBooked(dt)) cls += ' booked';
-      else cls += ' available';
-      if (dt.getTime() === today.getTime()) cls += ' today';
-      html += '<div class="' + cls + '">' + day + '</div>';
+function parseIcal(text){
+  const dates=new Set();
+  const lines=text.replace(/\r\n /g,'').replace(/\r\n/g,'\n').split('\n');
+  let inEvent=false,dtstart=null,dtend=null;
+  for(const line of lines){
+    if(line==='BEGIN:VEVENT'){inEvent=true;dtstart=null;dtend=null;}
+    if(!inEvent)continue;
+    if(line.startsWith('DTSTART')){const v=line.split(':')[1]?.trim().replace(/T.*/,'');if(v&&v.length===8)dtstart=v;}
+    if(line.startsWith('DTEND')){const v=line.split(':')[1]?.trim().replace(/T.*/,'');if(v&&v.length===8)dtend=v;}
+    if(line==='END:VEVENT'){
+      if(dtstart&&dtend){let c=new Date(dtstart.slice(0,4)+'-'+dtstart.slice(4,6)+'-'+dtstart.slice(6,8));const e=new Date(dtend.slice(0,4)+'-'+dtend.slice(4,6)+'-'+dtend.slice(6,8));while(c<e){dates.add(toYMD(c));c.setDate(c.getDate()+1);}}
+      inEvent=false;
     }
-    html += '</div></div>';
-    container.innerHTML += html;
-  });
-
-  document.getElementById('calNavTitle').textContent = names[0] + '  —  ' + names[1];
+  }
+  return dates;
 }
 
-function calNav(dir) {
-  calOffset += dir;
+function renderCalendar(){
+  const MO=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('calTitle').textContent=MO[calMonth]+' '+calYear;
+  const grid=document.getElementById('calDays');grid.innerHTML='';
+  const firstDay=new Date(calYear,calMonth,1).getDay();
+  const dim=new Date(calYear,calMonth+1,0).getDate();
+  const tYMD=todayYMD();
+  for(let i=0;i<firstDay;i++){const e=document.createElement('div');e.className='cal-d empty';grid.appendChild(e);}
+  for(let d=1;d<=dim;d++){
+    const ymd=calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    const el=document.createElement('div');el.className='cal-d';
+    const numEl=document.createElement('div');numEl.className='cal-d-num';numEl.textContent=d;el.appendChild(numEl);
+    if(ymd===tYMD)el.classList.add('today');
+    if(ymd<tYMD){el.classList.add('past');}
+    else if(blockedDates.has(ymd)){el.classList.add('blocked');}
+    else{
+      const price=getPriceForDate(ymd);
+      const priceEl=document.createElement('div');priceEl.className='cal-d-price';priceEl.textContent='$'+price;el.appendChild(priceEl);
+      el.onclick=()=>selectDay(ymd);
+      if(selStart&&selEnd){
+        if(ymd===selStart)el.classList.add('sel-start');
+        else if(ymd===selEnd)el.classList.add('sel-end');
+        else if(ymd>selStart&&ymd<selEnd)el.classList.add('in-range');
+      }else if(selStart&&ymd===selStart)el.classList.add('sel-start');
+    }
+    grid.appendChild(el);
+  }
+}
+
+function changeMonth(dir){
+  calMonth+=dir;
+  if(calMonth>11){calMonth=0;calYear++;}
+  if(calMonth<0){calMonth=11;calYear--;}
   renderCalendar();
 }
 
+function selectDay(ymd){
+  if(!selStart||(selStart&&selEnd)){selStart=ymd;selEnd=null;}
+  else{
+    if(ymd<=selStart){selStart=ymd;selEnd=null;}
+    else{
+      let cur=new Date(selStart+'T12:00:00');cur.setDate(cur.getDate()+1);
+      const end=new Date(ymd+'T12:00:00');let hasBlocked=false;
+      while(cur<end){if(blockedDates.has(toYMD(cur))){hasBlocked=true;break;}cur.setDate(cur.getDate()+1);}
+      if(hasBlocked){alert('Your range includes unavailable dates. Please choose different dates.');selStart=ymd;selEnd=null;}
+      else{selEnd=ymd;}
+    }
+  }
+  updateDateDisplay();renderCalendar();
+}
+
+function updateDateDisplay(){
+  document.getElementById('ciDisp').textContent=selStart?fmtDate(selStart):'Select date';
+  document.getElementById('coDisp').textContent=selEnd?fmtDate(selEnd):'Select date';
+  document.getElementById('ciBox').classList.toggle('filled',!!selStart);
+  document.getElementById('coBox').classList.toggle('filled',!!selEnd);
+  const pe=document.getElementById('priceEst');
+  if(selStart&&selEnd){
+    const nights=calcNights(selStart,selEnd);
+    const total=nights.reduce((s,n)=>s+n.price,0);
+    let rows=[],i=0;
+    while(i<nights.length){let j=i;while(j<nights.length&&nights[j].price===nights[i].price)j++;const cnt=j-i;rows.push(`<div class="price-est-row"><span>${cnt} night${cnt>1?'s':''} × $${nights[i].price}</span><span>$${cnt*nights[i].price}</span></div>`);i=j;}
+    document.getElementById('priceRows').innerHTML=rows.join('');
+    document.getElementById('priceNights').textContent=`${nights.length} night${nights.length>1?'s':''} total`;
+    document.getElementById('priceTotal').textContent='$'+total.toLocaleString();
+    pe.classList.add('show');
+  }else{pe.classList.remove('show');}
+}
+
+// Init
+const td=new Date();calYear=td.getFullYear();calMonth=td.getMonth();
+fetchBlocked();
 renderCalendar();
 
-const GALLERY_IMAGES = [
-  'images/property-3/01-bath-laundry-hall.png',
-  'images/property-3/02-laundry-room.png',
-  'images/property-3/03-closet-storage.png',
-  'images/property-3/04-bathroom-vanity.png',
-  'images/property-3/05-laundry-room-2.png',
-  'images/property-3/06-workspace-living.png',
-  'images/property-3/07-workspace-desk.png',
-  'images/property-3/08-bathroom-full.png',
-  'images/property-3/09-bedroom-birch.png',
-  'images/property-3/10-bedroom-birch-2.png',
-  'images/property-3/11-kitchen-island.png',
-  'images/property-3/12-kitchen-granite.png',
-  'images/property-3/13-kitchen-wide.png',
-  'images/property-3/14-bedroom-gold.png',
-  'images/property-3/15-bedroom-gold-wardrobe.png',
-  'images/property-3/16-bedroom-gold-wide.png',
-  'images/property-3/17-living-open.png',
-  'images/property-3/18-living-wide.png',
-  'images/property-3/19-hallway-kitchen.png',
-  'images/property-3/20-bedroom-birch-wide.png',
-  'images/property-3/21-kitchen-living-bar.png',
-  'images/property-3/22-living-tv.png',
-  'images/property-3/23-living-armchair.png',
-  'images/property-3/24-living-wide-2.png',
-  'images/property-3/25-entry-workspace.png',
-  'images/property-3/26-open-concept.png',
-  'images/property-3/27-living-kitchen-full.png'
-];
+// Gallery
+const GALLERY_IMAGES=['images/13-living-fireplace.png','images/14-living-patio.png','images/03-living-room-patio.png','images/04-living-fireplace-wide.png','images/01-open-living.png','images/12-kitchen-wide.png','images/11-kitchen-bar.png','images/08-kitchen-island.png','images/10-kitchen-galley.png','images/02-basement-lounge.png','images/09-basement-lounge2.png','images/05-basement-tv.png','images/06-basement-workspace.png','images/07-basement-games.png'];
+let lightboxIdx=0;
+function openLightbox(idx){lightboxIdx=idx;updateLightbox();document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden';}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow='';}
+function navLightbox(dir){lightboxIdx=(lightboxIdx+dir+GALLERY_IMAGES.length)%GALLERY_IMAGES.length;updateLightbox();}
+function updateLightbox(){document.getElementById('lightboxImg').src=GALLERY_IMAGES[lightboxIdx];document.getElementById('lightboxCounter').textContent=`${lightboxIdx+1} / ${GALLERY_IMAGES.length}`;}
+document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('active'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')navLightbox(-1);if(e.key==='ArrowRight')navLightbox(1);});
 
-let lightboxIdx = 0;
-
-function openLightbox(idx) {
-  lightboxIdx = idx;
-  updateLightbox();
-  document.getElementById('lightbox').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function navLightbox(dir) {
-  lightboxIdx = (lightboxIdx + dir + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
-  updateLightbox();
-}
-
-function updateLightbox() {
-  document.getElementById('lightboxImg').src = GALLERY_IMAGES[lightboxIdx];
-  document.getElementById('lightboxCounter').textContent = `${lightboxIdx + 1} / ${GALLERY_IMAGES.length}`;
-}
-
-document.addEventListener('keydown', e => {
-  if (!document.getElementById('lightbox').classList.contains('active')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') navLightbox(-1);
-  if (e.key === 'ArrowRight') navLightbox(1);
-});
-
-function toggleDesc() {
-  const more = document.getElementById('descMore');
-  const btn = document.getElementById('readMoreBtn');
-  if (more.style.display === 'none') {
-    more.style.display = 'block';
-    btn.innerHTML = 'Show less &uarr;';
-  } else {
-    more.style.display = 'none';
-    btn.innerHTML = 'Show more &darr;';
-  }
-}
-
-
-function scrollToBooking() {
-  const sidebar = document.getElementById('booking');
-  if (window.innerWidth <= 900) {
-    sidebar.style.display = 'block';
-    sidebar.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    document.querySelector('.mobile-booking-bar').style.display = 'none';
-  } else {
-    sidebar.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
-
-function handleBooking() {
-  document.getElementById('bookingModal').style.display = 'flex';
-}
-
-function closeBookingModal() {
-  document.getElementById('bookingModal').style.display = 'none';
-}
-
-function submitBooking(e) {
-  e.preventDefault();
-  const form = e.target;
-  const formData = new FormData(form);
-  const checkin = document.getElementById('checkin').value;
-  const checkout = document.getElementById('checkout').value;
-  const guests = document.getElementById('guests').value;
-
-  const dateInfo = checkin && checkout ? `\nPreferred Dates: ${checkin} to ${checkout}` : '';
-  alert(`Thank you for your inquiry!${dateInfo}\nGuests: ${guests}\n\nA member of our team will get back to you with pricing and availability shortly.`);
-  closeBookingModal();
-}
-
-document.getElementById('bookingModal').addEventListener('click', function(e) {
-  if (e.target === this) closeBookingModal();
-});
-
-function openMobileNav() {
-  document.getElementById('mobileNav').classList.add('active');
-}
-
-function closeMobileNav() {
-  document.getElementById('mobileNav').classList.remove('active');
-}
-
-/* ─── Custom Date Picker ─── */
-const dpState = { checkin: { month: new Date().getMonth(), year: new Date().getFullYear(), selected: null }, checkout: { month: new Date().getMonth(), year: new Date().getFullYear(), selected: null } };
-
-function toggleDatePicker(type) {
-  const dd = document.getElementById(type + 'Dropdown');
-  const wasOpen = dd.classList.contains('open');
-  document.querySelectorAll('.dp-dropdown').forEach(d => d.classList.remove('open'));
-  if (!wasOpen) { dd.classList.add('open'); renderDatePicker(type); }
-}
-
-function renderDatePicker(type) {
-  const s = dpState[type];
-  const dd = document.getElementById(type + 'Dropdown');
-  const year = s.year, month = s.month;
-  const title = new Date(year, month, 1).toLocaleString('default', { month: 'long', year: 'numeric' });
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const startDay = new Date(year, month, 1).getDay();
-  const todayDate = new Date(); todayDate.setHours(0,0,0,0);
-
-  let html = '<div class="dp-header">';
-  html += '<button onclick="dpNav(\'' + type + '\',-1)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>';
-  html += '<span class="dp-title">' + title + '</span>';
-  html += '<button onclick="dpNav(\'' + type + '\',1)"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>';
-  html += '</div><div class="dp-grid">';
-  ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach(d => { html += '<div class="dp-dow">' + d + '</div>'; });
-  for (let i = 0; i < startDay; i++) html += '<div class="dp-day dp-empty"></div>';
-  for (let day = 1; day <= daysInMonth; day++) {
-    const dt = new Date(year, month, day);
-    let cls = 'dp-day';
-    const isPast = dt < todayDate;
-    const booked = !isPast && isBooked(dt);
-    const sel = s.selected && dt.getTime() === s.selected.getTime();
-    if (isPast) cls += ' dp-past';
-    else if (booked) cls += ' dp-disabled';
-    if (sel) cls += ' dp-selected';
-    if (dt.getTime() === todayDate.getTime()) cls += ' dp-today';
-    if (isPast || booked) {
-      html += '<div class="' + cls + '">' + day + '</div>';
-    } else {
-      html += '<div class="' + cls + '" onclick="dpSelect(\'' + type + '\',' + year + ',' + month + ',' + day + ')">' + day + '</div>';
-    }
-  }
-  html += '</div>';
-  dd.innerHTML = html;
-}
-
-function dpNav(type, dir) {
-  const s = dpState[type];
-  s.month += dir;
-  if (s.month > 11) { s.month = 0; s.year++; }
-  if (s.month < 0) { s.month = 11; s.year--; }
-  renderDatePicker(type);
-}
-
-function dpSelect(type, y, m, d) {
-  const dt = new Date(y, m, d);
-  dpState[type].selected = dt;
-  const display = document.getElementById(type + 'Display');
-  display.textContent = dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  display.classList.remove('placeholder');
-  document.getElementById(type).value = dt.toISOString().split('T')[0];
-  document.getElementById(type + 'Dropdown').classList.remove('open');
-  if (type === 'checkin') {
-    const coState = dpState.checkout;
-    coState.month = m; coState.year = y;
-    if (!coState.selected || coState.selected <= dt) {
-      coState.selected = null;
-      document.getElementById('checkoutDisplay').textContent = 'Select date';
-      document.getElementById('checkoutDisplay').classList.add('placeholder');
-      document.getElementById('checkout').value = '';
-    }
-  }
-}
-
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.date-picker-wrap')) {
-    document.querySelectorAll('.dp-dropdown').forEach(d => d.classList.remove('open'));
-  }
-});
-
-function toggleMoreReviews() {
-  const more = document.getElementById('moreReviews');
-  const btn = document.getElementById('showMoreReviewsBtn');
-  if (more.style.display === 'none') {
-    more.style.display = 'grid';
-    btn.innerHTML = 'Show fewer reviews &uarr;';
-  } else {
-    more.style.display = 'none';
-    btn.innerHTML = 'Show all 31 reviews &darr;';
-  }
-}
+function toggleDesc(){const more=document.getElementById('descMore');const btn=document.getElementById('readMoreBtn');if(more.style.display==='none'){more.style.display='block';btn.innerHTML='Show less &uarr;';}else{more.style.display='none';btn.innerHTML='Show more &darr;';}}
+function scrollToBooking(){const sidebar=document.getElementById('booking');if(window.innerWidth<=900){sidebar.style.display='block';sidebar.scrollIntoView({behavior:'smooth',block:'center'});document.querySelector('.mobile-booking-bar').style.display='none';}else{sidebar.scrollIntoView({behavior:'smooth',block:'start'});}}
+function handleBooking(){document.getElementById('bookingModal').style.display='flex';}
+function closeBookingModal(){document.getElementById('bookingModal').style.display='none';}
+document.getElementById('bookingModal').addEventListener('click',function(e){if(e.target===this)closeBookingModal();});
+function openMobileNav(){document.getElementById('mobileNav').classList.add('active');}
+function closeMobileNav(){document.getElementById('mobileNav').classList.remove('active');}
 </script>
-
 </body>
 </html>
